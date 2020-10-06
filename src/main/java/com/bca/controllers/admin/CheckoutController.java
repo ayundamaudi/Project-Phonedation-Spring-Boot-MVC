@@ -1,6 +1,6 @@
 package com.bca.controllers.admin;
 
-import com.bca.dto.PostalCodeForm;
+import com.bca.dto.CheckoutForm;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/postalcode")
-public class PostalCodeController {
-  private String BASE_PATH = "/admin/postalcode";
+@RequestMapping("/admin/payment")
+public class CheckoutController {
+  private String BASE_PATH = "/admin/payment";
 
   @GetMapping
   public String index() {
@@ -38,7 +38,7 @@ public class PostalCodeController {
   }
 
   @PutMapping("/edit/{id}")
-  public String update(@PathVariable("id") long id, PostalCodeForm form) {
+  public String update(@PathVariable("id") long id, CheckoutForm form) {
     // TODO: add update service
     return "redirect:".concat(BASE_PATH);
   }

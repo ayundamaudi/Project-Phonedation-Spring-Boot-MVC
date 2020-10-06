@@ -10,17 +10,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_orderdetails")
-public class OrderDetails {
+public class OrderDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@ManyToOne
-	private Orders orders;
+	private Order order;
 	
 	@ManyToOne
-	private Products products;
+	private Product product;
 	
 	// harga per produk
 	@Column
@@ -37,20 +37,22 @@ public class OrderDetails {
 		this.id = id;
 	}
 
-	public Orders getOrders() {
-		return orders;
+	
+
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrders(Orders orders) {
-		this.orders = orders;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-	public Products getProducts() {
-		return products;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProducts(Products products) {
-		this.products = products;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public double getPrice() {

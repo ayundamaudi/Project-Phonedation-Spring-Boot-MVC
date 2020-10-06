@@ -16,10 +16,10 @@ public class Wishlist {
 	private int id;
 	
 	@ManyToOne
-	private Products Products;
+	private Product Product;
 	
 	@ManyToOne
-	private Users users;
+	private User user;
 
 	public int getId() {
 		return id;
@@ -29,13 +29,21 @@ public class Wishlist {
 		this.id = id;
 	}
 
-	public Products getProducts() {
-		return Products;
+	public Product getProduct() {
+		return Product;
 	}
 
-	public void setProducts(Products products) {
-		Products = products;
-	}	
-	
+	public void setProduct(Product product) {
+		Product = product;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	
 }

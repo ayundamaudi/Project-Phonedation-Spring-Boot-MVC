@@ -15,17 +15,17 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_orders")
-public class Orders {
+public class Order {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@ManyToOne
-	private Addresses addresses;
+	private Address address;
 	
 	@ManyToOne
-	private Shipments shipments;
+	private Shipment shipment;
 	
 	@ManyToOne
 	private PaymentMethod paymentMethod;
@@ -68,20 +68,22 @@ public class Orders {
 		this.id = id;
 	}
 
-	public Addresses getAddresses() {
-		return addresses;
+
+
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAddresses(Addresses addresses) {
-		this.addresses = addresses;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
-	public Shipments getShipments() {
-		return shipments;
+	public Shipment getShipment() {
+		return shipment;
 	}
 
-	public void setShipments(Shipments shipments) {
-		this.shipments = shipments;
+	public void setShipment(Shipment shipment) {
+		this.shipment = shipment;
 	}
 
 	public PaymentMethod getPaymentMethod() {

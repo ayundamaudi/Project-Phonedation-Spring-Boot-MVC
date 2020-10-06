@@ -2,22 +2,18 @@ package com.bca.dto;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.bca.entities.Addresses;
-import com.bca.entities.PaymentMethod;
-import com.bca.entities.Shipments;
-
 public class CheckoutForm {
 
 	private int id;
 	
 	@NotEmpty(message="Alamat is required")
-	private Addresses addresses;
+	private String address;
 	
 	@NotEmpty(message="Provinsi is required")
-	private Shipments shipments;
+	private String shipments;
 	
 	@NotEmpty(message="Provinsi is required")
-	private PaymentMethod paymentMethod;
+	private String paymentMethod;
 	
 	// price * qty
     private double subTotal;
@@ -35,27 +31,27 @@ public class CheckoutForm {
 		this.id = id;
 	}
 
-	public Addresses getAddresses() {
-		return addresses;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAddresses(Addresses addresses) {
-		this.addresses = addresses;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public Shipments getShipments() {
+	public String getShipments() {
 		return shipments;
 	}
 
-	public void setShipments(Shipments shipments) {
+	public void setShipments(String shipments) {
 		this.shipments = shipments;
 	}
 
-	public PaymentMethod getPaymentMethod() {
+	public String getPaymentMethod() {
 		return paymentMethod;
 	}
 
-	public void setPaymentMethod(PaymentMethod paymentMethod) {
+	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
 
@@ -82,6 +78,7 @@ public class CheckoutForm {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-    
+
+
     
 }

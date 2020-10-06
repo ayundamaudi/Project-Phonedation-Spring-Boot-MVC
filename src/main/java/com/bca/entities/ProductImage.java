@@ -10,14 +10,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_productimages")
-public class ProductImages {
+public class ProductImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@ManyToOne
-	private Products products;
+	private Product product;
 	
 	@Column(length = 100, nullable = false)
     private String photo;
@@ -30,12 +30,14 @@ public class ProductImages {
 		this.id = id;
 	}
 
-	public Products getProducts() {
-		return products;
+
+
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProducts(Products products) {
-		this.products = products;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public String getPhoto() {

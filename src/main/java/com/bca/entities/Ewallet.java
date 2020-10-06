@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_ewallets")
-public class Ewallets {
+public class Ewallet {
 
 	@Id
 	private String id;
@@ -20,7 +20,7 @@ public class Ewallets {
     private int pin;
 	
 	@OneToOne
-	private Users users;
+	private User user;
 
 	public String getId() {
 		return id;
@@ -46,12 +46,12 @@ public class Ewallets {
 		this.pin = pin;
 	}
 
-	public Users getUsers() {
-		return users;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUsers(Users users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

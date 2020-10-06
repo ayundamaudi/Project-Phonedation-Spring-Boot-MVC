@@ -15,14 +15,14 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_products")
-public class Products {
+public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@ManyToOne
-	private Brands brands;
+	private Brand brand;
 
 	@Column(length = 50, nullable = false, unique = true)
 	private String model;
@@ -72,12 +72,12 @@ public class Products {
 		this.id = id;
 	}
 
-	public Brands getBrands() {
-		return brands;
+	public Brand getBrand() {
+		return brand;
 	}
 
-	public void setBrands(Brands brands) {
-		this.brands = brands;
+	public void setBrand(Brand brand) {
+		this.brand = brand;
 	}
 
 	public String getModel() {

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_postalcodes")
-public class PostalCodes {
+public class PostalCode {
 
 
 	@Id

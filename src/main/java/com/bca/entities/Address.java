@@ -10,17 +10,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_addresses")
-public class Addresses {
+public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@ManyToOne
-    private Users users;
+    private User user;
 	
 	@ManyToOne
-	private PostalCodes postalCodes;
+	private PostalCode postalCode;
 	
 	@Column(length = 50, nullable = false)
     private String receiverName;
@@ -39,22 +39,23 @@ public class Addresses {
 		this.id = id;
 	}
 
-	public Users getUsers() {
-		return users;
+
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setUsers(Users users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public PostalCodes getPostalCodes() {
-		return postalCodes;
+	public PostalCode getPostalCode() {
+		return postalCode;
 	}
 
-	public void setPostalCodes(PostalCodes postalCodes) {
-		this.postalCodes = postalCodes;
+	public void setPostalCode(PostalCode postalCode) {
+		this.postalCode = postalCode;
 	}
-
 
 	public String getReceiverName() {
 		return receiverName;

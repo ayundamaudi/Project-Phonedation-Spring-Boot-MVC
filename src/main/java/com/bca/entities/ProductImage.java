@@ -20,7 +20,7 @@ public class ProductImage {
 	private Product product;
 	
 	@Column(length = 100, nullable = false)
-    private String photo;
+    private String image;
 
 	public int getId() {
 		return id;
@@ -31,7 +31,6 @@ public class ProductImage {
 	}
 
 
-
 	public Product getProduct() {
 		return product;
 	}
@@ -40,13 +39,14 @@ public class ProductImage {
 		this.product = product;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public String getImage() {
+		return image;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setImage(String image) {
+		this.image = image;
 	}
+
 	
 	
 }

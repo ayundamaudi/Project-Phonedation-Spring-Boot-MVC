@@ -1,7 +1,5 @@
 package com.bca.dto;
 
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 import com.bca.entities.Addresses;

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/orderdetail")
+@RequestMapping("/admin/order")
 public class OrderDetailController {
-  private String BASE_PATH = "/admin/orderdetail";
+  private String BASE_PATH = "/admin/order";
 
-  @GetMapping
+  @GetMapping("/index")
   public String index() {
     return BASE_PATH.concat("/index");
   }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin | Produk</title>
+<style th:replace="/admin/share/style"></style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+		<div th:replace="admin/share/header"></div>
+		<div th:replace="admin/share/left-side"></div>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1><i class="fas fa-folder-open"></i> Data Table Produk</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+             <li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
+								<li class="breadcrumb-item active">Data Table Produk</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+	
+	<section class="content">
+		<div class="card">
+              <div class="card-body">
+              <a th:href="@{/admin/product/create}" class="btn btn-success">Tambah Data Product</a><br><br>
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Brand Id</th>
+                    <th>Color</th>
+                
+                    <th>Internal Memory</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                    <th>RAM</th>
+                    <th>Sold</th>
+                    <th>Stock</th>
+                    <th>Weight</th>
+                    
+					
+					<th>Date Created</th>
+					<th>Action</th>
+                    <th>Date Modified</th>
+                    <th>Description</th>
+					<!-- <th>Admin</th> -->
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td >1</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>1</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    
+                    <td>a</td>
+                    
+                    <td>a</td>
+                    <td>
+	                    <a class="btn btn-warning" th:href="@{/admin/product/edit}"><i class="fas fa-edit"></i></a><br>
+	                    <a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                    <td>a</td>
+                    <td>a</td>
+                    
+<!-- 					<td th:text="${product.admin.name_admin}">a</td> -->
+                    
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            </section>
+  </div>
+  <!-- /.content-wrapper -->
+<div th:replace="admin/share/footer"></div>
+</div>
+
+<div th:fragment="script"></div> 
+<div th:replace="admin/share/script"></div>
+</body>
+</html>

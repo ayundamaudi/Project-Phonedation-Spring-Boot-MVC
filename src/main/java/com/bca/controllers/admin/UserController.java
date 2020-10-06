@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
   private String BASE_PATH = "/admin/user";
 
-  @GetMapping
+  @GetMapping("/index")
   public String index() {
     return BASE_PATH.concat("/index");
   }

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin | Produk</title>
+<style th:replace="/admin/share/style"></style>
+<!-- DataTables -->
+<link rel="stylesheet"
+	href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		<div th:replace="admin/share/header"></div>
+		<div th:replace="admin/share/left-side"></div>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>
+								<li class="fas fa-box-open"></li> Update Data Produk
+							</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
+								<li class="breadcrumb-item "><a th:href="@{/product/index}">Data
+										Table Produk</a></li>
+								<li class="breadcrumb-item active ">Tambah Data Produk</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md">
+							<!-- general form elements -->
+							<div class="card card-primary">
+								<!-- form start -->
+								<span th:if=${ERROR}>
+									<div class="alert alert-danger">
+										<strong>Error(s)</strong>
+										<ul>
+											<li th:each="msg: ${ERROR.messages}" th:text="${msg}"></li>
+										</ul>
+									</div>
+								</span>
+								<form role="form" th:object="${ProductForm}" method="post"
+									th:action="@{/admin/product/.....}">
+									<div class="card-body">
+										<div class="form-group">
+											<label for="exampleInputPassword1">Nama Product</label> <select
+												class="form-control select2" style="width: 100%;"
+												name="txtBrand">
+												<option></option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputFile">Type Produk</label> <input
+												type="text" class="form-control" id="exampleInputPassword1"
+												name="txtType">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputFile">Color Produk</label> <input
+												type="text" class="form-control" id="exampleInputPassword1"
+												name="txtColor">
+										</div>
+										<div class="row">
+											<div class="col-sm">
+												<!-- textarea -->
+												<div class="form-group">
+													<label for="exampleInputFile">Deskripsi</label>
+													<textarea class="form-control" rows="3" name="txtDescrip">
+													</textarea>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputFile">Price Produk</label> <input
+												type="text" class="form-control" id="exampleInputPassword1"
+												name="txtPrice">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputFile">Stock Produk</label> <input
+												type="text" class="form-control" id="exampleInputPassword1"
+												name="txtStock">
+										</div>
+										<div class="form-group">
+											<div class="form-group">
+												<label for="exampleInputFile">Photo Produk</label>
+												<div class="form-group">
+													<div class="custom-file">
+														<label class="custom-file-label" for="customFile">Choose
+															file</label> <input type="file" class="custom-file-input"
+															id="customFile" name="txtPhoto">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card-footer">
+										<input type="hidden" name="txtId">
+										<button type="submit" class="btn btn-primary">Update</button>
+									</div>
+								</form>
+							</div>
+							<!-- /.card -->
+						</div>
+						<!--/.col (right) -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+		</div>
+		<!-- /.content-wrapper -->
+		<div th:replace="admin/share/footer"></div>
+	</div>
+
+	<div th:fragment="script"></div>
+	<div th:replace="admin/share/script"></div>
+	<!-- DataTables -->
+	<script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="/admin/plugins/datatables-bs4//user/js/dataTables.bootstrap4.min.js"></script>
+	<script
+		src="/admin/plugins/datatables-responsive//user/js/dataTables.responsive.min.js"></script>
+	<script
+		src="/admin/plugins/datatables-responsive//user/js/responsive.bootstrap4.min.js"></script>
+	<!-- page script -->
+	<script>
+		$(function() {
+			$("#example1").DataTable({
+				"responsive" : true,
+				"autoWidth" : false,
+			});
+			$('#example2').DataTable({
+				"paging" : true,
+				"lengthChange" : false,
+				"searching" : false,
+				"ordering" : true,
+				"info" : true,
+				"autoWidth" : false,
+				"responsive" : true,
+			});
+		});
+	</script>
+	<!-- bs-custom-file-input -->
+	<script
+		src="/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			bsCustomFileInput.init();
+		});
+	</script>
+</body>
+</html>

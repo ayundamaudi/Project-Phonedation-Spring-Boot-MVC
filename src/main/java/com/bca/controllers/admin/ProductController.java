@@ -15,7 +15,7 @@ import com.bca.dto.ProductForm;
 public class ProductController {
   private String BASE_PATH = "/admin/product";
 
-  @GetMapping
+  @GetMapping("/index")
   public String index() {
     return BASE_PATH.concat("/index");
   }
@@ -27,7 +27,7 @@ public class ProductController {
 
   @PostMapping("/create")
   public String insert() {
-    return "redirect:".concat(BASE_PATH);
+    return "redirect:".concat(BASE_PATH.concat("/index"));
   }
 
   @GetMapping("/edit/{id}")

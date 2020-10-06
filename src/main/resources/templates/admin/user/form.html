@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AdminLTE 3 | Dashboard</title>
+<style th:replace="/admin/share/style"></style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div class="wrapper">
+		<div th:replace="admin/share/header"></div>
+		<div th:replace="admin/share/left-side"></div>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>
+								<i class="fas fa-user-plus"></i> Tambah Data Customer
+							</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
+								<li class="breadcrumb-item"><a th:href="@{/user/index}">Data Table Customer</a></li>
+								<li class="breadcrumb-item active">Tambah Data Customer</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md">
+							<!-- general form elements -->
+							<div class="card card-primary">
+								<!-- form start -->
+								<form role="form">
+									<div class="card-body">
+										<div class="form-group">
+											<label for="exampleInputEmail1">Id</label> <input
+												type="email" class="form-control" id="exampleInputEmail1"
+												placeholder="Username">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputPassword1">Date Joined</label> <input
+												type="password" class="form-control"
+												id="exampleInputPassword1" placeholder="Nama">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputFile">Email</label> <input
+												type="password" class="form-control"
+												id="exampleInputPassword1" placeholder="Password">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">Fullname</label> <input
+												type="email" class="form-control" id="exampleInputEmail1"
+												placeholder="Username">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">Password</label> <input
+												type="email" class="form-control" id="exampleInputEmail1"
+												placeholder="Username">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1">Role</label> <input
+												type="email" class="form-control" id="exampleInputEmail1"
+												placeholder="Username">
+										</div>
+										<div class="form-group">
+											<div class="form-group">
+												<label for="exampleInputFile">Photo</label>
+												<div class="form-group">
+													<div class="custom-file">
+														<label class="custom-file-label" for="customFile">Choose
+															file</label> <input type="file" class="custom-file-input"
+															id="customFile" name="txtPhoto">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /.card-body -->
+
+									<div class="card-footer">
+									<a th:href="@{/admin/list}" class="btn btn-primary">Simpan</a>
+									</div>
+								</form>
+							</div>
+							<!-- /.card -->
+						</div>
+						<!--/.col (right) -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</section>
+		</div>
+		<!-- /.content-wrapper -->
+		<div th:replace="admin/share/footer"></div>
+	</div>
+
+	<div th:fragment="script"></div>
+	<div th:replace="admin/share/script"></div>
+</body>
+</html>

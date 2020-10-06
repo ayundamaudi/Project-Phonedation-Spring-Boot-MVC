@@ -22,10 +22,10 @@ public class TransactionEwallet {
 	private int id;
 	
 	@ManyToOne
-	private User sender;
+	private Ewallet sender;
 	
 	@ManyToOne
-	private User receiver;
+	private Ewallet receiver;
 
 	@Column
     private double amount;
@@ -52,19 +52,19 @@ public class TransactionEwallet {
 	}
 
 
-	public User getSender() {
+	public Ewallet getSender() {
 		return sender;
 	}
 
-	public void setSender(User sender) {
+	public void setSender(Ewallet sender) {
 		this.sender = sender;
 	}
 
-	public User getReceiver() {
+	public Ewallet getReceiver() {
 		return receiver;
 	}
 
-	public void setReceiver(User receiver) {
+	public void setReceiver(Ewallet receiver) {
 		this.receiver = receiver;
 	}
 

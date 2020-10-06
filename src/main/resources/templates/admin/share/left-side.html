@@ -25,7 +25,7 @@
 				data-widget="treeview" role="menu" data-accordion="false">
 				<li class="nav-item has-treeview">
 				<a th:href="@{/dashboard}" class="nav-link" 
-				th:classappend="${#request.getServletPath() == '/dashboard' ? 'active' : ''}"><i
+				th:classappend="${#request.getServletPath() == '/admin/dashboard' ? 'active' : ''}"><i
 						class="nav-icon fas fa-home"> </i>   Dashboard </a></li>
 				<li class="nav-header">Management</li>
 				<li class="nav-item"><a th:href="@{/admin/list}" class="nav-link"

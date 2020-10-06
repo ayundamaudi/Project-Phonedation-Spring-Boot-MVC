@@ -17,6 +17,9 @@ public class Wishlist {
 	
 	@ManyToOne
 	private Products Products;
+	
+	@ManyToOne
+	private Users users;
 
 	public int getId() {
 		return id;

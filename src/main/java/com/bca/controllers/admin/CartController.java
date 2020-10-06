@@ -1,6 +1,6 @@
 package com.bca.controllers.admin;
 
-import com.bca.dto.OrderCartForm;
+import com.bca.dto.CartForm;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +38,7 @@ public class CartController {
   }
 
   @PutMapping("/edit/{id}")
-  public String update(@PathVariable("id") long id, OrderCartForm form) {
+  public String update(@PathVariable("id") long id, CartForm form) {
     // TODO: add update service
     return "redirect:".concat(BASE_PATH);
   }

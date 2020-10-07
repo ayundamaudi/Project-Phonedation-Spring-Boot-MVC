@@ -1,0 +1,79 @@
+<div th:fragment="search">
+	<div class="single_product_menu d-flex">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="search"
+				aria-describedby="inputGroupPrepend">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroupPrepend"><i
+					class="ti-search"></i></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:fragment="category">
+	<aside class="left_widgets p_filter_widgets">
+		<div class="l_w_title">
+			<h3>Browse Categories</h3>
+		</div>
+		<div class="widgets_inner">
+			<ul class="list">
+				<li><a th:href="@{/view/product/category}">Frozen Fish</a> <span>(250)</span></li>
+				<li><a th:href="@{/view/product/category}">Dried Fish</a> <span>(250)</span></li>
+				<li><a th:href="@{/view/product/category}">Fresh Fish</a> <span>(250)</span></li>
+				<li><a th:href="@{/view/product/category}">Meat
+						Alternatives</a> <span>(250)</span></li>
+				<li><a th:href="@{/view/product/category}">Fresh Fish</a> <span>(250)</span></li>
+				<li><a th:href="@{/view/product/category}">Meat
+						Alternatives</a> <span>(250)</span></li>
+				<li><a th:href="@{/view/product/category}">Meat</a> <span>(250)</span></li>
+			</ul>
+		</div>
+	</aside>
+</div>
+
+<div th:fragment="price">
+	<p>Price</p>
+	<li>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="exampleRadios"
+				id="exampleRadios1" value="option1" checked> <label
+				class="form-check-label" for="exampleRadios1">$10.00 -
+				$11.00 (1)</label>
+		</div>
+	</li>
+	<li>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="exampleRadios"
+				id="exampleRadios1" value="option1" checked> <label
+				class="form-check-label" for="exampleRadios1">$10.00 -
+				$11.00 (1)</label>
+		</div>
+	</li>
+	<li>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="exampleRadios"
+				id="exampleRadios1" value="option1" checked> <label
+				class="form-check-label" for="exampleRadios1">$10.00 -
+				$11.00 (1)</label>
+		</div>
+	</li>
+</div>
+
+<div th:fragment="color">
+	<p>Color</p>
+	<li><input type="checkbox"> <a href="#">Black</a></li>
+	<li><input type="checkbox"> <a href="#">Black Leather</a></li>
+	<li><input type="checkbox"> <a href="#">Black with red</a></li>
+	<li><input type="checkbox"> <a href="#">Gold</a></li>
+	<li><input type="checkbox"> <a href="#">Spacegrey</a></li>
+</div>
+
+<div th:fragment="brand">
+	<p>Brands</p>
+	<li><input type="checkbox"> <a href="#">Apple</a></li>
+	<li><input type="checkbox"> <a href="#">Asus</a></li>
+	<li class="active"><input type="checkbox"> <a href="#">Gionee</a></li>
+	<li><input type="checkbox"> <a href="#">Micromax</a></li>
+	<li><input type="checkbox"> <a href="#">Samsung</a></li>
+</div>

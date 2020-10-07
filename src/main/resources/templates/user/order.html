@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>aranoz</title>
+<style th:replace="user/share/style"></style>
+
+</head>
+<body>
+<body>
+	<div th:replace="user/share/header"></div><br><br>
+  <!--================Cart Area =================-->
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID Order</th>
+                                    <th>Tanggal Order</th>
+                                    <th>Tanggal Proses Order</th>
+                                    <th>Total Harga</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cart-pic first-row">1</td>
+                                    <td class="p-price first-row">2020-09-09 06:45:44</td>
+                                    <td class="p-price first-row">2020-09-09 06:45:44</td>
+                                    <td class="p-price first-row">$60.00</td>
+                                    <td class="p-price first-row">Proses</td>
+                                    <td class="close-td first-row">
+                                    <a href="#" class="btn_2">Lihat Detail Order</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cart-pic first-row">1</td>
+                                    <td class="p-price first-row">2020-09-09 06:45:44</td>
+                                    <td class="p-price first-row">2020-09-09 06:45:44</td>
+                                    <td class="p-price first-row">$60.00</td>
+                                    <td class="p-price first-row">Proses</td>
+                                    <td class="close-td first-row">
+                                    <a href="#" class="btn_2">Lihat Detail Order</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cart-pic first-row">1</td>
+                                    <td class="p-price first-row">2020-09-09 06:45:44</td>
+                                    <td class="p-price first-row">2020-09-09 06:45:44</td>
+                                    <td class="p-price first-row">$60.00</td>
+                                    <td class="p-price first-row">Proses</td>
+                                    <td class="close-td first-row">
+                                    <a href="#" class="btn_2">Lihat Detail Order</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+
+	<div th:replace="user/share/footer"></div>
+	<div th:fragment="script"></div>
+	<div th:replace="user/share/script"></div>
+	
+	    <!-- Js Plugins -->
+    <script src="/user/cart/js/jquery-ui.min.js"></script>
+    <script src="/user/cart/js/jquery.countdown.min.js"></script>
+    <script src="/user/cart/js/jquery.zoom.min.js"></script>
+    <script src="/user/cart/js/jquery.slicknav.js"></script>
+    <script src="/user/cart/js/owl.carousel.min.js"></script>
+    <script src="/user/cart/js/main.js"></script>
+</body>
+</html>

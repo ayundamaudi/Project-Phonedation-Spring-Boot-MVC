@@ -34,7 +34,7 @@
 			<section class="content">
 				<div class="card">
 					<div class="card-body">
-					<a th:href="@{/admin/user/create}" class="btn btn-success">Tambah Data Customer</a><br><br>
+	
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
@@ -44,6 +44,7 @@
 									<th>Fullname</th>
 									<th>Photo</th>
 									<th>Role</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -54,6 +55,10 @@
 				                    <td>a</td>
 				                    <td>a</td>
 				                    <td>a</td>
+				                    <td>
+					                    <a class="btn btn-warning" th:href="@{/admin/user/edit}"><i class="fas fa-edit"></i></a><br>
+					                    <a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+				                    </td>
 								</tr>
 							</tbody>
 						</table>

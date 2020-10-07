@@ -28,10 +28,7 @@
 				th:classappend="${#request.getServletPath() == '/admin/dashboard' ? 'active' : ''}"><i
 						class="nav-icon fas fa-home"> </i>   Dashboard </a></li>
 				<li class="nav-header">Management</li>
-				<li class="nav-item"><a th:href="@{/admin/list}" class="nav-link"
-				th:classappend="${#request.getServletPath() == '/admin/list' ? 'active' : ''}">
-						<i class="nav-icon fas fa-users-cog"></i> Management Admin
-				</a>
+				
 				<li class="nav-item"><a th:href="@{/admin/user/index}" class="nav-link"
 				th:classappend="${#request.getServletPath() == '/user/list' ? 'active' : ''}">
 						<i class="nav-icon fa fa-users"></i> Management Customer

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BrandController {
   private String BASE_PATH = "/admin/brand";
 
-  @GetMapping
+  @GetMapping("/index")
   public String index() {
     return BASE_PATH.concat("/index");
   }

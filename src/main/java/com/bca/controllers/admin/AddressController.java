@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AddressController {
   private String BASE_PATH = "/admin/address";
 
-  @GetMapping
+  @GetMapping("/index")
   public String index() {
     return BASE_PATH.concat("/index");
   }
@@ -28,7 +28,7 @@ public class AddressController {
 
   @PostMapping("/create")
   public String insert() {
-    return "redirect:".concat(BASE_PATH);
+    return "redirect:".concat(BASE_PATH).concat("/index");
   }
 
   @GetMapping("/edit/{id}")

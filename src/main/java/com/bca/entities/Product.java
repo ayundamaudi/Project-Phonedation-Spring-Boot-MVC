@@ -24,16 +24,16 @@ public class Product {
 	@ManyToOne
 	private Brand brand;
 
-	@Column(length = 50, nullable = false, unique = true)
+	@Column(length = 100, nullable = false)
 	private String model;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 100, nullable = false)
 	private String internalMemory;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 100, nullable = false)
 	private String ram;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 100, nullable = false)
 	private String color;
 
 	@Column(length = 1000, nullable = false)

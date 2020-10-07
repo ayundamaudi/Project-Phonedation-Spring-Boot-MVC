@@ -25,10 +25,13 @@ public class Order {
 	private Address address;
 	
 	@ManyToOne
-	private Shipment shipment;
-	
-	@ManyToOne
 	private PaymentMethod paymentMethod;
+	
+	@Column(length = 15)
+    private String courier;
+	
+	@Column(length = 15)
+    private String service;
 	
 	// price * qty
 	@Column
@@ -78,12 +81,22 @@ public class Order {
 		this.address = address;
 	}
 
-	public Shipment getShipment() {
-		return shipment;
+	
+
+	public String getCourier() {
+		return courier;
 	}
 
-	public void setShipment(Shipment shipment) {
-		this.shipment = shipment;
+	public void setCourier(String courier) {
+		this.courier = courier;
+	}
+
+	public String getService() {
+		return service;
+	}
+
+	public void setService(String service) {
+		this.service = service;
 	}
 
 	public PaymentMethod getPaymentMethod() {

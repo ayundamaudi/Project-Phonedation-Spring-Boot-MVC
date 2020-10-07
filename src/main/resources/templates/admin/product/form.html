@@ -60,51 +60,49 @@
 										<div class="form-group">
 											<label for="exampleInputPassword1">Brand's Name</label> <select
 												class="form-control select2" style="width: 100%;"
-												name="txtBrand" th:field="*{brandId}">
-												<option th:each="brand: ${brands}" th:value="${brand.id}"
-													th:text="${brand.brand}"></option>
+												name="txtBrand">
+												<option></option>
 											</select>
 										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">Model</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtModel" th:field="*{model}">
+												name="txtModel">
 										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">Color</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtColor" th:field="*{color}">
+												name="txtColor">
 										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">Internal Memory</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtInternalMemory" th:field="*{internalMemory}">
+												name="txtInternalMemory">
 										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">RAM</label> <input type="text"
 												class="form-control" id="exampleInputPassword1"
-												name="txtRam" th:field="*{ram}">
+												name="txtRam">
 										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">Price</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtPrice" th:field="*{price}">
+												name="txtPrice">
 										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">Weight</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtWeight" th:field="*{weight}">
+												name="txtWeight">
 										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">Stock</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtStock" th:field="*{stock}">
+												name="txtStock">
 										</div>
 										<!-- textarea -->
 										<div class="form-group">
 											<label for="exampleInputFile">Description</label>
-											<textarea class="form-control" name="txtDescription"
-												th:field="*{description}">
+											<textarea class="form-control" name="txtDescription">
 													</textarea>
 											<div class="form-group">
 												<div class="form-group">
@@ -113,7 +111,7 @@
 														<div class="custom-file">
 															<label class="custom-file-label" for="customFile">Choose
 																file</label> <input type="file" class="custom-file-input"
-																id="customFile" name="txtImage" th:field="*{image}">
+																id="customFile" name="txtImage">
 														</div>
 													</div>
 												</div>
@@ -134,11 +132,11 @@
 			</section>
 		</div>
 		<!-- /.content-wrapper -->
-		<div th:replace="admin/share/footer"></div>
+		<div></div>
 	</div>
 
-	<div th:fragment="script"></div>
-	<div th:replace="admin/share/script"></div>
+	<div ></div>
+	<div></div>
 	<!-- DataTables -->
 	<script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
 	<script

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin | Order</title>
+<title>Admin | Data Order</title>
 <style th:replace="/admin/share/style"></style>
 <!-- DataTables -->
 <link rel="stylesheet"
@@ -57,13 +57,6 @@
 								<form role="form" th:object="${OrderForm}" method="post"
 									th:action="@{/admin/order/create}">
 									<div class="card-body">
-										<div class="form-group">
-											<label for="exampleInputPassword1">Id Order</label> <select
-												class="form-control select2" style="width: 100%;"
-												name="txtBrand">
-												<option></option>
-											</select>
-										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">Order Created</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"

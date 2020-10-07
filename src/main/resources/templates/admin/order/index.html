@@ -41,6 +41,11 @@
                     <th>Receipt Number</th>
                     <th>Shipping Fee</th>
                     <th>Status</th>
+                    <!-- status cust belum bayar : Booked -->
+                    <!-- status cust sudah bayar : Paid -->
+                    <!-- status admin packing barang : Packing -->
+                    <!-- status barang sudah ke kurir : Shipping-->                    
+                    <!-- status barang sudah di cust : Done-->                    
                     <th>Sub Total</th>
                     <th>Total Price</th>
                     <th>Id Address</th>
@@ -62,8 +67,14 @@
                     <td>a</td>
                     <td>a</td>
                     <td>
-                     	<a class="btn btn-warning" th:href="@{/admin/order/edit}"><i class="fas fa-edit"></i></a><br>
-	                    <a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                    	<!-- kalau cust belum bayar -->
+                     	<a class="btn btn-warning" href="">Cancel</a>
+                     	<!-- kalau cust sudah bayar -->
+                     	<a class="btn btn-warning" href="">Proses</a>
+                     	<!-- setelah klik proses, muncul ini, kalau admin sudah selesai packing dan mau kirim ke kurir tinggal klik -->
+                     	<a class="btn btn-warning" href="">Ship</a>
+                     	<!-- setelah klik ship, muncul ini, kalau pesanan sudah sampai ke cust tinggal klik -->
+                     	<a class="btn btn-warning" href="">Done</a>                     	
                     </td>
                     <td>a</td>
                     

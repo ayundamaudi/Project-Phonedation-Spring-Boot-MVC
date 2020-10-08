@@ -26,7 +26,8 @@
                         <div class="login_part_form_iner">
                             <h3>Welcome Back ! <br>
                                 Please Sign in now</h3>
-                            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                            <form class="row contact_form" th:object="${form}" method="post"
+									th:action="@{/signin}" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="name" name="name" value=""
                                         placeholder="Username">
@@ -40,10 +41,7 @@
                                         <input type="checkbox" id="f-option" name="selector">
                                         <label for="f-option">Remember me</label>
                                     </div>
-                                    <a type="submit" value="submit" class="btn_3" th:href="@{/admin/dashboard}">
-                                        log in
-                                    </a>
-                   
+                                    <button type="submit" class="btn_3">LOG IN</button>
                                     <a class="lost_pass" th:href="@{/forgot}">forget password?</a>
                                 </div>
                             </form>

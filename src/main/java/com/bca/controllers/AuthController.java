@@ -1,11 +1,18 @@
 package com.bca.controllers;
 
+import javax.validation.Valid;
+
+import com.bca.dto.ErrorMessage;
 import com.bca.dto.UserForm;
 import com.bca.entities.User;
 import com.bca.services.AuthService;
+import com.bca.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,32 +22,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AuthController {
 
   @Autowired
-  private AuthService service;
+  private AuthService authService;
+
+  @Autowired
+  private UserService userService;
 
   @GetMapping("/login")
   public String login() {
     return "login";
   }
 
-  // @PostMapping("/login")
-  // public String signin(LoginForm form) {
-  // service.signin(form.getEmail(), form.getPassword());
-  // return "redirect:/";
-  // }
+  @PostMapping("/signin")
+  public String signin(UserForm form) throws Exception {
+    if (authService.signin(form.getEmail(), form.getPassword()) != null) {
+      return "redirect:/admin/dashboard";
+    } else {
+      return "login";
+    }
+  }
 
   @GetMapping("/register")
   public String register() {
     return "register";
   }
 
-  @PostMapping("/register")
-  public String signup(UserForm form) throws Exception {
-    service.signup(new User());
-    return "redirect:/";
+  @PostMapping("/signup")
+  public String signup(@Valid UserForm form, BindingResult bindingResult, Model model) throws Exception {
+    if (!bindingResult.hasErrors()) {
+      User data = new User();
+
+      data.setEmail(form.getEmail());
+      data.setPassword(form.getPassword());
+      data.setFullname(form.getFullname());
+      data.setPhoto(form.getPhoto());
+      data.setRole(form.getRole());
+
+      userService.save(data);
+      return "redirect:/login";
+
+    } else {
+      ErrorMessage errorMessage = new ErrorMessage();
+      for (ObjectError err : bindingResult.getAllErrors()) {
+        errorMessage.getMessages().add(err.getDefaultMessage());
+      }
+      model.addAttribute("form", form);
+      model.addAttribute("errors", errorMessage);
+      return "register";
+    }
   }
 
-  @PostMapping("/logout")
+  @PostMapping("/signout")
   public String signout() {
-    return "redirect:/";
+    return "redirect:/login";
   }
 }

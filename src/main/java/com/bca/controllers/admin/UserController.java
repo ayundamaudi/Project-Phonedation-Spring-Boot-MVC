@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.UserForm;
 import com.bca.entities.User;
+import com.bca.repositories.UserRepo;
 import com.bca.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +82,7 @@ public class UserController {
   @PutMapping("/update")
   public String update(@PathVariable("id") int id, @Valid UserForm form, Model model, BindingResult bindingResult) {
     if (!bindingResult.hasErrors()) {
-      User data = new User();
+      User data = userService.findById(id).get();
 
       data.setEmail(form.getEmail());
       data.setPassword(form.getPassword());

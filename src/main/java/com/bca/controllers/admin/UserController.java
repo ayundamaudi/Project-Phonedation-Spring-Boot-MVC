@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/admin/user")
@@ -40,7 +41,8 @@ public class UserController {
   }
 
   @PostMapping("/insert")
-  public String insert(@Valid UserForm form, Model model, BindingResult bindingResult) {
+  public String insert(@Valid UserForm form, Model model, BindingResult bindingResult,
+		  RedirectAttributes redirectAttribute) {
     if (!bindingResult.hasErrors()) {
       User data = new User();
 

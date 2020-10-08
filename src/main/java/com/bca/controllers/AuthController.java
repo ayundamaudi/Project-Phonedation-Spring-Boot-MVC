@@ -28,16 +28,18 @@ public class AuthController {
   private UserService userService;
 
   @GetMapping("/login")
-  public String login() {
+  public String login(Model model) {
+    model.addAttribute("user", new UserForm());
     return "login";
   }
 
   @PostMapping("/signin")
-  public String signin(UserForm form) throws Exception {
+  public String signin(UserForm form, Model model) throws Exception {
     if (authService.signin(form.getEmail(), form.getPassword()) != null) {
       return "redirect:/admin/dashboard";
     } else {
-      return "login";
+      model.addAttribute("user", form);
+      return "redirect:/login";
     }
   }
 

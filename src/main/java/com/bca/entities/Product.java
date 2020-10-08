@@ -50,6 +50,10 @@ public class Product {
 	
 	@Column
 	private double weight;
+	
+	@Column
+	private String image;
+	
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)

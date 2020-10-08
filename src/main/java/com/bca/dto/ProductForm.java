@@ -35,7 +35,7 @@ public class ProductForm {
 	@NotEmpty(message="Berat is required")
 	private double weight;
 
-	@NotEmpty(message="Photo is required")
+	@NotEmpty(message="Gambar is required")
 	private String image;
 
 	public int getId() {

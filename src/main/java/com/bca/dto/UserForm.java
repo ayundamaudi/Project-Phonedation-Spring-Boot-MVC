@@ -6,6 +6,10 @@ public class UserForm {
 
 	private int id;
 	
+	private String dateJoined;
+	
+	private String role;
+	
 	@NotEmpty(message="E-mail is required")
     private String email;
 	
@@ -55,6 +59,22 @@ public class UserForm {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+
+	public String getDateJoined() {
+		return dateJoined;
+	}
+
+	public void setDateJoined(String dateJoined) {
+		this.dateJoined = dateJoined;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
     

@@ -34,7 +34,7 @@
 			<section class="content">
 				<div class="card">
 					<div class="card-body">
-	
+	 <a th:href="@{/admin/user/create}" class="btn btn-success">Tambah Data User</a><br><br>
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
@@ -42,22 +42,24 @@
 									<th>Date Joined</th>
 									<th>Email</th>
 									<th>Fullname</th>
+									<th>Password</th>
 									<th>Photo</th>
 									<th>Role</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>a</td>
-				                    <td>a</td>
-				                    <td>a</td>
-				                    <td>a</td>
-				                    <td>a</td>
-				                    <td>a</td>
+								<tr th:each="user: ${users}">
+									<td th:text="${user.id}">a</td>
+				                    <td th:text="${user.dateJoined}">a</td>
+				                    <td th:text="${user.email}">a</td>
+				                    <td th:text="${user.fullname}">a</td>
+				                    <td th:text="${user.password}">a</td>
+				                    <td th:text="${user.photo}">a</td>
+				                    <td th:text="${user.role}">a</td>
 				                    <td>
-					                    <a class="btn btn-warning" th:href="@{/admin/user/edit}"><i class="fas fa-edit"></i></a><br>
-					                    <a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+					                    <a class="btn btn-warning" th:href="@{/admin/user/edit/{id}/(id=${user.id})}"><i class="fas fa-edit"></i></a><br>
+					                    <a class="btn btn-danger" th:href="@{/admin/user/remove/{id}/(id=${user.id})}"><i class="fas fa-trash-alt"></i></a>
 				                    </td>
 								</tr>
 							</tbody>

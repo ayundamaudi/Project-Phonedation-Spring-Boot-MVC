@@ -83,6 +83,7 @@ public class UserController {
     if (!bindingResult.hasErrors()) {
       User data = userService.findById(id).get();
 
+      data.setId(form.getId());
       data.setEmail(form.getEmail());
       data.setPassword(form.getPassword());
       data.setFullname(form.getFullname());

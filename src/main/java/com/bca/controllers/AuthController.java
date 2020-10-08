@@ -34,7 +34,7 @@ public class AuthController {
   }
 
   @PostMapping("/register")
-  public String signup(UserForm form) {
+  public String signup(UserForm form) throws Exception {
     service.signup(new User());
     return "redirect:/";
   }

@@ -48,6 +48,7 @@ public class UserController {
       data.setPassword(form.getPassword());
       data.setFullname(form.getFullname());
       data.setPhoto(form.getPhoto());
+      data.setRole(form.getRole());
 
       userService.save(data);
       return "redirect:".concat(BASE_PATH);
@@ -79,9 +80,9 @@ public class UserController {
   }
 
   @PostMapping("/update")
-  public String update(@PathVariable("id") int id, @Valid UserForm form, Model model, BindingResult bindingResult) {
+  public String update(@Valid UserForm form, Model model, BindingResult bindingResult) {
     if (!bindingResult.hasErrors()) {
-      User data = userService.findById(id).get();
+      User data = userService.findById(form.getId()).get();
 
       data.setId(form.getId());
       data.setEmail(form.getEmail());

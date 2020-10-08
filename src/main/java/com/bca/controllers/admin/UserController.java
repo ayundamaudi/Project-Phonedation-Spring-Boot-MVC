@@ -12,11 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.DeleteMapping;
+// import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+// import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -39,7 +39,7 @@ public class UserController {
     return BASE_PATH.concat("/create");
   }
 
-  @PostMapping("/create")
+  @PostMapping("/insert")
   public String insert(@Valid UserForm form, Model model, BindingResult bindingResult) {
     if (!bindingResult.hasErrors()) {
       User data = new User();
@@ -48,6 +48,7 @@ public class UserController {
       data.setPassword(form.getPassword());
       data.setFullname(form.getFullname());
       data.setPhoto(form.getPhoto());
+      data.setRole(form.getRole());
 
       userService.save(data);
       return "redirect:".concat(BASE_PATH);
@@ -78,11 +79,12 @@ public class UserController {
     return BASE_PATH.concat("/edit");
   }
 
-  @PutMapping("/update")
-  public String update(@PathVariable("id") int id, @Valid UserForm form, Model model, BindingResult bindingResult) {
+  @PostMapping("/update")
+  public String update(@Valid UserForm form, Model model, BindingResult bindingResult) {
     if (!bindingResult.hasErrors()) {
-      User data = userService.findById(id).get();
+      User data = userService.findById(form.getId()).get();
 
+      data.setId(form.getId());
       data.setEmail(form.getEmail());
       data.setPassword(form.getPassword());
       data.setFullname(form.getFullname());
@@ -102,7 +104,7 @@ public class UserController {
     }
   }
 
-  @DeleteMapping("/remove/{id}")
+  @PostMapping("/remove/{id}")
   public String delete(@PathVariable("id") int id) {
     userService.deleteById(id);
     return "redirect:".concat(BASE_PATH);

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.bca.dto.AddressForm;
+
 @Entity
 @Table(name = "tb_addresses")
 public class Address {
@@ -15,21 +17,21 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@ManyToOne
-    private User user;
-	
+	private User user;
+
 	@ManyToOne
 	private PostalCode postalCode;
-	
+
 	@Column(length = 50, nullable = false)
-    private String receiverName;
-	
+	private String receiverName;
+
 	@Column(length = 1000, nullable = false)
-    private String address;
-	
+	private String address;
+
 	@Column(length = 50, nullable = false)
-    private String phoneNumber;
+	private String phoneNumber;
 
 	public int getId() {
 		return id;
@@ -38,8 +40,6 @@ public class Address {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public User getUser() {
 		return user;
@@ -79,5 +79,18 @@ public class Address {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}	
+	}
+
+	public AddressForm toForm() {
+		AddressForm form = new AddressForm();
+
+		form.setId(this.id);
+		form.setUserId(this.user.getId());
+		form.setPostalCodes(String.valueOf(this.postalCode.getPostalCode()));
+		form.setReceiverName(this.receiverName);
+		form.setAddress(this.address);
+		form.setPhoneNumber(this.phoneNumber);
+
+		return form;
+	}
 }

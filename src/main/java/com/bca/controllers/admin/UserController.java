@@ -39,7 +39,7 @@ public class UserController {
     return BASE_PATH.concat("/create");
   }
 
-  @PostMapping("/create")
+  @PostMapping("/insert")
   public String insert(@Valid UserForm form, Model model, BindingResult bindingResult) {
     if (!bindingResult.hasErrors()) {
       User data = new User();

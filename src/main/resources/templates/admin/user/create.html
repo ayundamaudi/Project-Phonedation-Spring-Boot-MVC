@@ -39,6 +39,14 @@
 						<div class="col-md">
 							<!-- general form elements -->
 							<div class="card card-primary">
+							<span th:if=${error}>
+									<div class="alert alert-danger">
+										<strong>Error(s)</strong>
+										<ul>
+											<li th:each="msg: ${error.messages}" th:text="${errorMessage}"></li>
+										</ul>
+									</div>
+								</span>
 								<!-- form start -->
 								<form role="form" th:object="${form}" method="post"
 									th:action="@{/admin/user/insert}">

@@ -12,11 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.DeleteMapping;
+// import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+// import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -78,7 +78,7 @@ public class UserController {
     return BASE_PATH.concat("/edit");
   }
 
-  @PutMapping("/update")
+  @PostMapping("/update")
   public String update(@PathVariable("id") int id, @Valid UserForm form, Model model, BindingResult bindingResult) {
     if (!bindingResult.hasErrors()) {
       User data = userService.findById(id).get();
@@ -102,7 +102,7 @@ public class UserController {
     }
   }
 
-  @DeleteMapping("/remove/{id}")
+  @PostMapping("/remove/{id}")
   public String delete(@PathVariable("id") int id) {
     userService.deleteById(id);
     return "redirect:".concat(BASE_PATH);

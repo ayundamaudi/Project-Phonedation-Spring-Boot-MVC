@@ -40,7 +40,7 @@
 							<div class="card card-primary">
 								<!-- form start -->
 								<form role="form" th:object="${form}" method="post"
-									th:action="@{/admin/user/update}">
+									th:action="@{/admin/user/insert}">
 									<div class="card-body">
 										<div class="form-group">
 											<label for="exampleInputFile">Email</label> <input
@@ -65,7 +65,7 @@
 										</div>
 										<div class="form-group">
 											<div class="form-group">
-												<label for="exampleInputFile">Photo</label>
+												<label for="exampleInputFile">Photo Produk</label>
 												<div class="form-group">
 													<div class="custom-file">
 														<label class="custom-file-label" for="customFile">Choose
@@ -79,8 +79,7 @@
 									<!-- /.card-body -->
 
 									<div class="card-footer">
-									<input type="hidden" th:field="*{id}">
-									<a th:href="@{/admin/user/}" class="btn btn-primary">Update</a>
+									<button type="submit" class="btn btn-primary">Save</button>
 									</div>
 								</form>
 							</div>
@@ -99,5 +98,39 @@
 
 	<div th:fragment="script"></div>
 	<div th:replace="admin/share/script"></div>
+	<!-- DataTables -->
+	<script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="/admin/plugins/datatables-bs4//user/js/dataTables.bootstrap4.min.js"></script>
+	<script
+		src="/admin/plugins/datatables-responsive//user/js/dataTables.responsive.min.js"></script>
+	<script
+		src="/admin/plugins/datatables-responsive//user/js/responsive.bootstrap4.min.js"></script>
+	<!-- page script -->
+	<script>
+		$(function() {
+			$("#example1").DataTable({
+				"responsive" : true,
+				"autoWidth" : false,
+			});
+			$('#example2').DataTable({
+				"paging" : true,
+				"lengthChange" : false,
+				"searching" : false,
+				"ordering" : true,
+				"info" : true,
+				"autoWidth" : false,
+				"responsive" : true,
+			});
+		});
+	</script>
+	<!-- bs-custom-file-input -->
+	<script
+		src="/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			bsCustomFileInput.init();
+		});
+	</script>
 </body>
 </html>

@@ -41,7 +41,11 @@
                                         <input type="checkbox" id="f-option" name="selector">
                                         <label for="f-option">Remember me</label>
                                     </div>
-                                    <button type="submit" class="btn_3">LOG IN</button>
+
+                                    <a type="submit" value="submit" class="btn_3" th:href="@{/signin}">
+                                        log in
+                                    </a>
+
                                     <a class="lost_pass" th:href="@{/forgot}">forget password?</a>
                                 </div>
                             </form>

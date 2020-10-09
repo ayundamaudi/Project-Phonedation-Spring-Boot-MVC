@@ -42,10 +42,10 @@ public class AuthController {
     User user = authService.signin(form.getEmail(), form.getPassword());
     if (user != null) {
       session.setAttribute("USER", user);
-      if (user.getRole() == "admin") {
-        return "redirect:/admin/dashboard";
+      if (user.getRole().equals("admin")) {
+          return "redirect:/admin/dashboard";
       } else {
-        return "home";
+        return "redirect:/";
       }
     } else {
       model.addAttribute("user", form);
@@ -67,8 +67,8 @@ public class AuthController {
       data.setEmail(form.getEmail());
       data.setPassword(form.getPassword());
       data.setFullname(form.getFullname());
-      data.setPhoto(form.getPhoto());
-      data.setRole(form.getRole());
+      data.setPhoto("no photo");
+      data.setRole("user");
 
       userService.save(data);
       return "redirect:/login";

@@ -16,29 +16,23 @@
                     <div class="login_part_text text-center">
                         <div class="login_part_form_iner">
                             <h3>Register</h3><br>
-                            <form class="row contact_form" th:object="${user}" method="post"
-									th:action="@{/register}">
+                            <form class="row contact_form" th:object="${form}" method="post"
+									th:action="@{/signup}">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="name" name="name" value=""
-                                        placeholder="Fullname">
+                                        placeholder="Fullname" th:field="*{fullname}">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-<<<<<<< HEAD
                                     <input type="text" class="form-control" id="email" name="email" value=""
-=======
-                                    <input type="text" class="form-control" id="password" name="password" value=""
->>>>>>> ff5551861fd4faabfd47ce6faaaf750290f1acae
-                                        placeholder="E-mail">
+                                        placeholder="E-mail" th:field="*{email}">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="password" name="password" value=""
-                                        placeholder="Password">
+                                        placeholder="Password" th:field="*{password}">
                                 </div>
                                 
                                 <div class="col-md-12 form-group">
-                                    <a type="submit" value="submit" class="btn_3" th:href="@{/login}">
-                                        Register
-                                    </a>
+                                    <button type="submit" class="btn_3">REGISTER</button>
                                 </div>
                             </form>
                         </div>

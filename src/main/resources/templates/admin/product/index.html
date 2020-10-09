@@ -53,26 +53,24 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td >1</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>1</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    
-                    <td>a</td>
-                    
-                    <td>a</td>
+                  <tr th:each="product: ${products}">
+                    <td th:text="${product.id}">1</td>
+                    <td th:text="${product.brand.brand}">a</td>
+                    <td th:text="${product.model}">a</td>
+                    <td th:text="${product.color}">a</td>
+                    <td th:text="${product.internalMemory}">a</td>
+                    <td th:text="${product.ram}">1</td>
+                    <td th:text="${product.weight}">a</td>
+                    <td th:text="${product.sold}">a</td>
+                    <td th:text="${product.stock}">a</td>
+                    <td th:text="${product.price}">a</td>
+                    <td th:text="${product.dateCreated}">a</td>
                     <td>
-	                    <a class="btn btn-warning" th:href="@{/admin/product/edit}"><i class="fas fa-edit"></i></a><br>
-	                    <a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+	                    <a class="btn btn-warning" th:href="@{/admin/product/edit/{id}/(id=${product.id})}"><i class="fas fa-edit"></i></a><br>
+	                    <a class="btn btn-danger" th:href="@{/admin/product/remove/{id}/(id=${product.id})}"><i class="fas fa-trash-alt"></i></a>
                     </td>
-                    <td>a</td>
-                    <td>a</td>
+                    <td th:text="${product.dateModified}">a</td>
+                    <td th:text="${product.description}">a</td>
                   </tr>
                   </tbody>
                 </table>

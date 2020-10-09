@@ -23,16 +23,12 @@ public class ProductForm {
 	@NotEmpty(message="Deskripsi is required")
 	private String description;
 
-	@NotEmpty(message="Stock is required")
 	private int stock;
 
-	@NotEmpty(message="Sold is required")
 	private int sold;
 
-	@NotEmpty(message="Harga is required")
 	private double price;
 	
-	@NotEmpty(message="Berat is required")
 	private double weight;
 
 	@NotEmpty(message="Gambar is required")

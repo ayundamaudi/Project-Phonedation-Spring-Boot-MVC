@@ -37,8 +37,8 @@
 				th:classappend="${#request.getServletPath() == '/admin/brand/' ? 'active' : ''}">
 						<i class="nav-icon far fa-list-alt"></i> Management Kategori
 				</a></li>
-				<li class="nav-item"><a th:href="@{/admin/product/index}"
-					class="nav-link" th:classappend="${#request.getServletPath() == '/admin/product/index' ? 'active' : ''}"> 
+				<li class="nav-item"><a th:href="@{/admin/product/}"
+					class="nav-link" th:classappend="${#request.getServletPath() == '/admin/product/' ? 'active' : ''}"> 
 					<i class="nav-icon fas fa-box-open"></i> Management Produk
 				</a></li>
 				<li class="nav-item"><a th:href="@{/admin/order/index}"

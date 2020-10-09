@@ -36,6 +36,7 @@ public class AuthController {
   @PostMapping("/signin")
   public String signin(UserForm form, Model model) throws Exception {
     if (authService.signin(form.getEmail(), form.getPassword()) != null) {
+      // TODO: Add session
       return "redirect:/admin/dashboard";
     } else {
       model.addAttribute("user", form);
@@ -44,7 +45,8 @@ public class AuthController {
   }
 
   @GetMapping("/register")
-  public String register() {
+  public String register(Model model) {
+    model.addAttribute("form", new UserForm());
     return "register";
   }
 

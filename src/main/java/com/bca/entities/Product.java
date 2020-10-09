@@ -172,5 +172,13 @@ public class Product {
 		this.dateModified = dateModified;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	
 }

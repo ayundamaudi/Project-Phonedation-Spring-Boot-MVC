@@ -16,13 +16,18 @@
                     <div class="login_part_text text-center">
                         <div class="login_part_form_iner">
                             <h3>Register</h3><br>
-                            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                            <form class="row contact_form" th:object="${user}" method="post"
+									th:action="@{/register}">
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="name" name="name" value=""
                                         placeholder="Fullname">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
+<<<<<<< HEAD
                                     <input type="text" class="form-control" id="email" name="email" value=""
+=======
+                                    <input type="text" class="form-control" id="password" name="password" value=""
+>>>>>>> ff5551861fd4faabfd47ce6faaaf750290f1acae
                                         placeholder="E-mail">
                                 </div>
                                 <div class="col-md-12 form-group p_star">

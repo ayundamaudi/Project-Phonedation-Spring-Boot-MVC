@@ -54,23 +54,14 @@
 										</ul>
 									</div>
 								</span>
-								<form role="form" th:object="${BrandForm}" method="post"
-									th:action="@{/admin/brand/create}">
+								<form role="form" th:object="${form}" method="post"
+									th:action="@{/admin/brand/insert}">
 									<div class="card-body">
-										<div class="form-group">
-											<label for="exampleInputPassword1">Brand's Id</label>
-											<select
-												class="form-control select2" style="width: 100%;"
-												name="txtBrand">
-												
-											</select>
-										</div>
 										<div class="form-group">
 											<label for="exampleInputFile">Brand's Name</label> <input
 												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtModel">
-										</div>
-										
+												th:field="*{brand}">
+										</div>										
 										<div class="card-footer">
 											<button type="submit" class="btn btn-primary">Save</button>
 										</div>

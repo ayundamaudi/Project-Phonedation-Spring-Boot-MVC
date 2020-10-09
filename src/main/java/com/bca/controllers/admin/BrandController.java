@@ -4,7 +4,9 @@ import javax.validation.Valid;
 
 import com.bca.dto.BrandForm;
 import com.bca.dto.ErrorMessage;
+import com.bca.dto.ProductForm;
 import com.bca.entities.Brand;
+import com.bca.entities.Product;
 import com.bca.services.BrandService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/admin/brand")
@@ -29,7 +32,7 @@ public class BrandController {
 
   @GetMapping
   public String index(Model model) {
-    model.addAttribute("data", mainService.findAll());
+    model.addAttribute("brands", mainService.findAll());
     return BASE_PATH.concat("/index");
   }
 
@@ -62,19 +65,25 @@ public class BrandController {
 
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable("id") int id, Model model) {
-    model.addAttribute("form", mainService.findById(id).get().toForm());
+    Brand data = mainService.findById(id).get();
+    BrandForm form = new BrandForm();
+    form.setId(data.getId());
+    form.setBrand(data.getBrand());
+    model.addAttribute("form", form);
     return BASE_PATH.concat("/edit");
   }
 
-  @PutMapping("/update")
-  public String update(@PathVariable("id") int id, @Valid BrandForm form, BindingResult bindingResult, Model model) {
+  @PostMapping("/update")
+  public String update(@Valid BrandForm form, BindingResult bindingResult, Model model,
+		  RedirectAttributes redirectAttribute) {
     if (!bindingResult.hasErrors()) {
-      Brand data = mainService.findById(id).get();
+    	Brand data = mainService.findById(form.getId()).get();
 
-      data.setBrand(form.getBrand());
+        data.setId(form.getId());
+        data.setBrand(form.getBrand());
 
-      mainService.save(data);
-      return "redirect:".concat(BASE_PATH);
+        mainService.save(data);
+        return "redirect:".concat(BASE_PATH);
 
     } else {
       ErrorMessage errorMessage = new ErrorMessage();
@@ -87,7 +96,7 @@ public class BrandController {
     }
   }
 
-  @DeleteMapping("/remove/{id}")
+  @GetMapping("/remove/{id}")
   public String delete(@PathVariable("id") int id) {
     mainService.deleteById(id);
     return "redirect:".concat(BASE_PATH);

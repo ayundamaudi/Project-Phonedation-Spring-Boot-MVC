@@ -1,5 +1,6 @@
 package com.bca.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.bca.dto.ErrorMessage;
@@ -22,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AuthController {
 
   @Autowired
+  private HttpSession session;
+
+  @Autowired
   private AuthService authService;
 
   @Autowired
@@ -35,9 +39,14 @@ public class AuthController {
 
   @PostMapping("/signin")
   public String signin(UserForm form, Model model) throws Exception {
-    if (authService.signin(form.getEmail(), form.getPassword()) != null) {
-      // TODO: Add session
-      return "redirect:/admin/dashboard";
+    User user = authService.signin(form.getEmail(), form.getPassword());
+    if (user != null) {
+      session.setAttribute("USER", user);
+      if (user.getRole() == "admin") {
+        return "redirect:/admin/dashboard";
+      } else {
+        return "home";
+      }
     } else {
       model.addAttribute("user", form);
       return "redirect:/login";
@@ -77,6 +86,7 @@ public class AuthController {
 
   @PostMapping("/signout")
   public String signout() {
+    session.removeAttribute("USER");
     return "redirect:/login";
   }
 }

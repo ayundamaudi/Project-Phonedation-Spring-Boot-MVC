@@ -27,10 +27,10 @@ import com.bca.services.ProductService;
 @RequestMapping("/admin/product")
 public class ProductController {
   private String BASE_PATH = "/admin/product";
-  
+
   @Autowired
   private ProductService productService;
-  
+
   @Autowired
   private BrandService brandService;
 
@@ -42,15 +42,15 @@ public class ProductController {
 
   @GetMapping
   public String index(Model model) {
-	  Iterable<Product> products = productRepo.findAll();
-	  model.addAttribute("products", products);
+    Iterable<Product> products = productRepo.findAll();
+    model.addAttribute("products", products);
     return BASE_PATH.concat("/index");
   }
 
   @GetMapping("/create")
   public String create(Model model) {
-	  model.addAttribute("brands", brandService.findAll());
-	model.addAttribute("form", new ProductForm());
+    model.addAttribute("brands", brandService.findAll());
+    model.addAttribute("form", new ProductForm());
     return BASE_PATH.concat("/create");
   }
 
@@ -89,26 +89,26 @@ public class ProductController {
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable("id") int id, Model model) {
     Product data = productService.findById(id).get();
-	model.addAttribute("brands", brandService.findAll());
-	ProductForm form = new ProductForm();
-	form.setId(data.getId());
-	form.setModel(data.getModel());
-	form.setInternalMemory(data.getInternalMemory());
-	form.setRam(data.getRam());
-	form.setColor(data.getColor());
-	form.setDescription(data.getDescription());
-	form.setStock(data.getStock());
-	form.setSold(data.getSold());
-	form.setPrice(data.getPrice());
-	form.setWeight(data.getWeight());
-	form.setBrandId(data.getBrand().getId());
-	model.addAttribute("form", form);
+    model.addAttribute("brands", brandService.findAll());
+    ProductForm form = new ProductForm();
+    form.setId(data.getId());
+    form.setModel(data.getModel());
+    form.setInternalMemory(data.getInternalMemory());
+    form.setRam(data.getRam());
+    form.setColor(data.getColor());
+    form.setDescription(data.getDescription());
+    form.setStock(data.getStock());
+    form.setSold(data.getSold());
+    form.setPrice(data.getPrice());
+    form.setWeight(data.getWeight());
+    form.setBrandId(data.getBrand().getId());
+    model.addAttribute("form", form);
     return BASE_PATH.concat("/edit");
   }
 
   @PostMapping("/update")
   public String update(@Valid ProductForm form, Model model, BindingResult bindingResult,
-		  RedirectAttributes redirectAttribute) {
+      RedirectAttributes redirectAttribute) {
     if (!bindingResult.hasErrors()) {
       Product data = productService.findById(form.getId()).get();
 

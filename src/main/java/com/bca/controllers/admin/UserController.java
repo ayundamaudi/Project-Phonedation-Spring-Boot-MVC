@@ -106,7 +106,7 @@ public class UserController {
     }
   }
 
-  @PostMapping("/remove/{id}")
+  @GetMapping("/remove/{id}")
   public String delete(@PathVariable("id") int id) {
     userService.deleteById(id);
     return "redirect:".concat(BASE_PATH);

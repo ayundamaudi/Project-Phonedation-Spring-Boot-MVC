@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -19,11 +20,19 @@ import com.bca.dto.ProductForm;
 import com.bca.entities.Product;
 import com.bca.repositories.BrandRepo;
 import com.bca.repositories.ProductRepo;
+import com.bca.services.BrandService;
+import com.bca.services.ProductService;
 
 @Controller
 @RequestMapping("/admin/product")
 public class ProductController {
   private String BASE_PATH = "/admin/product";
+  
+  @Autowired
+  private ProductService productService;
+  
+  @Autowired
+  private BrandService brandService;
 
   @Autowired
   private ProductRepo productRepo;
@@ -31,19 +40,21 @@ public class ProductController {
   @Autowired
   private BrandRepo brandRepo;
 
-  @GetMapping("/index")
+  @GetMapping
   public String index(Model model) {
-    // return
+	  Iterable<Product> products = productRepo.findAll();
+	  model.addAttribute("products", products);
     return BASE_PATH.concat("/index");
   }
 
   @GetMapping("/create")
   public String create(Model model) {
-    model.addAttribute("BRANDS", brandRepo.findAll());
-    return BASE_PATH.concat("/form");
+	  model.addAttribute("brands", brandService.findAll());
+	model.addAttribute("form", new ProductForm());
+    return BASE_PATH.concat("/create");
   }
 
-  @PostMapping("/create")
+  @PostMapping("/insert")
   public String insert(@Valid ProductForm form, Model model, BindingResult bindingResult) {
     if (!bindingResult.hasErrors()) {
       Product data = new Product();
@@ -57,10 +68,11 @@ public class ProductController {
       data.setSold(form.getSold());
       data.setPrice(form.getPrice());
       data.setWeight(form.getWeight());
-      data.setBrand(brandRepo.findById(form.getBrandId()).get());
+      data.setImage(form.getImage());
+      data.setBrand(brandService.findById(form.getBrandId()).get());
 
-      productRepo.save(data);
-      return "redirect:".concat(BASE_PATH).concat("/index");
+      productService.save(data);
+      return "redirect:".concat(BASE_PATH);
 
     } else {
       ErrorMessage errorMessage = new ErrorMessage();
@@ -68,27 +80,39 @@ public class ProductController {
         errorMessage.getMessages().add(err.getDefaultMessage());
       }
       model.addAttribute("PRODUCTS", form);
-      model.addAttribute("BRANDS", brandRepo.findAll());
+      model.addAttribute("BRANDS", brandService.findAll());
       model.addAttribute("ERRORS", errorMessage);
-      return BASE_PATH.concat("/form");
+      return BASE_PATH.concat("/create");
     }
   }
 
   @GetMapping("/edit/{id}")
-  public String edit(@PathVariable("id") int id, Model model, ProductForm form) {
-    Product data = productRepo.findById(id).get();
-    if (data != null) {
-      model.addAttribute("data", form);
-    }
-
-    return BASE_PATH.concat("/form");
+  public String edit(@PathVariable("id") int id, Model model) {
+    Product data = productService.findById(id).get();
+	model.addAttribute("brands", brandService.findAll());
+	ProductForm form = new ProductForm();
+	form.setId(data.getId());
+	form.setModel(data.getModel());
+	form.setInternalMemory(data.getInternalMemory());
+	form.setRam(data.getRam());
+	form.setColor(data.getColor());
+	form.setDescription(data.getDescription());
+	form.setStock(data.getStock());
+	form.setSold(data.getSold());
+	form.setPrice(data.getPrice());
+	form.setWeight(data.getWeight());
+	form.setBrandId(data.getBrand().getId());
+	model.addAttribute("form", form);
+    return BASE_PATH.concat("/edit");
   }
 
-  @PutMapping("/update")
-  public String update(@PathVariable("id") int id, @Valid ProductForm form, Model model, BindingResult bindingResult) {
+  @PostMapping("/update")
+  public String update(@Valid ProductForm form, Model model, BindingResult bindingResult,
+		  RedirectAttributes redirectAttribute) {
     if (!bindingResult.hasErrors()) {
-      Product data = productRepo.findById(id).get();
+      Product data = productService.findById(form.getId()).get();
 
+      data.setId(form.getId());
       data.setModel(form.getModel());
       data.setInternalMemory(form.getInternalMemory());
       data.setRam(form.getRam());
@@ -98,10 +122,10 @@ public class ProductController {
       data.setSold(form.getSold());
       data.setPrice(form.getPrice());
       data.setWeight(form.getWeight());
-      data.setBrand(brandRepo.findById(form.getBrandId()).get());
+      data.setBrand(brandService.findById(form.getBrandId()).get());
 
-      productRepo.save(data);
-      return "redirect:".concat(BASE_PATH).concat("/index");
+      productService.save(data);
+      return "redirect:".concat(BASE_PATH);
 
     } else {
       ErrorMessage errorMessage = new ErrorMessage();
@@ -111,13 +135,13 @@ public class ProductController {
       model.addAttribute("PRODUCTS", form);
       model.addAttribute("BRANDS", brandRepo.findAll());
       model.addAttribute("ERRORS", errorMessage);
-      return BASE_PATH.concat("/form");
+      return BASE_PATH.concat("/create");
     }
   }
 
-  @DeleteMapping("/remove/{id}")
+  @GetMapping("/remove/{id}")
   public String delete(@PathVariable("id") int id) {
-    productRepo.deleteById(id);
-    return "redirect:".concat(BASE_PATH).concat("/index");
+    productService.delete(id);
+    return "redirect:".concat(BASE_PATH);
   }
 }

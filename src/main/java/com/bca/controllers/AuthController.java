@@ -84,7 +84,7 @@ public class AuthController {
     }
   }
 
-  @PostMapping("/signout")
+  @GetMapping("/signout")
   public String signout() {
     session.removeAttribute("USER");
     return "redirect:/login";

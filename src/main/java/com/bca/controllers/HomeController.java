@@ -18,7 +18,9 @@ public class HomeController {
   public String home() {
     if (session.getAttribute("USER") == null) {
       return "redirect:/login";
+
     }
     return "home";
+
   }
 }

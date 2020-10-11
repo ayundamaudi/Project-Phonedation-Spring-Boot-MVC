@@ -170,10 +170,14 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<div class="product_list_slider owl-carousel">
+									
 										<div class="single_product_list_slider">
 											<div class="row align-items-center justify-content-between">
+											
 												<div class="col-lg-3 col-sm-6">
+												<span th:each="product: ${products}">
 													<div class="single_product_item">
+<<<<<<< HEAD
 														<img src="/img/iPhone_7_BLACK.jpg" alt="">
 														<div class="single_product_text">
 															<h4>Iphone 7 Black</h4>
@@ -269,15 +273,32 @@
 														<div class="single_product_text">
 															<h4>Iphone 6s Gold</h4>
 															<h3>$150.00</h3>
+=======
+													
+														<img th:src="@{/img/#}" alt="">
+														<div class="single_product_text" >
+															<h4>
+															<span th:text="${product.model}"></span>
+															<span th:text="${product.color}"></span>
+															</h4>
+															<h3>
+															<span>Rp </span>
+															<span th:text="${product.price}"></span>
+															</h3>
+>>>>>>> 4be4e9775ce3e1e7ff27a2e083fba9de7cd6f94e
 															<a th:href="@{/wishlist}" class="add_cart"><i
 																class="ti-heart"></i></a> <a
 																th:href="@{/customer/product/detail}" class="add_cart">Lihat
 																Detail</a>
 														</div>
+														
 													</div>
+													</span>
 												</div>
+												
 											</div>
 										</div>
+										
 										<div class="single_product_list_slider">
 											<div class="row align-items-center justify-content-between">
 												<div class="col-lg-3 col-sm-6">

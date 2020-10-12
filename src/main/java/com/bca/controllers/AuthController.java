@@ -43,7 +43,7 @@ public class AuthController {
     if (user != null) {
       session.setAttribute("USER", user);
       if (user.getRole().equals("admin")) {
-          return "redirect:/admin/dashboard";
+        return "redirect:/admin/dashboard";
       } else {
         return "redirect:/";
       }
@@ -65,7 +65,7 @@ public class AuthController {
       User data = new User();
 
       data.setEmail(form.getEmail());
-      data.setPassword(form.getPassword());
+      data.setPassword(form.getPassword()); // FIXME: Add hash
       data.setFullname(form.getFullname());
       data.setPhoto("no photo");
       data.setRole("user");
@@ -84,7 +84,7 @@ public class AuthController {
     }
   }
 
-  @GetMapping("/signout")
+  @GetMapping("/signout") // TODO: is it better to use GET or POST?
   public String signout() {
     session.removeAttribute("USER");
     return "redirect:/login";

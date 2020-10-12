@@ -1,7 +1,10 @@
 package com.bca.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import com.bca.entities.Order;
 import com.bca.entities.OrderDetail;
+import com.bca.entities.User;
 import com.bca.entities.Wishlist;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
@@ -20,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping
 public class CatalogController {
+
+  @Autowired
+  private HttpSession session;
 
   @Autowired
   private ProductService productService;
@@ -44,7 +50,7 @@ public class CatalogController {
 
   @GetMapping("/product/{id}")
   public String detail(@PathVariable("id") int id, Model model) {
-    model.addAttribute("product", productService.findById(id));
+    model.addAttribute("product", productService.findById(id).get());
     return "/customer/product/detail";
   }
 
@@ -66,7 +72,7 @@ public class CatalogController {
   public String addToWishlist(@PathVariable("id") int id) {
     Wishlist data = new Wishlist();
 
-    data.setUser(userService.findById(1).get()); // FIXME: get user_id by session
+    data.setUser(((User) session.getAttribute("USER"))); // FIXME: get user_id by session
     data.setProduct(productService.findById(id).get());
     wishlistService.save(data);
 

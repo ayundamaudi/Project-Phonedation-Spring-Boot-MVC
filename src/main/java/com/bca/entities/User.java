@@ -19,26 +19,26 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(length = 100, nullable = false, unique = true)
-    private String email;
-	
+	private String email;
+
 	@Column(length = 20, nullable = false)
-    private String password;
-	
-	@Column(length = 100, nullable = false)
-    private String fullname;
+	private String password;
 
 	@Column(length = 100, nullable = false)
-    private String photo;
+	private String fullname;
+
+	@Column(length = 100, nullable = false)
+	private String photo;
 
 	@Column(length = 10, nullable = false)
-    private String role;
+	private String role;
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-    private Date dateJoined;
-	
+	private Date dateJoined;
+
 	@PrePersist
 	public void setDateJoined() {
 		this.dateJoined = new Date();
@@ -99,5 +99,11 @@ public class User {
 	public void setDateJoined(Date dateJoined) {
 		this.dateJoined = dateJoined;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User [dateJoined=" + dateJoined + ", email=" + email + ", fullname=" + fullname + ", id=" + id
+				+ ", password=" + password + ", photo=" + photo + ", role=" + role + "]";
+	}
+
 }

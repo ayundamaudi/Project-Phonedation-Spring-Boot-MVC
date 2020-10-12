@@ -33,7 +33,7 @@ public class ProfileController {
 
   @GetMapping("/profile")
   public String index(Model model) {
-    model.addAttribute("user", userService.findById(1)); // FIXME: get user_id by session
+    model.addAttribute("form", (User) session.getAttribute("USER")); // FIXME: get user_id by session
     return "/customer/profile/index";
   }
 

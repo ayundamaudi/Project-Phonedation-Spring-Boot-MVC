@@ -18,6 +18,6 @@ public class AuthService {
   }
 
   public User signin(String email, String password) throws Exception {
-    return repo.findByEmailAndPassword(email, password);
+    return repo.findByEmailAndPassword(email, password); // FIXME: Add hash
   }
 }

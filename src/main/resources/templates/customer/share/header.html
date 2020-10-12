@@ -1,34 +1,12 @@
 
-<<<<<<< HEAD
-						<div class="collapse navbar-collapse main-menu-item"
-							id="navbarSupportedContent">
-							<ul class="navbar-nav">
-								<li class="nav-item"><a class="nav-link" th:href="@{/}">Beranda</a>
-								</li>
-								
-								<li class="nav-item"><a class="nav-link"
-									th:href="@{/view/product}">Semua Produk</a></li>
-							</ul>
-						</div>
-						<div class="hearer_icon d-flex">
-							<a th:href="@{/wishlist}"><i class="ti-heart"></i></a>
-							<a th:href="@{/cart}"><i class="fas fa-cart-plus"></i></a>
-							<a th:href="@{/profile/index}"><i class="fas fa-user-alt"></i></a>
-						
-							<a th:href="@{/login/user}"><i class="fa fa-sign-in-alt"> Login  </i></a>
-							<a th:href="@{/login}"> Logout <li class="fa fa-sign-out-alt"></li> </a>
-						</div>
-					</nav>
-				</div>
-=======
 <!--::header part start::-->
 <header class="main_menu home_menu">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-12">
 				<nav class="navbar navbar-expand-lg navbar-light">
-					<a class="navbar-brand" href="index.html"> <img
-						src="/user/img/logo-name.png" alt="logo">
+					<a class="navbar-brand" href="index.html">
+					<img src="/user/img/logo-name.png" alt="logo">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
@@ -44,7 +22,7 @@
 							</li>
 
 							<li class="nav-item"><a class="nav-link"
-								th:href="@{/view/product}">Semua Produk</a></li>
+								th:href="@{/product}">Semua Produk</a></li>
 						</ul>
 					</div>
 					<div class="hearer_icon d-flex">
@@ -53,14 +31,16 @@
 							th:href="@{/cart}"><i class="fas fa-cart-plus"></i></a> <a
 							th:href="@{/profile}"><i class="fas fa-user-alt"></i></a> &nbsp;
 							Welcome, &nbsp;<span th:text="${session.USER.fullname}"></span>
+							<a th:href="@{/login}"> Logout <li class="fa fa-sign-out-alt"></li> </a>
 						</span> 
 						<span th:if="${session.USER==null}">
-						<a th:href="@{/login/user}"><i class="fa fa-sign-in-alt">
-								Login</i></a>
+						
+						<a class="dropdown-item" th:href="@{/login/user}"> <i class="fa fa-sign-in-alt"></i> Login </a>
+						
 							</span>
 					</div>
 				</nav>
->>>>>>> 4be4e9775ce3e1e7ff27a2e083fba9de7cd6f94e
+
 			</div>
 		</div>
 	</div>

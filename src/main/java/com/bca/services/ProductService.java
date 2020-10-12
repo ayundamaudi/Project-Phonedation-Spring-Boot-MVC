@@ -52,11 +52,11 @@ public class ProductService {
 
 	public List<Product> findLatestProducts() {
 		Pageable pageable = PageRequest.of(0, this.MAX_LATEST_PRODUCT);
-		return productRepo.findAllOrderByCreatedDateAsc(pageable);
+		return productRepo.findAllByOrderByDateCreatedAsc(pageable);
 	}
 
 	public List<Product> findBestsellerProducts() {
 		Pageable pageable = PageRequest.of(0, this.MAX_BESTSELLER_PRODUCT);
-		return productRepo.findAllOrderBySoldDesc(pageable);
+		return productRepo.findAllByOrderBySoldDesc(pageable);
 	}
 }

@@ -11,7 +11,7 @@ public interface ProductRepo extends PagingAndSortingRepository<Product, Integer
 
 	public List<Product> findAllByModel(String model, Pageable pageable);
 
-	public List<Product> findAllOrderByCreatedDateAsc(Pageable pageable);
+	public List<Product> findAllByOrderByDateCreatedAsc(Pageable pageable);
 
-	public List<Product> findAllOrderBySoldDesc(Pageable pageable);
+	public List<Product> findAllByOrderBySoldDesc(Pageable pageable);
 }

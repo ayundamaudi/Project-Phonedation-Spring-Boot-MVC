@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 9e80cd8aa94acc35c653443c396f3bce436f397f
 <!--::header part start::-->
 <header class="main_menu home_menu">
 	<div class="container">
@@ -25,7 +22,6 @@
 							</li>
 
 							<li class="nav-item"><a class="nav-link"
-<<<<<<< HEAD
 								th:href="@{/product}">Semua Produk</a></li>
 						</ul>
 					</div>
@@ -35,7 +31,7 @@
 							th:href="@{/cart}"><i class="fas fa-cart-plus"></i></a> <a
 							th:href="@{/profile}"><i class="fas fa-user-alt"></i></a> &nbsp;
 							Welcome, &nbsp;<span th:text="${session.USER.fullname}"></span>
-							<a th:href="@{/login}"> Logout <li class="fa fa-sign-out-alt"></li> </a>
+							<a th:href="@{/signout}"> Logout <li class="fa fa-sign-out-alt"></li> </a>
 						</span> 
 						<span th:if="${session.USER==null}">
 						
@@ -43,33 +39,12 @@
 						
 							</span>
 					</div>
-				</nav>
-
-=======
-								th:href="@{/view/product}">Semua Produk</a>
+					</nav>
 							</li>
-							<span th:if="${session.USER!=null}"> 
-							<li class="nav-item"><a class="nav-link"
-								th:href="@{/signout}">Logout <i class="fa fa-sign-out-alt"></i></a>
-							</li>
-							</span>
 						</ul>
 					</div>
-					<div class="hearer_icon d-flex">
-						<span th:if="${session.USER!=null}"> 
-							<a	th:href="@{/wishlist}"><i class="ti-heart"></i></a>
-							<a	th:href="@{/cart}"><i class="fas fa-cart-plus"></i></a> 
-							<a  th:href="@{/profile}"><i class="fas fa-user-alt"></i></a> 
-							&nbsp;	Welcome, &nbsp;
-							<span th:text="${session.USER.fullname}"></span>
 
-						</span> 
-						<span th:if="${session.USER==null}"> 
-							<a  th:href="@{/login}"><i class="fa fa-sign-in-alt"> Login</i></a> 
-						</span>
-					</div>
 				</nav>
->>>>>>> 9e80cd8aa94acc35c653443c396f3bce436f397f
 			</div>
 		</div>
 	</div>

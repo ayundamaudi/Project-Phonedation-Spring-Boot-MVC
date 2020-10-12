@@ -187,9 +187,9 @@
 															<span>Rp </span>
 															<span th:text="${product.price}"></span>
 															</h3>
-															<a th:href="@{/wishlist}" class="add_cart"><i
+															<a th:href="@{/product/{id}/addtowishlist/(id=${product.id})}" class="add_cart"><i
 																class="ti-heart"></i></a> <a
-																th:href="@{/view/product/detail}" class="add_cart">Lihat
+																th:href="@{/product/{id}/(id=${product.id})}" class="add_cart">Lihat
 																Detail</a>
 														</div>
 													</div>

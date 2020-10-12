@@ -22,6 +22,9 @@ public class Order {
 	private int id;
 	
 	@ManyToOne
+	private User user;
+	
+	@ManyToOne
 	private Address address;
 	
 	@ManyToOne
@@ -82,6 +85,14 @@ public class Order {
 	}
 
 	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public String getCourier() {
 		return courier;

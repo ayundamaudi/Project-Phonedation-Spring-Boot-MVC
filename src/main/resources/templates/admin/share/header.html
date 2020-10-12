@@ -10,7 +10,7 @@
 		<div class="dropdown">
 			<button class="btn dropdown-toggle" type="button"
 				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false">Admin : <span th:text="${session.USER.fullname}">Nama admin</span></button>
+				aria-expanded="false"> <span th:text="${session.USER.role}"></span> : <span th:text="${session.USER.fullname}">Nama admin</span></button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				<a class="dropdown-item" th:href="@{/signout}">Logout <li class="fa fa-sign-out-alt"></li> </a>
 			</div>

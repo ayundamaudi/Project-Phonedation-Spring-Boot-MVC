@@ -3,21 +3,25 @@ package com.bca.dto;
 public class OrderDetailForm {
 
 	private int id;
-	
+
 	private int orderId;
-	
+
 	private String createdOrder;
-	
+
+	private String createdPayment;
+
+	private String checkoutDate;
+
 	private String status;
 
 	private String image;
 
 	private String model;
-	
+
 	// harga per produk
-    private double price;
-	
-    private int quantity;
+	private double price;
+
+	private int quantity;
 
 	public int getId() {
 		return id;
@@ -82,6 +86,21 @@ public class OrderDetailForm {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-    
-    
+
+	public String getCreatedPayment() {
+		return createdPayment;
+	}
+
+	public void setCreatedPayment(String createdPayment) {
+		this.createdPayment = createdPayment;
+	}
+
+	public String getCheckoutDate() {
+		return checkoutDate;
+	}
+
+	public void setCheckoutDate(String checkoutDate) {
+		this.checkoutDate = checkoutDate;
+	}
+
 }

@@ -1,6 +1,7 @@
 package com.bca.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,50 +18,57 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "tb_orders")
 public class Order {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@ManyToOne
 	private User user;
-	
+
+	// @OneToMany
+	// private List<OrderDetail> orderDetails;
+
 	@ManyToOne
 	private Address address;
-	
+
 	@ManyToOne
 	private PaymentMethod paymentMethod;
-	
+
 	@Column(length = 15)
-    private String courier;
-	
+	private String courier;
+
 	@Column(length = 15)
-    private String service;
-	
+	private String service;
+
 	// price * qty
 	@Column
-    private double subTotal;
+	private double subTotal;
 
 	@Column
-    private double shippingFee;
-	
+	private double shippingFee;
+
 	// subtotal + shipping fee
 	@Column
-    private double totalPrice;
+	private double totalPrice;
 
 	@Column(length = 20, nullable = false)
-    private String status;
-	
+	private String status;
+
 	@Column(length = 100)
-    private String receiptNumber;
-	
+	private String receiptNumber;
+
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-    private Date createdOrder;
-	
+	private Date createdOrder;
+
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-    private Date createdPayment;
+	private Date createdPayment;
+
+	@Column
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date checkoutDate;
 
 	@PrePersist
 	public void setDateJoined() {
@@ -74,8 +83,6 @@ public class Order {
 		this.id = id;
 	}
 
-
-
 	public Address getAddress() {
 		return address;
 	}
@@ -83,8 +90,6 @@ public class Order {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
-	
 
 	public User getUser() {
 		return user;
@@ -173,7 +178,13 @@ public class Order {
 	public void setCreatedPayment(Date createdPayment) {
 		this.createdPayment = createdPayment;
 	}
-	
-	
+
+	public Date getCheckoutDate() {
+		return checkoutDate;
+	}
+
+	public void setCheckoutDate(Date checkoutDate) {
+		this.checkoutDate = checkoutDate;
+	}
 
 }

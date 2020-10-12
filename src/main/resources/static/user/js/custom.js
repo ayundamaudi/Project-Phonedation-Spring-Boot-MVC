@@ -39,7 +39,8 @@
   var best_product_slider = $('.best_product_slider');
   if (best_product_slider.length) {
     best_product_slider.owlCarousel({
-      items: 4,
+      //4
+      items: 1,
       loop: true,
       dots: false,
       autoplay: true,

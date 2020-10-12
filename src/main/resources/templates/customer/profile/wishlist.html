@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Phonedation | Wishlist</title>
+    <style th:replace="customer/share/style"></style>
+
+</head>
+
+<body>
+
+    <body>
+        <div th:replace="customer/share/header"></div><br><br>
+        <!--================Cart Area =================-->
+        <!-- Shopping Cart Section Begin -->
+        <section class="shopping-cart spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="cart-table">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-12">
+                                    <div class="section_tittle text-center ">
+                                        <h2>
+                                            Halaman Wishlist
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th class="p-name">Product Name</th>
+                                        <th>Price</th>
+                                        <th>Add To Cart</th>
+                                        <th>Hapus</i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="wishlist: ${wishlists}">
+                                        <td class="cart-pic first-row">
+                                            <img th:src="@{${'/img/' + wishlist.image}}" alt="image product">
+                                        </td>
+                                        <td class="cart-title first-row">
+                                            <h5 th:text="${wishlist.model}">Pure Pineapple</h5>
+                                        </td>
+                                        <td class="p-price first-row" th:text="${wishlist.price}">$60.00</td>
+                                        <td>
+                                            <form method="post"
+                                                th:action="@{/product/{id}/addtocart/(id=${product.id})}">
+                                                <button type="submit" class="btn_3" align="center">Add To cart</button>
+                                            </form>
+                                        </td>
+                                        <td class="close-td first-row"><i class="ti-close"></i></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Shopping Cart Section End -->
+
+
+        <div th:replace="customer/share/footer"></div>
+        <div th:fragment="script"></div>
+        <div th:replace="customer/share/script"></div>
+
+
+    </body>
+
+</html>

@@ -5,10 +5,15 @@ import javax.validation.Valid;
 
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.UserForm;
+import com.bca.entities.Order;
 import com.bca.entities.User;
 import com.bca.services.AddressService;
+import com.bca.services.OrderService;
+import com.bca.services.ProductService;
 import com.bca.services.UserService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +24,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping
+@RequestMapping("/profile")
 public class ProfileController {
+
+  Logger log = LoggerFactory.getLogger(this.getClass());
 
   @Autowired
   private HttpSession session;
@@ -29,15 +36,21 @@ public class ProfileController {
   private UserService userService;
 
   @Autowired
+  private ProductService productService;
+
+  @Autowired
   private AddressService addressService;
 
-  @GetMapping("/profile")
+  @Autowired
+  private OrderService orderService; // FIXME: delete this
+
+  @GetMapping
   public String index(Model model) {
     model.addAttribute("form", (User) session.getAttribute("USER")); // FIXME: get user_id by session
     return "/customer/profile/index";
   }
 
-  @PostMapping("/profile/update")
+  @PostMapping("/update")
   public String update(@Valid UserForm form, BindingResult bindingResult, Model model) {
     if (!bindingResult.hasErrors()) {
       User data = userService.findById(form.getId()).get();
@@ -59,6 +72,21 @@ public class ProfileController {
       model.addAttribute("errors", errorMessage);
     }
     return "redirect:/profile";
+  }
+
+  @GetMapping("/wishlist")
+  public String wishlist(Model model) {
+    User user = (User) session.getAttribute("USER");
+    model.addAttribute("wishlists", productService.findWishlistedProductsByUser(user));
+    log.info(productService.findWishlistedProductsByUser(user).toString());
+    return "customer/profile/wishlist";
+  }
+
+  @GetMapping("/cart")
+  public String cart(Model model) {
+    Order order = orderService.findById(1).get();
+    model.addAttribute("wishlists", productService.findProductsByOrder(order)); // FIXME: get cart by session
+    return "customer/profile/wishlist";
   }
 
 }

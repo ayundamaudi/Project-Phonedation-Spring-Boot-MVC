@@ -10,7 +10,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.bca.entities.Order;
 import com.bca.entities.Product;
+import com.bca.entities.User;
 import com.bca.repositories.ProductRepo;
 
 @Service("productService")
@@ -52,11 +54,19 @@ public class ProductService {
 
 	public List<Product> findLatestProducts() {
 		Pageable pageable = PageRequest.of(0, this.MAX_LATEST_PRODUCT);
-		return productRepo.findAllByOrderByDateCreatedAsc(pageable);
+		return productRepo.findAllByOrderByDateCreatedDesc(pageable);
 	}
 
 	public List<Product> findBestsellerProducts() {
 		Pageable pageable = PageRequest.of(0, this.MAX_BESTSELLER_PRODUCT);
 		return productRepo.findAllByOrderBySoldDesc(pageable);
+	}
+
+	public List<Product> findWishlistedProductsByUser(User user) {
+		return productRepo.findAllByWishlistsUser(user);
+	}
+
+	public List<Product> findProductsByOrder(Order cart) {
+		return productRepo.findAllByOrderDetailsOrder(cart);
 	}
 }

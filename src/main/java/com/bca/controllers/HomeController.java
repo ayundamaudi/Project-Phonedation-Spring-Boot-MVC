@@ -22,11 +22,9 @@ public class HomeController {
 
   @GetMapping
   public String home(Model model) {
-    if (session.getAttribute("USER") == null) {
-      return "redirect:/login";
-
-    }
     model.addAttribute("products", productService.findAll());
+    model.addAttribute("latest", productService.findLatestProducts());
+    model.addAttribute("bestseller", productService.findBestsellerProducts());
     return "home";
 
   }

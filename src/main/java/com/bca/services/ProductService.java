@@ -14,36 +14,49 @@ import com.bca.entities.Product;
 import com.bca.repositories.ProductRepo;
 
 @Service("productService")
-@Transactional 
+@Transactional
 public class ProductService {
+
+	private int MAX_LATEST_PRODUCT = 10;
+	private int MAX_BESTSELLER_PRODUCT = 10;
 
 	@Autowired
 	private ProductRepo productRepo;
-	
+
 	public Product save(Product product) {
 		return productRepo.save(product);
 	}
-	
-	public Iterable<Product> findAll(){
+
+	public Iterable<Product> findAll() {
 		return productRepo.findAll();
 	}
-	
-	public List<Product> findAll(int page, int rows){
-		Pageable pageable = PageRequest.of(page-1,rows);
+
+	public List<Product> findAll(int page, int rows) {
+		Pageable pageable = PageRequest.of(page - 1, rows);
 		return productRepo.findAll(pageable).getContent();
 	}
-	
-	public List<Product> findAllByModel(String model, int page){
-		Pageable pageable = PageRequest.of(page,10);
+
+	public List<Product> findAllByModel(String model, int page) {
+		Pageable pageable = PageRequest.of(page - 1, 10);
 		return productRepo.findAllByModel(model, pageable);
 	}
-	
-	public Optional<Product> findById(int id){
+
+	public Optional<Product> findById(int id) {
 		return productRepo.findById(id);
 	}
-	
+
 	public boolean delete(int id) {
 		productRepo.deleteById(id);
 		return true;
+	}
+
+	public List<Product> findLatestProducts() {
+		Pageable pageable = PageRequest.of(0, this.MAX_LATEST_PRODUCT);
+		return productRepo.findAllOrderByCreatedDateAsc(pageable);
+	}
+
+	public List<Product> findBestsellerProducts() {
+		Pageable pageable = PageRequest.of(0, this.MAX_BESTSELLER_PRODUCT);
+		return productRepo.findAllOrderBySoldDesc(pageable);
 	}
 }

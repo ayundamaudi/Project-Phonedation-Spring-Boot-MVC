@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,7 @@ import com.bca.repositories.ProductRepo;
 @Service("productService")
 @Transactional
 public class ProductService {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private int MAX_LATEST_PRODUCT = 10;
 	private int MAX_BESTSELLER_PRODUCT = 10;
@@ -63,6 +66,7 @@ public class ProductService {
 	}
 
 	public List<Product> findWishlistedProductsByUser(User user) {
+		log.info(productRepo.findAllByWishlistsUser(user).toString());
 		return productRepo.findAllByWishlistsUser(user);
 	}
 

@@ -1,16 +1,22 @@
 package com.bca.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.UserForm;
 import com.bca.entities.Order;
+import com.bca.entities.Product;
 import com.bca.entities.User;
+import com.bca.entities.Wishlist;
 import com.bca.services.AddressService;
 import com.bca.services.OrderService;
 import com.bca.services.ProductService;
 import com.bca.services.UserService;
+import com.bca.services.WishlistService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +43,9 @@ public class ProfileController {
 
   @Autowired
   private ProductService productService;
+
+  @Autowired
+  private WishlistService wishlistService;
 
   @Autowired
   private AddressService addressService;
@@ -77,16 +86,23 @@ public class ProfileController {
   @GetMapping("/wishlist")
   public String wishlist(Model model) {
     User user = (User) session.getAttribute("USER");
-    model.addAttribute("wishlists", productService.findWishlistedProductsByUser(user));
-    log.info(productService.findWishlistedProductsByUser(user).toString());
+    // productService.findWishlistedProductsByUser(user));
+    Iterable<Wishlist> wishlists = wishlistService.findAllByUser(user);
+    List<Product> products = new ArrayList<Product>();
+    for (Wishlist wishlist : wishlists) {
+      log.info(wishlist.getProduct().getModel());
+      products.add(wishlist.getProduct());
+    }
+    model.addAttribute("wishlists", products);
+
     return "customer/profile/wishlist";
   }
 
   @GetMapping("/cart")
   public String cart(Model model) {
     Order order = orderService.findById(1).get();
-    model.addAttribute("wishlists", productService.findProductsByOrder(order)); // FIXME: get cart by session
-    return "customer/profile/wishlist";
+    model.addAttribute("carts", productService.findProductsByOrder(order)); // FIXME: get cart by session
+    return "customer/profile/cart";
   }
 
 }

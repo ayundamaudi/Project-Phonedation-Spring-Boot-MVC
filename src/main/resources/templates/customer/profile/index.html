@@ -22,34 +22,36 @@
 
 						</div>
 					</div>
-					<div class="col-lg-9">
+					<div class="col-lg-9" th:object="${form}">
 						<div class="container">
 							<div class="billing_details">
 								<div class="row">
 									<div class="col-lg-8">
 										<h3>Profile Anda</h3>
-										<form class="row contact_form" action="#" method="post" novalidate="novalidate">
-											<div class="col-md-12 form-group">
+										<form class="row contact_form" role="form" th:object="${form}" method="post"
+									th:action="@{/profile/update}">
+											<div class="col-md-12 form-group" >
 												Bergabung Sejak
-												<input class="form-control" id="disabledInput" type="text" placeholder="Tanggal Bergabung"
-													disabled>
+												<input class="form-control" id="datejoined" type="text" th:field="*{dateJoined}"
+													disabled >
 											</div>
 											<div class="col-md-12 form-group">
 												Nama Lengkap
-												<input class="form-control" id="fullname" type="text" placeholder="Nama lengkap">
+												<input class="form-control" id="fullname" type="text" th:field="*{fullname}">
 											</div>
 											<div class="col-md-12 form-group">
 												E-mail
-												<input class="form-control" id="email" type="email" placeholder="E-mail">
+												<input class="form-control" id="email" type="email" th:field="*{email}" disabled>
 											</div>
 											<div class="col-md-12 form-group">
 												Password
-												<input class="form-control" id="password" type="password" placeholder="Password">
+												<input class="form-control" id="password" type="password" th:field="*{password}">
 											</div>
 
 										</form>
-										<a href="#" class="btn_1">Submit</a>
-										<a th:href="@{/}" class="btn_1">Batal</a>
+										<input type="hidden" th:field="*{id}">
+										<button type="submit" class="btn_3">Update</button>
+										<button type="reset" class="btn_3" onclick="window.history.back();">Batal</button>
 									</div>
 								</div>
 							</div>

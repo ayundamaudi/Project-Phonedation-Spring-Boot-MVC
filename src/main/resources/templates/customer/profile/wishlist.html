@@ -48,7 +48,7 @@
                                         <td class="p-price first-row" th:text="${wishlist.price}">$60.00</td>
                                         <td>
                                             <form method="post"
-                                                th:action="@{/product/{id}/addtocart/(id=${product.id})}">
+                                                th:action="@{/product/{id}/addtocart/(id=${wishlist.id})}">
                                                 <button type="submit" class="btn_3" align="center">Add To cart</button>
                                             </form>
                                         </td>

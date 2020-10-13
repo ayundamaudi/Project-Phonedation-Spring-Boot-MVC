@@ -52,6 +52,8 @@ public class User {
 		this.dateJoined = new Date();
 	}
 
+	// TODO: Add PrePersist for Cart Creation
+
 	public int getId() {
 		return id;
 	}

@@ -9,10 +9,12 @@ import javax.validation.Valid;
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.UserForm;
 import com.bca.entities.Order;
+import com.bca.entities.OrderDetail;
 import com.bca.entities.Product;
 import com.bca.entities.User;
 import com.bca.entities.Wishlist;
 import com.bca.services.AddressService;
+import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 import com.bca.services.ProductService;
 import com.bca.services.UserService;
@@ -51,11 +53,14 @@ public class ProfileController {
   private AddressService addressService;
 
   @Autowired
-  private OrderService orderService; // FIXME: delete this
+  private OrderService orderService; // FIXME: should this be deleted?
+
+  @Autowired
+  private OrderDetailService orderDetailService;
 
   @GetMapping
   public String index(Model model) {
-    model.addAttribute("form", (User) session.getAttribute("USER")); // FIXME: get user_id by session
+    model.addAttribute("form", (User) session.getAttribute("USER"));
     return "/customer/profile/index";
   }
 
@@ -100,8 +105,14 @@ public class ProfileController {
 
   @GetMapping("/cart")
   public String cart(Model model) {
-    Order order = orderService.findById(1).get();
-    model.addAttribute("carts", productService.findProductsByOrder(order)); // FIXME: get cart by session
+    Order order = orderService.findById((int) session.getAttribute("CART_ID")).get();
+    Iterable<OrderDetail> carts = orderDetailService.findAllByOrder(order);
+    // List<Product> products = new ArrayList<Product>();
+    // for (OrderDetail item : carts) {
+    // log.info(item.getProduct().getModel());
+    // products.add(item.getProduct());
+    // }
+    model.addAttribute("carts", carts);
     return "customer/profile/cart";
   }
 

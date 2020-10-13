@@ -3,6 +3,7 @@ package com.bca.services;
 import java.util.Optional;
 
 import com.bca.entities.Order;
+import com.bca.entities.User;
 import com.bca.repositories.OrderRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class OrderService {
   public Iterable<Order> findAll(int page, int size) {
     Pageable pageable = PageRequest.of(page, size);
     return orderRepo.findAll(pageable).getContent();
+  }
+
+  public Iterable<Order> findByUser(User user) {
+    return orderRepo.findByUser(user);
   }
 
   public Optional<Order> findById(int id) {

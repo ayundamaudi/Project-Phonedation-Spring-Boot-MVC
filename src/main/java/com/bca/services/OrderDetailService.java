@@ -2,6 +2,7 @@ package com.bca.services;
 
 import java.util.Optional;
 
+import com.bca.entities.Order;
 import com.bca.entities.OrderDetail;
 import com.bca.repositories.OrderDetailRepo;
 
@@ -25,6 +26,10 @@ public class OrderDetailService {
   public Iterable<OrderDetail> findAll(int page, int size) {
     Pageable pageable = PageRequest.of(page, size);
     return orderDetailRepo.findAll(pageable).getContent();
+  }
+
+  public Iterable<OrderDetail> findAllByOrder(Order order) {
+    return orderDetailRepo.findAllByOrder(order);
   }
 
   public Optional<OrderDetail> findById(int id) {

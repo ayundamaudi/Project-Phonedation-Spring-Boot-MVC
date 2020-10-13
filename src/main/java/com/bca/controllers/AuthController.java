@@ -5,8 +5,10 @@ import javax.validation.Valid;
 
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.UserForm;
+import com.bca.entities.Order;
 import com.bca.entities.User;
 import com.bca.services.AuthService;
+import com.bca.services.OrderService;
 import com.bca.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class AuthController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private OrderService orderService;
+
   @GetMapping("/login")
   public String login(Model model) {
     model.addAttribute("user", new UserForm());
@@ -42,6 +47,12 @@ public class AuthController {
     User user = authService.signin(form.getEmail(), form.getPassword());
     if (user != null) {
       session.setAttribute("USER", user);
+      for (Order order : orderService.findByUser(user)) {
+        if (order.getCheckoutDate() == null) {
+          session.setAttribute("CART_ID", order.getId());
+        }
+      }
+
       if (user.getRole().equals("admin")) {
         return "redirect:/admin/dashboard";
       } else {
@@ -71,6 +82,9 @@ public class AuthController {
       data.setRole("user");
 
       userService.save(data);
+
+      // TODO: Insert user cart
+
       return "redirect:/login";
 
     } else {

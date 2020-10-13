@@ -86,7 +86,7 @@ public class ProfileController {
   public String cart(Model model) {
     Order order = orderService.findById(1).get();
     model.addAttribute("wishlists", productService.findProductsByOrder(order)); // FIXME: get cart by session
-    return "customer/profile/wishlist";
+    return "customer/profile/cart";
   }
 
 }

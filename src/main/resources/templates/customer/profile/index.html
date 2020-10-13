@@ -29,11 +29,10 @@
 									<div class="col-lg-8">
 										<h3>Profile Anda</h3>
 										<form class="row contact_form" role="form" th:object="${form}" method="post"
-									th:action="@{/profile/update}">
-											<div class="col-md-12 form-group" >
+											th:action="@{/profile/update}">
+											<div class="col-md-12 form-group">
 												Bergabung Sejak
-												<input class="form-control" id="datejoined" type="text" th:field="*{dateJoined}"
-													disabled >
+												<input class="form-control" id="datejoined" type="text" th:field="*{dateJoined}" disabled>
 											</div>
 											<div class="col-md-12 form-group">
 												Nama Lengkap
@@ -44,7 +43,7 @@
 												<input class="form-control" id="email" type="email" th:field="*{email}" disabled>
 											</div>
 											<div class="col-md-12 form-group">
-												Password
+												Update Password
 												<input class="form-control" id="password" type="password" th:field="*{password}">
 											</div>
 

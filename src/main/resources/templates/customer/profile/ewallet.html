@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Phonedation | E-Wallet</title>
+  <style th:replace="customer/share/style"></style>
+</head>
+
+<body>
+
+  <body>
+    <div th:replace="customer/share/header"></div>
+    <!--================Category Product Area =================-->
+    <section class="cat_product_area section_padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="left_sidebar_area">
+              <aside class="left_widgets p_filter_widgets">
+                <div th:replace="customer/share/left_side_profile"></div>
+              </aside>
+
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="container">
+              <div class="billing_details">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <h3>ID eWallet Anda : WL001</h3>
+                    <h3> Saldo eWallet Anda</h3>
+                    <h1>Rp 1.000.000</h1> <br>
+                    <a href="#" class="btn_1">Transfer</a>
+                    <a href="#" class="btn_1">Top Up</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div class="cart-table">
+              Riwayat Transaksi
+              <table>
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Tanggal Transaksi</th>
+                    <th>Jumlah Saldo</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cart-pic first-row">1</td>
+                    <td class="p-price first-row">2020-09-09 06:45:44</td>
+                    <td class="p-price first-row">$60.00</td>
+                    <td class="close-td first-row">
+                      <a href="#" class="btn_2">Bingung huu</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!--================End Category Product Area =================-->
+    <div th:replace="customer/share/footer"></div>
+    <div th:fragment="script"></div>
+    <div th:replace="customer/share/script"></div>
+  </body>
+
+</html>

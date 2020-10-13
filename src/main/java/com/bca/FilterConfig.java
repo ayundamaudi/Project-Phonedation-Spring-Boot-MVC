@@ -28,8 +28,8 @@ public class FilterConfig {
 
     registrationBean.setFilter(new CustomerFilter());
     registrationBean.addUrlPatterns("/profile/*");
-    registrationBean.addUrlPatterns("/product/**/addtocart");
-    registrationBean.addUrlPatterns("/product/**/addtowishlist");
+    registrationBean.addUrlPatterns("/product/*/addtocart"); // FIXME: Seems doesn't work
+    registrationBean.addUrlPatterns("/product/*/addtowishlist");
 
     return registrationBean;
   }

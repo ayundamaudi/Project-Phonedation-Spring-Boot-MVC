@@ -28,6 +28,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -116,4 +117,39 @@ public class ProfileController {
     return "customer/profile/cart";
   }
 
+  @GetMapping("/order")
+  public String order(Model model) {
+    User user = (User) session.getAttribute("USER");
+    Iterable<Order> orders = orderService.findByUser(user);
+    model.addAttribute("orders", orders);
+    return "customer/profile/order/index";
+  }
+
+  @GetMapping("/detail/{id}")
+  public String orderDetail(@PathVariable("id") int id, Model model) {
+    Order order = orderService.findById((int) session.getAttribute("CART_ID")).get();
+    model.addAttribute("order", order);
+    model.addAttribute("details", orderDetailService.findAllByOrder(order));
+    return "customer/profile/order/detail";
+  }
+
+  @GetMapping("/address")
+  public String address() {
+    return "customer/profile/address/index";
+  }
+
+  @GetMapping("/address/create")
+  public String createAddress() {
+    return "customer/profile/address/create";
+  }
+
+  @GetMapping("/address/edit")
+  public String editAddress() {
+    return "customer/profile/address/edit";
+  }
+
+  @GetMapping("/ewallet")
+  public String ewallet() {
+    return "customer/profile/ewallet";
+  }
 }

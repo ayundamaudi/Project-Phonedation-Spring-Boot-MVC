@@ -143,6 +143,7 @@
 
   }).owlCarousel({
     items: 1,
+								
     loop: true,
     dots: false,
     autoplay: true,

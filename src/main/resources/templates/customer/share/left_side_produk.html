@@ -1,11 +1,9 @@
 <div th:fragment="search">
 	<div class="single_product_menu d-flex">
 		<div class="input-group">
-			<input type="text" class="form-control" placeholder="search"
-				aria-describedby="inputGroupPrepend">
+			<input type="text" class="form-control" placeholder="search" aria-describedby="inputGroupPrepend">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroupPrepend"><i
-					class="ti-search"></i></span>
+				<span class="input-group-text" id="inputGroupPrepend"><i class="ti-search"></i></span>
 			</div>
 		</div>
 	</div>
@@ -22,7 +20,7 @@
 				<li><a th:href="@{/view/product/category}">Samsung</a> <span>(20)</span></li>
 				<li><a th:href="@{/view/product/category}">Vivo</a> <span>(5)</span></li>
 				<li><a th:href="@{/view/product/category}">Oppo</a> <span>(7)</span></li>
-				
+
 			</ul>
 		</div>
 	</aside>
@@ -32,25 +30,22 @@
 	<p>Price</p>
 	<li>
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios"
-				id="exampleRadios1" value="option1" checked> <label
-				class="form-check-label" for="exampleRadios1">$10.00 -
+			<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+			<label class="form-check-label" for="exampleRadios1">$10.00 -
 				$11.00 (1)</label>
 		</div>
 	</li>
 	<li>
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios"
-				id="exampleRadios1" value="option1" checked> <label
-				class="form-check-label" for="exampleRadios1">$10.00 -
+			<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+			<label class="form-check-label" for="exampleRadios1">$10.00 -
 				$11.00 (1)</label>
 		</div>
 	</li>
 	<li>
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios"
-				id="exampleRadios1" value="option1" checked> <label
-				class="form-check-label" for="exampleRadios1">$10.00 -
+			<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+			<label class="form-check-label" for="exampleRadios1">$10.00 -
 				$11.00 (1)</label>
 		</div>
 	</li>
@@ -72,4 +67,17 @@
 	<li class="active"><input type="checkbox"> <a href="#">Gionee</a></li>
 	<li><input type="checkbox"> <a href="#">Micromax</a></li>
 	<li><input type="checkbox"> <a href="#">Samsung</a></li>
+</div>
+
+<div th:fragment="detail">
+	<h4>
+		<span th:text="${product.model}"></span>
+		<span th:text="${product.color}"></span>
+	</h4>
+	<h3>
+		<span>Rp </span>
+		<span th:text="${product.price}"></span>
+	</h3>
+	<a th:href="@{/product/{id}/(id=${product.id})}" class="add_cart">Lihat
+		Detail</a>
 </div>

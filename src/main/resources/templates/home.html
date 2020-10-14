@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Phonedation | Beranda</title>
+	<title>Phonedation | Home</title>
 	<style th:replace="customer/share/style"></style>
 </head>
 
@@ -18,36 +18,25 @@
 					<div class="col-lg-3">
 						<div class="left_sidebar_area">
 							<div th:replace="/customer/share/left_side_produk::search"></div>
-							<div th:replace="/customer/share/left_side_produk::category"></div>
 							<aside class="left_widgets p_filter_widgets">
 								<div class="l_w_title">
 									<h3>Product Terlaris</h3>
 								</div>
 								<br> <br>
-
 								<div class="widgets_inner">
-
 									<div class="row align-items-center justify-content-between">
 										<div class="col-lg-12">
 											<div class="best_product_slider owl-carousel">
-												<div class="single_product_item">
-													<span th:each="product: ${bestseller}">
-														<img th:src="@{${'/img/' + product.image}}" alt="image product">
-														<div class="single_product_text">
-															<h4>
-																<span th:text="${product.model}"></span>
-																<span th:text="${product.color}"></span>
-															</h4>
-															<h3>
-																<span>Rp </span>
-																<span th:text="${product.price}"></span>
-															</h3>
-															<a th:href="@{/product/{id}/addtowishlist/(id=${product.id})}" class="add_cart"><i
-																	class="ti-heart"></i></a> <a th:href="@{/product/{id}/(id=${product.id})}"
-																class="add_cart">Lihat
-																Detail</a>
+												<div class=" single_product_item" th:each="product: ${bestseller}">
+													<div class="product_top_bar d-flex justify-content-between align-items-center">
+														<div class="single_product_menu">
+															<p><span th:text="${'Sold : ' + product.sold + ' pcs'}"></span></p>
 														</div>
-													</span>
+													</div>
+													<img th:src="@{${'/img/' + product.image}}" alt="image product">
+													<div class="single_product_text">
+														<div th:replace="/customer/share/left_side_produk::detail"></div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -66,24 +55,11 @@
 										<div class="col-lg-12">
 											<div class="best_product_slider owl-carousel">
 
-												<div class="single_product_item">
-													<span th:each="product: ${latest}">
-														<img th:src="@{${'/img/' + product.image}}" alt="image product">
-														<div class="single_product_text">
-															<h4>
-																<span th:text="${product.model}"></span>
-																<span th:text="${product.color}"></span>
-															</h4>
-															<h3>
-																<span>Rp </span>
-																<span th:text="${product.price}"></span>
-															</h3>
-															<a th:href="@{/product/{id}/addtowishlist/(id=${product.id})}" class="add_cart"><i
-																	class="ti-heart"></i></a> <a th:href="@{/product/{id}/(id=${product.id})}"
-																class="add_cart">Lihat
-																Detail</a>
-														</div>
-													</span>
+												<div class="single_product_item" th:each="product: ${latest}">
+													<img th:src="@{${'/img/' + product.image}}" alt="image product">
+													<div class="single_product_text">
+														<div th:replace="/customer/share/left_side_produk::detail"></div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -117,27 +93,14 @@
 											<div class="single_product_list_slider">
 
 												<div class="row align-items-center justify-content-between">
-													<span th:each="product: ${products}">
-														<div class="col-lg-3 col-sm-6">
-															<div class="single_product_item">
-																<img th:src="@{${'/img/' + product.image}}" alt="image product">
-																<div class="single_product_text">
-																	<h4>
-																		<span th:text="${product.model}"></span>
-																		<span th:text="${product.color}"></span>
-																	</h4>
-																	<h3>
-																		<span>Rp </span>
-																		<span th:text="${product.price}"></span>
-																	</h3>
-																	<a th:href="@{/product/{id}/addtowishlist/(id=${product.id})}" class="add_cart"><i
-																			class="ti-heart"></i></a> <a th:href="@{/product/{id}/(id=${product.id})}"
-																		class="add_cart">Lihat
-																		Detail</a>
-																</div>
+													<div class="col-lg-3 col-sm-6" th:each="product: ${products}">
+														<div class="single_product_item">
+															<img th:src="@{${'/img/' + product.image}}" alt="image product">
+															<div class="single_product_text">
+																<div th:replace="/customer/share/left_side_produk::detail"></div>
 															</div>
 														</div>
-													</span>
+													</div>
 												</div>
 
 											</div>

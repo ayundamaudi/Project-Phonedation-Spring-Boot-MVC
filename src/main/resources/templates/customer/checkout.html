@@ -11,112 +11,64 @@
   <body>
     <div th:replace="customer/share/header"></div>
     <!--================Checkout Area =================-->
-    <section class="checkout_area padding_top">
+    <section class="checkout_area padding_top" th:object="${session.USER}">
       <div class="container">
         <div class="billing_details">
           <div class="row">
             <div class="col-lg-8">
-              <h3>Billing Details</h3>
+              <h3>Alamat Tujuan:</h3>
               <form class="row contact_form">
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add1" name="add1" />
-                  <span class="placeholder" data-placeholder="Alamat"></span>
+                  <input type="text" class="form-control" id="add1" name="add1" th:value="*{address.address}" />
                 </div>
                 <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="number" name="number" />
-                  <span class="placeholder" data-placeholder="Phone number"></span>
+                  <input type="text" class="form-control" id="number" name="number" value="No Telp"
+                    th:value="*{address.phoneNumber}" />
                 </div>
                 <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="email" name="compemailany" />
-                  <span class="placeholder" data-placeholder="Nama Penerima"></span>
+                  <input type="text" class="form-control" id="email" name="nama penerima" value="Nama Penerima"
+                    th:value="*{address.receiverName}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add2" name="add2" />
-                  <span class="placeholder" data-placeholder="Kode Pos"></span>
+                  <input type="text" class="form-control" id="add2" name="kodePos"
+                    th:value="*{address.postalCode.postalCode}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="" />
-                  <span class="placeholder" data-placeholder="Kecamatan"></span>
+                  <input type="text" class="form-control" id="kecamatan" name="Kecamatan"
+                    th:value="*{address.postalCode.district}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="" />
-                  <span class="placeholder" data-placeholder="Kelurahan"></span>
+                  <input type="text" class="form-control" id="" name="Kelurahan"
+                    th:value="*{address.postalCode.urban}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="" />
-                  <span class="placeholder" data-placeholder="Provinsi"></span>
+                  <input type="text" class="form-control" id="" name="Provinsi"
+                    th:value="*{address.postalCode.province}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="city" name="city" />
-                  <span class="placeholder" data-placeholder="Kota"></span>
+                  <input type="text" class="form-control" id="city" name="city" th:value="*{address.postalCode.city}" />
+                </div>
+                <br>
+                <h3>Pengiriman:</h3>
+                <div class="col-md-12 form-group p_star">
+                  <select class="country_select">
+                    <option value="1">JNE</option>
+                  </select>
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="" />
-                  <span class="placeholder" data-placeholder="Kurir"></span>
+                  <select class="country_select">
+                    <option value="1">REG</option>
+                  </select>
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="" />
-                  <span class="placeholder" data-placeholder="Service"></span>
+                  <input type="text" class="form-control" id="" name="" value="ongkir" />
                 </div>
-                <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="" />
-                  <span class="placeholder" data-placeholder="Ongkir"></span>
-                </div>
-
-
               </form>
             </div>
-            <div class="col-lg-4">
-              <div class="order_box">
-                <h2>Your Order</h2>
-                <ul class="list">
-                  <li>
-                    <a href="#">Product
-                      <span>Total</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">Fresh
-                      <span class="middle">x 02</span>
-                      <span class="last">$720.00</span>
-                    </a>
-                  </li>
-                </ul>
-                <ul class="list list_2">
-                  <li>
-                    <a href="#">Subtotal
-                      <span>$2160.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">Shipping
-                      <span>Flat rate: $50.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">Total
-                      <span>$2210.00</span>
-                    </a>
-                  </li>
-                </ul>
-                <div class="payment_item">
-                  <div class="radion_btn">
-                    <input type="radio" id="f-option5" name="selector" />
-                    <label for="f-option5">Midtrans</label>
-                    <div class="check"></div>
-                  </div>
-                </div>
-                <div class="payment_item active">
-                  <div class="radion_btn">
-                    <input type="radio" id="f-option6" name="selector" />
-                    <label for="f-option6">Ewallet</label>
-                    <div class="check"></div>
-                  </div>
-                </div>
-                <a class="btn_3" href="#">Proceed to Payment</a>
-              </div>
-            </div>
           </div>
+          <form th:action="@{/pay}" method="post">
+            <button type="submit" class="btn_3">Ok</button>
+          </form>
         </div>
       </div>
     </section>

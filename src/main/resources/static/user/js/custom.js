@@ -74,6 +74,44 @@
     });
   }
 
+  var best_product_slider_down = $('.best_product_slider_down');
+  if (best_product_slider_down.length) {
+    best_product_slider_down.owlCarousel({
+      //4
+      items: 4,
+      loop: true,
+      dots: false,
+      autoplay: true,
+      autoplayHoverPause: true,
+      autoplayTimeout: 5000,
+      nav: true,
+      navText: ["previous", "next"],
+      responsive: {
+        0: {
+          margin: 15,
+          items: 1,
+          nav: false
+        },
+        576: {
+          margin: 15,
+          items: 2,
+          nav: true
+        },
+        768: {
+          margin: 30,
+          items: 3,
+          nav: true
+        },
+        991: {
+          margin: 30,
+          /*4*/
+          items: 4,
+          nav: true
+        }
+      }
+    });
+  }
+
   //product list slider
   var product_list_slider = $('.product_list_slider');
   if (product_list_slider.length) {

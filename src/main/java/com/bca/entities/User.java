@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -46,6 +47,9 @@ public class User {
 
 	// @OneToMany
 	// private List<Order> orders;
+
+	@OneToOne
+	private Address address;
 
 	@PrePersist
 	public void setDateJoined() {
@@ -112,8 +116,16 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [dateJoined=" + dateJoined + ", email=" + email + ", fullname=" + fullname + ", id=" + id
-				+ ", password=" + password + ", photo=" + photo + ", role=" + role + "]";
+		return "User [address=" + address + ", dateJoined=" + dateJoined + ", email=" + email + ", fullname=" + fullname
+				+ ", id=" + id + ", password=" + password + ", photo=" + photo + ", role=" + role + "]";
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }

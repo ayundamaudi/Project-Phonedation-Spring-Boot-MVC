@@ -1,105 +1,114 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Admin | Data Order</title>
-<style th:replace="/admin/share/style"></style>
+  <style th:replace="/admin/share/style"></style>
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-		<div th:replace="admin/share/header"></div>
-		<div th:replace="admin/share/left-side"></div>
+  <div class="wrapper">
+    <div th:replace="admin/share/header"></div>
+    <div th:replace="admin/share/left-side"></div>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1><i class="fas fa-folder-open"> </i> Data Table Order</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
-								<li class="breadcrumb-item active">Data Table Order</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-	
-	<section class="content">
-		<div class="card">
-              <div class="card-body">
-              
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Order Created</th>
-                    <th>Payment Created</th>
-                    <th>Receipt Number</th>
-                    <th>Shipping Fee</th>
-                    <th>Status</th>
-                    <!-- status cust belum bayar : Booked -->
-                    <!-- status cust sudah bayar : Paid -->
-                    <!-- status admin packing barang : Packing -->
-                    <!-- status barang sudah ke kurir : Shipping-->                    
-                    <!-- status barang sudah di cust : Done-->                    
-                    <th>Sub Total</th>
-                    <th>Total Price</th>
-                    <th>Id Address</th>
-                    <th>Id Payment Method</th>
-                    <th>Action</th>
-                    <th>Id Shipment</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>
-                    <select >
-					   <option>Booked</option>
-					   <option>Paid</option>
-					   <option>Packing</option>
-					   <option>Shipping</option>
-					   <option>Done</option>
-					</select >
-                    </td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>
-                    	<!-- kalau cust belum bayar -->
-                     	<a class="btn btn-warning" href="">Cancel</a>
-                     	<!-- kalau cust sudah bayar -->
-                     	<a class="btn btn-warning" href="">Proses</a>
-                     	<!-- setelah klik proses, muncul ini, kalau admin sudah selesai packing dan mau kirim ke kurir tinggal klik -->
-                     	<a class="btn btn-warning" href="">Ship</a>
-                     	<!-- setelah klik ship, muncul ini, kalau pesanan sudah sampai ke cust tinggal klik -->
-                     	<a class="btn btn-warning" href="">Done</a>                     	
-                    </td>
-                    <td>a</td>
-                    
-                  </tr>
-                  </tbody>
-                     
-                </table>
-              </div>
-              <!-- /.card-body -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1><i class="fas fa-folder-open"> </i> Data Table Order</h1>
             </div>
-            </section>
-  </div>
-  <!-- /.content-wrapper -->
-<div th:replace="admin/share/footer"></div>
-</div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li class="breadcrumb-item active">Data Table Order</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
 
-<div th:fragment="script"></div> 
-<div th:replace="admin/share/script"></div>
+      <section class="content">
+        <div class="card">
+          <div class="card-body">
+
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Order Created</th>
+                  <th>Payment Created</th>
+                  <th>Produk</th>
+                  <th>Quantity</th>
+                  <th>Receipt Number</th>
+                  <th>Shipping Fee</th>
+                  <th>Status</th>
+                  <!-- status cust belum bayar : Booked -->
+                  <!-- status cust sudah bayar : Paid -->
+                  <!-- status admin packing barang : Packing -->
+                  <!-- status barang sudah ke kurir : Shipping-->
+                  <!-- status barang sudah di cust : Done-->
+                  <th>Sub Total</th>
+                  <th>Total Price</th>
+                  <th>Address</th>
+                  <th>Payment Method</th>
+                  <th>Action</th>
+                  <th>Kurir</th>
+                  <th>Servis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="detail: ${details}">
+                  <td th:text="${detail.order.id}"></td>
+                  <td th:text="${detail.order.createdOrder}">a</td>
+                  <td th:text="${detail.order.createdPayment}">a</td>
+                  <td th:text="${detail.product.model +' '+ detail.product.color}">a</td>
+                  <td th:text="${detail.quantity}">a</td>
+                  <td th:text="${detail.order.receiptNumber}">a</td>
+                  <td th:text="${detail.order.shippingFee}">a</td>
+                  <td th:text="${detail.order.status}">a
+                    <!--                    <select>
+                      <option>Booked</option>
+                      <option>Paid</option>
+                      <option>Packing</option>
+                      <option>Shipping</option>
+                      <option>Done</option>
+                    </select>-->
+                  </td>
+                  <td th:text="${detail.order.subTotal}">a</td>
+                  <td th:text="${detail.order.totalPrice}">a</td>
+                  <td th:text="${detail.order.address.address}">a</td>
+                  <td th:text="${detail.order.paymentMethod.method}">a</td>
+                  <td>
+                    <!-- kalau cust belum bayar -->
+                    <a class="btn btn-warning" href="">Cancel</a>
+                    <!-- kalau cust sudah bayar -->
+                    <a class="btn btn-warning" href="">Proses</a>
+                    <!-- setelah klik proses, muncul ini, kalau admin sudah selesai packing dan mau kirim ke kurir tinggal klik -->
+                    <a class="btn btn-warning" href="">Ship</a>
+                    <!-- setelah klik ship, muncul ini, kalau pesanan sudah sampai ke cust tinggal klik -->
+                    <a class="btn btn-warning" href="">Done</a>
+                  </td>
+                  <td th:text="${detail.order.courier}">a</td>
+                  <td th:text="${detail.order.service}">a</td>
+
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </section>
+    </div>
+    <!-- /.content-wrapper -->
+    <div th:replace="admin/share/footer"></div>
+  </div>
+
+  <div th:fragment="script"></div>
+  <div th:replace="admin/share/script"></div>
 </body>
+
 </html>

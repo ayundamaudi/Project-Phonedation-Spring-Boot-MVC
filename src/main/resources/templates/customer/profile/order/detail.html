@@ -12,7 +12,7 @@
   <body>
     <div th:replace="customer/share/header"></div><br><br>
     <!--================ confirmation part start =================-->
-    <section class="confirmation_part section_padding" th:each="order: ${details}">
+    <section class="confirmation_part section_padding" th:each="detail: ${details}">
       <div class="container">
         <div class="row">
           <!--         <div class="col-lg-3">
@@ -34,26 +34,30 @@
               <h4>order info</h4>
               <ul>
                 <li>
-                  <p>ID order </p><span th:text="${' : ' + order.id}"></span>
+                  <p>ID order </p><span th:text="${' : ' + detail.order.id}"></span>
                 </li>
                 <li>
-                  <p>Date Order</p><span th:text="${' : ' + order.createdOrder}">: Oct 03, 2017</span>
+                  <p>Date Order</p><span th:text="${' : ' + detail.order.createdOrder}">: Oct 03, 2017</span>
                 </li>
                 <li>
-                  <p>Date Payment</p><span th:text="${' : ' + order.createdPayment}">: Oct 03, 2017</span>
+                  <p>Date Payment</p><span th:text="${' : ' + detail.order.createdPayment}">: Oct 03, 2017</span>
                 </li>
                 <li>
-                  <p>total </p><span th:text="${' : ' + order.totalPrice}">: USD 2210</span>
+                  <p>total </p><span th:text="${' : ' + detail.order.totalPrice}">: USD 2210</span>
                 </li>
                 <li>
-                  <p>mayment methord</p><span th:text="${' : ' + order.paymentMethod.method}">: Check payments</span>
+                  <p>mayment methord</p><span th:text="${' : ' + detail.order.paymentMethod.method}">: Check
+                    payments</span>
                 </li>
                 <li>
-                  <p>Kurir </p><span th:text="${' : ' + order.courier}"></span>
+                  <p>Kurir </p><span th:text="${' : ' + detail.order.courier}"></span>
                   <span th:text="${' - ' + order.service}"></span>
                 </li>
                 <li>
-                  <p>Status </p><span th:text="${' : ' + order.status}">: USD 2210</span>
+                  <p>Status </p><span th:text="${' : ' + detail.order.status}">: USD 2210</span>
+                </li>
+                <li>
+                  <p>Status </p><span th:text="${' : ' + detail.order.receiptNumber}">: USD 2210</span>
                 </li>
               </ul>
             </div>
@@ -63,31 +67,34 @@
               <h4>shipping Address</h4>
               <ul>
                 <li>
-                  <p>ID Address</p><span th:text="${' : ' + order.address}">: 56/8</span>
+                  <p>ID Address</p><span th:text="${' : ' + detail.order.address}">: 56/8</span>
                 </li>
                 <li>
-                  <p>Nama Penerima</p><span th:text="${' : ' + order.address.receiverName}">: 56/8</span>
+                  <p>Nama Penerima</p><span th:text="${' : ' + detail.order.address.receiverName}">: 56/8</span>
                 </li>
                 <li>
-                  <p>Alamat</p><span th:text="${' : ' + order.address.address}">: 56/8</span>
+                  <p>Alamat</p><span th:text="${' : ' + detail.order.address.address}">: 56/8</span>
                 </li>
                 <li>
-                  <p>No Tlp</p><span th:text="${' : ' + order.address.phoneNumber}">: Los Angeles</span>
+                  <p>No Tlp</p><span th:text="${' : ' + detail.order.address.phoneNumber}">: Los Angeles</span>
                 </li>
                 <li>
-                  <p>Kode Pos</p><span th:text="${' : ' + order.address.postalCode}">: Los Angeles</span>
+                  <p>Kode Pos</p><span th:text="${' : ' + detail.order.address.postalCode}">: Los Angeles</span>
                 </li>
                 <li>
-                  <p>Kecamatan</p><span th:text="${' : ' + order.address.postalCode.district}">: Los Angeles</span>
+                  <p>Kecamatan</p><span th:text="${' : ' + detail.order.address.postalCode.district}">: Los
+                    Angeles</span>
                 </li>
                 <li>
-                  <p>Kelurahan</p><span th:text="${' : ' + order.address.postalCode.urban}">: United States</span>
+                  <p>Kelurahan</p><span th:text="${' : ' + detail.order.address.postalCode.urban}">: United
+                    States</span>
                 </li>
                 <li>
-                  <p>Provinsi</p><span th:text="${' : ' + order.address.postalCode.province}">: United States</span>
+                  <p>Provinsi</p><span th:text="${' : ' + detail.order.address.postalCode.province}">: United
+                    States</span>
                 </li>
                 <li>
-                  <p>Kota</p><span th:text="${' : ' + order.address.postalCode.city}">: United States</span>
+                  <p>Kota</p><span th:text="${' : ' + detail.order.address.postalCode.city}">: United States</span>
                 </li>
               </ul>
             </div>
@@ -107,15 +114,26 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                    <th>x02</th>
-                    <th> <span>$720.00</span></th>
+                    <th colspan="2"><span th:text="${detail.product.model}">Pixelstore fresh Blackberry</span>
+                      <span th:text="${detail.product.color}"></span>
+                    </th>
+                    <th th:text="${detail.quantity}">x02</th>
+                    <th> <span th:text="${detail.product.price}">$720.00</span></th>
                   </tr>
+                </tbody>
+                <tr>
+                  <th colspan="3">Subtotal</th>
+                  <th> <span th:text="${detail.order.totalPrice}">$2160.00</span></th>
+                </tr>
+                <tr>
+                  <th colspan="3">shipping fee</th>
+                  <th><span th:text="${detail.order.shippingFee}">flat rate: $50.00</span></th>
+                </tr>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th scope="col" colspan="3">Quantity</th>
-                    <th scope="col">Total</th>
+                    <th scope="col" colspan="3">Total Harga</th>
+                    <th scope="col" th:text="${detail.order.totalPrice}">Sub Total</th>
                   </tr>
                 </tfoot>
               </table>

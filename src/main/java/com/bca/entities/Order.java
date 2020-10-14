@@ -187,4 +187,12 @@ public class Order {
 		this.checkoutDate = checkoutDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Order [address=" + address + ", checkoutDate=" + checkoutDate + ", courier=" + courier + ", createdOrder="
+				+ createdOrder + ", createdPayment=" + createdPayment + ", id=" + id + ", paymentMethod=" + paymentMethod
+				+ ", receiptNumber=" + receiptNumber + ", service=" + service + ", shippingFee=" + shippingFee + ", status="
+				+ status + ", subTotal=" + subTotal + ", totalPrice=" + totalPrice + ", user=" + user + "]";
+	}
+
 }

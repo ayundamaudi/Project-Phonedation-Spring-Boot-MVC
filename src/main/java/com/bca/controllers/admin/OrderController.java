@@ -8,6 +8,8 @@ import com.bca.entities.Order;
 import com.bca.services.AddressService;
 import com.bca.services.OrderService;
 import com.bca.services.PaymentMethodService;
+import com.bca.repositories.OrderDetailRepo;
+import com.bca.entities.OrderDetail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,13 +30,18 @@ public class OrderController {
   private OrderService orderService;
 
   @Autowired
+  private OrderDetailRepo orderDetailRepo;
+
+  @Autowired
   private AddressService addressService;
 
   @Autowired
   private PaymentMethodService paymentService;
 
   @GetMapping
-  public String index() {
+  public String index(Model model) {
+    Iterable<OrderDetail> details = orderDetailRepo.findAll();
+    model.addAttribute("details", details);
     return BASE_PATH.concat("/index");
   }
 

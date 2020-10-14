@@ -127,9 +127,12 @@ public class ProfileController {
 
   @GetMapping("/detail/{id}")
   public String orderDetail(@PathVariable("id") int id, Model model) {
-    Order order = orderService.findById((int) session.getAttribute("CART_ID")).get();
+    Order order = orderService.findById(id).get();
+    log.info(order.toString());
     model.addAttribute("order", order);
-    model.addAttribute("details", orderDetailService.findAllByOrder(order));
+    Iterable<OrderDetail> orderDetails = orderDetailService.findAllByOrder(order);
+    log.info(orderDetails.toString());
+    model.addAttribute("details", orderDetails);
     return "customer/profile/order/detail";
   }
 

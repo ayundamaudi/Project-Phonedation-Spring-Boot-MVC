@@ -1,15 +1,22 @@
 package com.bca.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import com.bca.MidtransAPI;
 import com.bca.RajaOngkirAPI;
 import com.bca.dto.CheckoutForm;
+import com.bca.entities.Order;
 import com.bca.models.MidtransRequest;
 import com.bca.models.MidtransResponse;
+import com.bca.services.OrderDetailService;
+import com.bca.entities.OrderDetail;
+import com.bca.services.OrderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -28,6 +35,15 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping
 public class CheckoutController {
   Logger log = LoggerFactory.getLogger(this.getClass());
+
+  @Autowired
+  private HttpSession session;
+
+  @Autowired
+  private OrderService orderService;
+
+  @Autowired
+  private OrderDetailService orderDetailService;
 
   @GetMapping("/checkout")
   public String index(Model model) {
@@ -65,19 +81,24 @@ public class CheckoutController {
   @PostMapping("/pay")
   public String wkwkwkwkwkwk(CheckoutForm form) {
     ResponseEntity<String> response = MidtransAPI.snap(124999);
+    String redirectUrl = null;
     try {
       MidtransResponse body = new ObjectMapper().readValue(response.getBody(), MidtransResponse.class);
-      log.info(body.getRedirectUrl());
+      redirectUrl = body.getRedirectUrl();
+      log.warn(body.toString());
     } catch (JsonProcessingException e) {
       e.printStackTrace();
     }
     log.warn(response.getBody());
-    return "redirect:/";
+    return "redirect:" + redirectUrl;
   }
 
-  @GetMapping("/checkout2")
+  @GetMapping("/payment")
   public String checkout2(Model model) {
-    return "customer/checkout2";
+    Order order = orderService.findById((int) session.getAttribute("CART_ID")).get();
+    model.addAttribute("order", order);
+    model.addAttribute("orderdetails", orderDetailService.findAllByOrder(order));
+    return "customer/payment";
   }
 
 }

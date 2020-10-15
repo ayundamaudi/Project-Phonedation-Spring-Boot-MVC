@@ -31,6 +31,9 @@ public class AdminFilter implements Filter {
     HttpServletRequest req = (HttpServletRequest) request;
     HttpServletResponse res = (HttpServletResponse) response;
 
+    if (req.getRequestURI().equals("/admin/dist/img/AdminLTELogo.png")) {
+      return;
+    }
     log.info(req.getMethod() + " - " + req.getRequestURI());
 
     session = req.getSession();
@@ -39,7 +42,6 @@ public class AdminFilter implements Filter {
       res.sendRedirect("/");
       return;
     }
-    log.info(user.toString());
     chain.doFilter(req, res);
   }
 }

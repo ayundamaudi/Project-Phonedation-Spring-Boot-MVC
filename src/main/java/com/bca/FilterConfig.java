@@ -30,6 +30,8 @@ public class FilterConfig {
     registrationBean.addUrlPatterns("/profile/*");
     registrationBean.addUrlPatterns("/product/*/addtocart"); // FIXME: Seems doesn't work
     registrationBean.addUrlPatterns("/product/*/addtowishlist");
+    registrationBean.addUrlPatterns("/checkout");
+    registrationBean.addUrlPatterns("/payment");
 
     return registrationBean;
   }

@@ -13,7 +13,7 @@
     <!--================Single Product Area =================-->
     <div class="product_image_area section_padding" th:object="${product}">
       <div class="container">
-        <div class="row s_product_inner justify-content-center">
+        <div class="row s_product_inner justify-content-around">
           <div>
             <img th:src="@{${'/img/' + product.image}}" alt="image product" />
           </div>
@@ -43,123 +43,78 @@
                 <span>Rp </span>
                 <span th:text="*{price}">
               </h2>
-              <div class="card_area d-flex justify-content-between align-items-center">
-                <div class="product_count">
-                  <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                  <input class="input-number" type="text" value="1" min="0" max="10">
-                  <span class="number-increment"> <i class="ti-plus"></i></span>
+              <span th:if="${session.USER!=null}">
+                <div class="card_area d-flex justify-content-between align-items-center">
+                  <div class="product_count">
+                    <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+                    <input class="input-number" type="text" value="1" min="0" max="10">
+                    <span class="number-increment"> <i class="ti-plus"></i></span>
+                  </div>
+                  <form method="post" th:action="@{/product/{id}/addtocart/(id=${product.id})}">
+                    <button type="submit" class="btn_3">Add to cart</button>
+                  </form>
+                  <form method="post" th:action="@{/product/{id}/addtowishlist/(id=${product.id})}"
+                    style="display: flex; justify-content: center">
+                    <button type="submit" class="like_us"><i class="ti-heart"></i></button>
+                  </form>
                 </div>
-                <form method="post" th:action="@{/product/{id}/addtocart/(id=${product.id})}">
-                  <button type="submit" class="btn_3">Add to cart</button>
-                </form>
-                <form method="post" th:action="@{/product/{id}/addtowishlist/(id=${product.id})}"
-                  style="display: flex; justify-content: center">
-                  <button type="submit" class="like_us"><i class="ti-heart"></i></button>
-                </form>
-              </div>
+              </span>
             </div>
           </div>
         </div>
+        <!--================End Single Product Area =================-->
+
+        <!--================Product Description Area =================-->
+        <section class="product_description_area " th:object="${product}">
+          <div class="container">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                  aria-selected="true">Description</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                  aria-controls="profile" aria-selected="false">Specification</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <p>
+                  <span th:text="*{description}"></span>
+                </p>
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h5>Internal Memory</h5>
+                        </td>
+                        <td>
+                          <h5 th:text="*{internalMemory}">128mm</h5>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h5>RAM</h5>
+                        </td>
+                        <td>
+                          <h5 th:text="*{ram}">508mm</h5>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </section>
       </div>
     </div>
-    <!--================End Single Product Area =================-->
 
-    <!--================Product Description Area =================-->
-    <section class="product_description_area " th:object="${product}">
-      <div class="container">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-              aria-selected="true">Description</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-              aria-selected="false">Specification</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <p>
-              <span th:text="*{description}"></span>
-            </p>
-          </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="table-responsive">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td>
-                      <h5>Width</h5>
-                    </td>
-                    <td>
-                      <h5>128mm</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h5>Height</h5>
-                    </td>
-                    <td>
-                      <h5>508mm</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h5>Depth</h5>
-                    </td>
-                    <td>
-                      <h5>85mm</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h5>Weight</h5>
-                    </td>
-                    <td>
-                      <h5>52gm</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h5>Quality checking</h5>
-                    </td>
-                    <td>
-                      <h5>yes</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h5>Freshness Duration</h5>
-                    </td>
-                    <td>
-                      <h5>03days</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h5>When packeting</h5>
-                    </td>
-                    <td>
-                      <h5>Without touch of hand</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h5>Each Box contains</h5>
-                    </td>
-                    <td>
-                      <h5>60pcs</h5>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
-    </section>
     <!--================End Product Description Area =================-->
 
     <!-- product_list part start-->

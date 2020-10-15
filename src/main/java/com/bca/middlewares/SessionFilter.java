@@ -33,15 +33,13 @@ public class SessionFilter implements Filter {
     HttpServletRequest req = (HttpServletRequest) request;
     HttpServletResponse res = (HttpServletResponse) response;
 
-    log.info(req.getMethod() + " - " + req.getRequestURI());
-
     session = req.getSession();
     User user = (User) session.getAttribute("USER");
     if (user == null) {
       res.sendRedirect("/login");
       return;
     }
-    log.info(user.toString());
+    log.info(user.getFullname() + " - " + req.getMethod() + " - " + req.getRequestURI());
     chain.doFilter(req, res);
   }
 }

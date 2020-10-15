@@ -1,51 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Phonedation | Register</title>
-<style th:replace="customer/share/style"></style>
+    <title>Phonedation | Register</title>
+    <style th:replace="customer/share/style"></style>
 
 </head>
+
 <body>
-<body>
-	<div th:replace="customer/share/header"></div><br><br>
-  <!--================Register_part Area =================-->
-    <section class="login_part padding_top">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-6">
-                    <div class="login_part_text text-center">
-                        <div class="login_part_form_iner">
-                            <h3>Register</h3><br>
-                            <form class="row contact_form" th:object="${form}" method="post"
-									th:action="@{/signup}">
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="name" value=""
-                                        placeholder="Fullname" th:field="*{fullname}">
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="email" name="email" value=""
-                                        placeholder="E-mail" th:field="*{email}">
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="password" class="form-control" id="password" name="password" value=""
-                                        placeholder="Password" th:field="*{password}">
-                                </div>
-                                
-                                <div class="col-md-12 form-group">
-                                    <button type="submit" class="btn_3">REGISTER</button>
-                                </div>
-                            </form>
+
+    <body>
+        <div th:replace="customer/share/header"></div><br><br>
+        <!--================Register_part Area =================-->
+        <section class="login_part padding_top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="login_part_text text-center">
+                            <div class="login_part_form_iner">
+                                <h3>Register</h3><br>
+                                <span th:if=${errors}>
+                                    <div class="alert alert-danger">
+                                        <strong>Error(s)</strong>
+                                        <ul>
+                                            <li th:each="errorMessage: ${errors.messages}" th:text="${errorMessage}">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </span>
+                                <form class="row contact_form" th:object="${form}" method="post" th:action="@{/signup}">
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="name" name="name" value=""
+                                            placeholder="Fullname" th:field="*{fullname}">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="email" name="email" value=""
+                                            placeholder="E-mail" th:field="*{email}">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            value="" placeholder="Password" th:field="*{password}">
+                                    </div>
+
+                                    <div class="col-md-12 form-group">
+                                        <button type="submit" class="btn_3">REGISTER</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
-    </section>
-    <!--================Register_part end =================-->
+        </section>
+        <!--================Register_part end =================-->
 
-	<div th:replace="customer/share/footer"></div>
-	<div th:fragment="script"></div>
-	<div th:replace="customer/share/script"></div>
-</body>
+        <div th:replace="customer/share/footer"></div>
+        <div th:fragment="script"></div>
+        <div th:replace="customer/share/script"></div>
+    </body>
+
 </html>

@@ -7,7 +7,9 @@ import com.bca.entities.OrderDetail;
 import com.bca.entities.Product;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderDetailRepo extends PagingAndSortingRepository<OrderDetail, Integer> {
   public List<OrderDetail> findAllByOrder(Order order);
 

@@ -9,4 +9,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface OrderRepo extends PagingAndSortingRepository<Order, Integer> {
   public List<Order> findByUser(User user);
+
+  public List<Order> findAllByStatusNotNull();
 }

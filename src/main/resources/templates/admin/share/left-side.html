@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
-	<a th:href="@{/dashboard}" class="brand-link">
+	<a href="" class="brand-link">
 		<i class="fas fa-shopping-cart"></i>
 		<span class="brand-text font-weight-light"> ADMIN PANEL</span>
 	</a>
@@ -10,22 +10,20 @@
 	<div class="sidebar">
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-		 <div class="image" style="color:white;">
-		 <i class="far fa-user-circle fa-2x" fa-7x></i>
-		 </div>
+			<div class="image" style="color:white;">
+				<i class="far fa-user-circle fa-2x" fa-7x></i>
+			</div>
 			<div class="info">
 				<a href="#" class="d-block">
-				 <span th:text="${session.USER.fullname}">Nama admin</span></a>
+					<span th:text="${session.USER.fullname}">Nama admin</span></a>
 			</div>
 		</div>
 
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
-			<ul class="nav nav-pills nav-sidebar flex-column"
-				data-widget="treeview" role="menu" data-accordion="false">
+			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<li class="nav-item has-treeview">
-				<a th:href="@{/admin/dashboard}" class="nav-link" 
-				th:classappend="${#request.getServletPath() == '/admin/dashboard' ? 'active' : ''}"><i
+					<a th:href="@{/admin/dashboard}" class="nav-link" th:classappend="${#request.getServletPath() == '/admin/dashboard' ? 'active' : ''}"><i
 						class="nav-icon fas fa-home"> </i>   Dashboard </a></li>
 				<li class="nav-header">Management</li>
 				
@@ -45,7 +43,7 @@
 					class="nav-link" th:classappend="${#request.getServletPath() == '/admin/order/index' ? 'active' : ''}">
 					<i class="nav-icon fas fa-store"></i> Management Order
 				</a></li>
-				<li class="nav-header">Laporan Penjualan</li>
+			<!--	<li class="nav-header">Laporan Penjualan</li>
 				<li class="nav-item"><a th:href="@{/admin/report/index}"
 					class="nav-link"
 					th:classappend="${#request.getServletPath() == '/admin/report/index' ? 'active' : ''}"> 
@@ -62,7 +60,7 @@
 					class="nav-link" th:classappend="${#request.getServletPath() == '/laporan/tahunan' ? 'active' : ''}"> 
 					<i class="nav-icon far fa-bookmark"></i> Laporan
 						Tahunan
-				</a></li>
+				</a></li> -->
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

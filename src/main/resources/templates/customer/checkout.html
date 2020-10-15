@@ -16,55 +16,61 @@
         <div class="billing_details">
           <div class="row">
             <div class="col-lg-8">
-              <h3>Alamat Tujuan:</h3>
+              <h3>Destination Address:</h3>
               <form class="row contact_form">
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add1" name="add1" />
+                  <input type="text" class="form-control" id="add1" name="add1" placeholder="Address" />
                 </div>
                 <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="number" name="number" value="No Telp" />
+                  <input type="text" class="form-control" id="number" name="number" placeholder="Telephone Number" />
                 </div>
                 <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="email" name="nama penerima" value="Nama Penerima" />
+                  <input type="text" class="form-control" id="email" name="nama penerima"
+                    placeholder="Receiver's Name" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add2" name="kodePos" />
+                  <input type="text" class="form-control" id="add2" name="kodePos" placeholder="Postal Code" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="kecamatan" name="Kecamatan" />
+                  <input type="text" class="form-control" id="kecamatan" name="Kecamatan" placeholder="District" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="Kelurahan" />
+                  <input type="text" class="form-control" id="" name="Kelurahan" placeholder="Kelurahan" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="Provinsi" />
+                  <input type="text" class="form-control" id="" name="Provinsi" placeholder="Province" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="city" name="city" />
+                  <input type="text" class="form-control" id="city" name="city" placeholder="City" />
                 </div>
-                <br>
-                <h3>Pengiriman:</h3>
-                <div class="col-md-12 form-group p_star">
-                  <select class="country_select">
-                    <option value="1">JNE</option>
-                  </select>
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <select class="country_select">
-                    <option value="1">REG</option>
-                  </select>
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="" value="ongkir" />
-                </div>
+            </div>
+
+            <div>
+              <br>
+              <h3>Pengiriman:</h3>
+
+              <div class="col-md-12 form-group p_star">
+                <select class="country_select">
+                  <option value="1">JNE</option>
+                </select>
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <select class="country_select">
+                  <option value="1">REG</option>
+                </select>
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="" name="" value="ongkir" />
+              </div>
               </form>
             </div>
           </div>
-
-
-          <a th:href="@{/payment}" class="btn_3">OK</a>
-
         </div>
+
+
+        <a th:href="@{/payment}" class="btn_3">OK</a>
+
+      </div>
       </div>
     </section>
     <!--================End Checkout Area =================-->
@@ -72,6 +78,42 @@
     <div th:replace="customer/share/footer"></div>
     <div th:fragment="script"></div>
     <div th:replace="customer/share/script"></div>
+
+
+    <a th:href="@{/payment}" class="btn_3">OK</a>
+
+    </div>
+    </div>
+    </section>
+    <!--================End Checkout Area =================-->
+
+    <div th:replace="customer/share/footer"></div>
+    <div th:fragment="script"></div>
+    <div th:replace="customer/share/script"></div>
   </body>
+
+</html> <a th:href="@{/payment}" class="btn_3">OK</a>
+
+</div>
+</div>
+</section>
+<!--================End Checkout Area =================-->
+
+<div th:replace="customer/share/footer"></div>
+<div th:fragment="script"></div>
+<div th:replace="customer/share/script"></div>
+</body>
+
+</html> <a th:href="@{/payment}" class="btn_3">OK</a>
+
+</div>
+</div>
+</section>
+<!--================End Checkout Area =================-->
+
+<div th:replace="customer/share/footer"></div>
+<div th:fragment="script"></div>
+<div th:replace="customer/share/script"></div>
+</body>
 
 </html>

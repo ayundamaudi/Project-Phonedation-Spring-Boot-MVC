@@ -5,9 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import com.bca.models.MidtransRequest;
 import com.bca.models.MidtransResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -30,14 +33,13 @@ public class MidtransAPI {
     headers.set("Authorization", "Basic " + AUTH_STRING);
   }
 
-  public static ResponseEntity<String> snap(int amount) {
+  public static ResponseEntity<String> snap(int orderId, int amount) {
     init();
-    UUID idRand = UUID.randomUUID();
     Map<String, Object> params = new HashMap<>();
 
     Map<String, String> transactionDetails = new HashMap<>();
-    transactionDetails.put("order_id", idRand.toString());
-    transactionDetails.put("gross_amount", "265000");
+    transactionDetails.put("order_id", String.valueOf(orderId));
+    transactionDetails.put("gross_amount", String.valueOf(amount));
 
     params.put("transaction_details", transactionDetails);
 

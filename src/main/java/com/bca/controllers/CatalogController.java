@@ -1,15 +1,19 @@
 package com.bca.controllers;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import javax.servlet.http.HttpSession;
 
 import com.bca.entities.Order;
 import com.bca.entities.OrderDetail;
+import com.bca.entities.Product;
 import com.bca.entities.User;
 import com.bca.entities.Wishlist;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 import com.bca.services.ProductService;
-import com.bca.services.UserService;
 import com.bca.services.WishlistService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +38,6 @@ public class CatalogController {
   private WishlistService wishlistService;
 
   @Autowired
-  private UserService userService;
-
-  @Autowired
   private OrderService orderService;
 
   @Autowired
@@ -56,15 +57,27 @@ public class CatalogController {
 
   @PostMapping("product/{id}/addtocart")
   public String addToCart(@PathVariable("id") int id) {
-    OrderDetail cart = new OrderDetail();
+    Order order = orderService.findById((int) session.getAttribute("CART_ID")).get();
+    Product product = productService.findById(id).get();
 
-    // FIXME: get order_id by session.. is it good to save order_id by session?
-    cart.setOrder(orderService.findById(1).get());
-    cart.setProduct(productService.findById(id).get());
-    cart.setQuantity(1); // FIXME: add addToCart Form?
-    cart.setPrice(productService.findById(id).get().getPrice()); // FIXME: insert DB trigger get price
+    OrderDetail cart = orderDetailService.findByOrderAndProduct(order, product);
+    if (cart == null) {
+      cart = new OrderDetail();
 
+      cart.setOrder(order);
+      cart.setProduct(product);
+      cart.setQuantity(1);
+      cart.setPrice(product.getPrice()); // FIXME: insert DB trigger get price
+    } else {
+      cart.setQuantity(cart.getQuantity() + 1);
+    }
     orderDetailService.save(cart);
+    order.setTotalPrice(order.getTotalPrice() + product.getPrice());
+
+    // Get total items in cart
+    Iterable<OrderDetail> list = orderDetailService.findAllByOrder(order);
+    List<OrderDetail> items = StreamSupport.stream(list.spliterator(), false).collect(Collectors.toList());
+    session.setAttribute("items", items.size());
     return "redirect:/product/" + id;
   }
 
@@ -72,7 +85,7 @@ public class CatalogController {
   public String addToWishlist(@PathVariable("id") int id) {
     Wishlist data = new Wishlist();
 
-    data.setUser(((User) session.getAttribute("USER"))); // FIXME: get user_id by session
+    data.setUser(((User) session.getAttribute("USER")));
     data.setProduct(productService.findById(id).get());
     wishlistService.save(data);
 

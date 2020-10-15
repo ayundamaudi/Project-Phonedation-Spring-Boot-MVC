@@ -11,7 +11,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface ProductRepo extends PagingAndSortingRepository<Product, Integer> {
 
-	public List<Product> findAllByModel(String model, Pageable pageable);
+	public List<Product> findAllByModelContainingIgnoreCase(String model, Pageable pageable);
 
 	public List<Product> findAllByOrderByDateCreatedDesc(Pageable pageable);
 

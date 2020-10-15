@@ -4,9 +4,7 @@ import javax.validation.Valid;
 
 import com.bca.dto.BrandForm;
 import com.bca.dto.ErrorMessage;
-import com.bca.dto.ProductForm;
 import com.bca.entities.Brand;
-import com.bca.entities.Product;
 import com.bca.services.BrandService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -75,15 +71,15 @@ public class BrandController {
 
   @PostMapping("/update")
   public String update(@Valid BrandForm form, BindingResult bindingResult, Model model,
-		  RedirectAttributes redirectAttribute) {
+      RedirectAttributes redirectAttribute) {
     if (!bindingResult.hasErrors()) {
-    	Brand data = mainService.findById(form.getId()).get();
+      Brand data = mainService.findById(form.getId()).get();
 
-        data.setId(form.getId());
-        data.setBrand(form.getBrand());
+      data.setId(form.getId());
+      data.setBrand(form.getBrand());
 
-        mainService.save(data);
-        return "redirect:".concat(BASE_PATH);
+      mainService.save(data);
+      return "redirect:".concat(BASE_PATH);
 
     } else {
       ErrorMessage errorMessage = new ErrorMessage();

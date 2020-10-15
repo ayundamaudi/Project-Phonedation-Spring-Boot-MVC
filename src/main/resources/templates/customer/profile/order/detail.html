@@ -9,13 +9,12 @@
 
 <body>
 
-  <body>
-    <div th:replace="customer/share/header"></div><br><br>
-    <!--================ confirmation part start =================-->
-    <section class="confirmation_part section_padding" th:each="detail: ${details}">
-      <div class="container">
-        <div class="row">
-          <!--         <div class="col-lg-3">
+  <div th:replace="customer/share/header"></div><br><br>
+  <!--================ confirmation part start =================-->
+  <section class="confirmation_part section_padding" th:each="detail: ${details}">
+    <div class="container">
+      <div class="row">
+        <!--         <div class="col-lg-3">
             <div class="left_sidebar_area">
               <aside class="left_widgets p_filter_widgets">
                 <div th:replace="customer/share/left_side_profile"></div>
@@ -23,144 +22,144 @@
 
             </div>
         </div>-->
-          <div class="col-lg-12">
-            <div class="confirmation_tittle">
-              <span>Thank you. Your order has been received.</span>
+        <div class="col-lg-12">
+          <div class="confirmation_tittle">
+            <span>Thank you. Your order has been received.</span>
 
-            </div>
-          </div>
-          <div class="col-lg-6 col-lx-4">
-            <div class="single_confirmation_details">
-              <h4>order info</h4>
-              <ul>
-                <li>
-                  <p>ID order </p><span th:text="${' : ' + detail.order.id}"></span>
-                </li>
-                <li>
-                  <p>Date Order</p><span th:text="${' : ' + detail.order.createdOrder}">: Oct 03, 2017</span>
-                </li>
-                <li>
-                  <p>Date Payment</p><span th:text="${' : ' + detail.order.createdPayment}">: Oct 03, 2017</span>
-                </li>
-                <li>
-                  <p>total </p><span th:text="${' : ' + detail.order.totalPrice}">: USD 2210</span>
-                </li>
-                <li>
-                  <p>mayment methord</p><span th:text="${' : ' + detail.order.paymentMethod.method}">: Check
-                    payments</span>
-                </li>
-                <li>
-                  <p>Kurir </p><span th:text="${' : ' + detail.order.courier}"></span>
-                  <span th:text="${' - ' + order.service}"></span>
-                </li>
-                <li>
-                  <p>Status </p><span th:text="${' : ' + detail.order.status}">: USD 2210</span>
-                </li>
-                <li>
-                  <p>Status </p><span th:text="${' : ' + detail.order.receiptNumber}">: USD 2210</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-6 col-lx-4">
-            <div class="single_confirmation_details">
-              <h4>shipping Address</h4>
-              <ul>
-                <li>
-                  <p>ID Address</p><span th:text="${' : ' + detail.order.address}">: 56/8</span>
-                </li>
-                <li>
-                  <p>Nama Penerima</p><span th:text="${' : ' + detail.order.address.receiverName}">: 56/8</span>
-                </li>
-                <li>
-                  <p>Alamat</p><span th:text="${' : ' + detail.order.address.address}">: 56/8</span>
-                </li>
-                <li>
-                  <p>No Tlp</p><span th:text="${' : ' + detail.order.address.phoneNumber}">: Los Angeles</span>
-                </li>
-                <li>
-                  <p>Kode Pos</p><span th:text="${' : ' + detail.order.address.postalCode}">: Los Angeles</span>
-                </li>
-                <li>
-                  <p>Kecamatan</p><span th:text="${' : ' + detail.order.address.postalCode.district}">: Los
-                    Angeles</span>
-                </li>
-                <li>
-                  <p>Kelurahan</p><span th:text="${' : ' + detail.order.address.postalCode.urban}">: United
-                    States</span>
-                </li>
-                <li>
-                  <p>Provinsi</p><span th:text="${' : ' + detail.order.address.postalCode.province}">: United
-                    States</span>
-                </li>
-                <li>
-                  <p>Kota</p><span th:text="${' : ' + detail.order.address.postalCode.city}">: United States</span>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="order_details_iner">
-              <h3>Order Details</h3>
-              <table class="table table-borderless">
-                <thead>
-                  <tr>
-                    <th scope="col" colspan="2">Product</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th colspan="2"><span th:text="${detail.product.model}">Pixelstore fresh Blackberry</span>
-                      <span th:text="${detail.product.color}"></span>
-                    </th>
-                    <th th:text="${detail.quantity}">x02</th>
-                    <th> <span th:text="${detail.product.price}">$720.00</span></th>
-                  </tr>
-                </tbody>
-                <tr>
-                  <th colspan="3">Subtotal</th>
-                  <th> <span th:text="${detail.order.totalPrice}">$2160.00</span></th>
-                </tr>
-                <tr>
-                  <th colspan="3">shipping fee</th>
-                  <th><span th:text="${detail.order.shippingFee}">flat rate: $50.00</span></th>
-                </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th scope="col" colspan="3">Total Harga</th>
-                    <th scope="col" th:text="${detail.order.totalPrice}">Sub Total</th>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
+        <div class="col-lg-6 col-lx-4">
+          <div class="single_confirmation_details">
+            <h4>order info</h4>
+            <ul>
+              <li>
+                <p>ID order </p><span th:text="${' : ' + detail.order.id}"></span>
+              </li>
+              <li>
+                <p>Date Order</p><span th:text="${' : ' + detail.order.createdOrder}">: Oct 03, 2017</span>
+              </li>
+              <li>
+                <p>Date Payment</p><span th:text="${' : ' + detail.order.createdPayment}">: Oct 03, 2017</span>
+              </li>
+              <li>
+                <p>total </p><span th:text="${' : ' + detail.order.totalPrice}">: USD 2210</span>
+              </li>
+              <li>
+                <p>mayment methord</p><span th:text="${' : ' + detail.order.paymentMethod.method}">: Check
+                  payments</span>
+              </li>
+              <li>
+                <p>Kurir </p><span th:text="${' : ' + detail.order.courier}"></span>
+                <span th:text="${' - ' + order.service}"></span>
+              </li>
+              <li>
+                <p>Status </p><span th:text="${' : ' + detail.order.status}">: USD 2210</span>
+              </li>
+              <li>
+                <p>Status </p><span th:text="${' : ' + detail.order.receiptNumber}">: USD 2210</span>
+              </li>
+            </ul>
           </div>
-        </div><br> <br>
-        <div style="display: flex; justify-content: flex-end">
-
-          <button type="reset" class="btn_3" onclick="window.history.back();">Back</button>
         </div>
+        <div class="col-lg-6 col-lx-4">
+          <div class="single_confirmation_details">
+            <h4>shipping Address</h4>
+            <ul>
+              <li>
+                <p>ID Address</p><span th:text="${' : ' + detail.order.address}">: 56/8</span>
+              </li>
+              <li>
+                <p>Nama Penerima</p><span th:text="${' : ' + detail.order.address.receiverName}">: 56/8</span>
+              </li>
+              <li>
+                <p>Alamat</p><span th:text="${' : ' + detail.order.address.address}">: 56/8</span>
+              </li>
+              <li>
+                <p>No Tlp</p><span th:text="${' : ' + detail.order.address.phoneNumber}">: Los Angeles</span>
+              </li>
+              <li>
+                <p>Kode Pos</p><span th:text="${' : ' + detail.order.address.postalCode}">: Los Angeles</span>
+              </li>
+              <li>
+                <p>Kecamatan</p><span th:text="${' : ' + detail.order.address.postalCode.district}">: Los
+                  Angeles</span>
+              </li>
+              <li>
+                <p>Kelurahan</p><span th:text="${' : ' + detail.order.address.postalCode.urban}">: United
+                  States</span>
+              </li>
+              <li>
+                <p>Provinsi</p><span th:text="${' : ' + detail.order.address.postalCode.province}">: United
+                  States</span>
+              </li>
+              <li>
+                <p>Kota</p><span th:text="${' : ' + detail.order.address.postalCode.city}">: United States</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="order_details_iner">
+            <h3>Order Details</h3>
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col" colspan="2">Product</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th colspan="2"><span th:text="${detail.product.model}">Pixelstore fresh Blackberry</span>
+                    <span th:text="${detail.product.color}"></span>
+                  </th>
+                  <th th:text="${detail.quantity}">x02</th>
+                  <th> <span th:text="${detail.product.price}">$720.00</span></th>
+                </tr>
+              </tbody>
+              <tr>
+                <th colspan="3">Subtotal</th>
+                <th> <span th:text="${detail.order.totalPrice}">$2160.00</span></th>
+              </tr>
+              <tr>
+                <th colspan="3">shipping fee</th>
+                <th><span th:text="${detail.order.shippingFee}">flat rate: $50.00</span></th>
+              </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="col" colspan="3">Total Harga</th>
+                  <th scope="col" th:text="${detail.order.totalPrice}">Sub Total</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div><br> <br>
+      <div style="display: flex; justify-content: flex-end">
 
+        <button type="reset" class="btn_3" onclick="window.history.back();">Back</button>
       </div>
 
-    </section>
-    <!--================ confirmation part end =================-->
+    </div>
 
-    <div th:replace="customer/share/footer"></div>
-    <div th:fragment="script"></div>
-    <div th:replace="customer/share/script"></div>
+  </section>
+  <!--================ confirmation part end =================-->
 
-    <!-- Js Plugins -->
-    <script src="/customer/cart/js/jquery-ui.min.js"></script>
-    <script src="/customer/cart/js/jquery.countdown.min.js"></script>
-    <script src="/customer/cart/js/jquery.zoom.min.js"></script>
-    <script src="/customer/cart/js/jquery.slicknav.js"></script>
-    <script src="/customer/cart/js/owl.carousel.min.js"></script>
-    <script src="/customer/cart/js/main.js"></script>
-  </body>
+  <div th:replace="customer/share/footer"></div>
+  <div th:fragment="script"></div>
+  <div th:replace="customer/share/script"></div>
+
+  <!-- Js Plugins -->
+  <script src="/customer/cart/js/jquery-ui.min.js"></script>
+  <script src="/customer/cart/js/jquery.countdown.min.js"></script>
+  <script src="/customer/cart/js/jquery.zoom.min.js"></script>
+  <script src="/customer/cart/js/jquery.slicknav.js"></script>
+  <script src="/customer/cart/js/owl.carousel.min.js"></script>
+  <script src="/customer/cart/js/main.js"></script>
+</body>
 
 </html>

@@ -1,12 +1,19 @@
-<div th:fragment="search">
-	<div class="single_product_menu d-flex">
-		<div class="input-group">
-			<input type="text" class="form-control" placeholder="search" aria-describedby="inputGroupPrepend">
-			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroupPrepend"><i class="ti-search"></i></span>
+<div class="container" th:fragment="search">
+	<form method="get" th:action="@{/search}" th:object="${form}">
+		<div class="single_product_menu d-flex">
+			<div class="input-group">
+				<input type="text" id="search" th:field="*{keyword}" placeholder="search" aria-describedby="inputGroupPrepend">
+				<div class="input-group-prepend">
+					<span>
+						<!-- <form method="post" th:action="@{/?keyword=black}"> -->
+						<button type="submit"><i class="ti-search"></i></button>
+						<!-- </form> -->
+						<!-- <a th:href="@{/search}" id="search-btn"><i class="ti-search"></i></a> -->
+					</span>
+				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 </div>
 
 <div th:fragment="category">

@@ -22,8 +22,9 @@ import com.bca.repositories.ProductRepo;
 public class ProductService {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
+	private int MAX_SEARCH_PRODUCT = 16;
 	private int MAX_LATEST_PRODUCT = 10;
-	private int MAX_BESTSELLER_PRODUCT = 10;
+	private int MAX_BESTSELLER_PRODUCT = 5;
 
 	@Autowired
 	private ProductRepo productRepo;
@@ -41,9 +42,9 @@ public class ProductService {
 		return productRepo.findAll(pageable).getContent();
 	}
 
-	public List<Product> findAllByModel(String model, int page) {
-		Pageable pageable = PageRequest.of(page - 1, 10);
-		return productRepo.findAllByModel(model, pageable);
+	public List<Product> searchByModel(String model) {
+		Pageable pageable = PageRequest.of(0, MAX_SEARCH_PRODUCT);
+		return productRepo.findAllByModelContainingIgnoreCase(model, pageable);
 	}
 
 	public Optional<Product> findById(int id) {

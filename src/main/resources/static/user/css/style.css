@@ -2260,7 +2260,8 @@ ul {
   height: 14px;
   right: -8px;
   top: -8px;
-  content: "5";
+  /*yang ini*/
+  content: "";
   text-align: center;
   line-height: 15px;
   font-size: 10px;

@@ -5,11 +5,9 @@ import javax.validation.Valid;
 import com.bca.dto.CheckoutForm;
 import com.bca.dto.ErrorMessage;
 import com.bca.entities.Order;
-import com.bca.services.AddressService;
-import com.bca.services.OrderService;
-import com.bca.services.PaymentMethodService;
-import com.bca.repositories.OrderDetailRepo;
 import com.bca.entities.OrderDetail;
+import com.bca.repositories.OrderDetailRepo;
+import com.bca.services.OrderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,12 +29,6 @@ public class OrderController {
 
   @Autowired
   private OrderDetailRepo orderDetailRepo;
-
-  @Autowired
-  private AddressService addressService;
-
-  @Autowired
-  private PaymentMethodService paymentService;
 
   @GetMapping
   public String index(Model model) {

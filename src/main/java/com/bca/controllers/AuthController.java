@@ -1,13 +1,21 @@
 package com.bca.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.UserForm;
 import com.bca.entities.Order;
+import com.bca.entities.OrderDetail;
+import com.bca.entities.Product;
 import com.bca.entities.User;
 import com.bca.services.AuthService;
+import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 import com.bca.services.UserService;
 
@@ -36,6 +44,9 @@ public class AuthController {
   @Autowired
   private OrderService orderService;
 
+  @Autowired
+  private OrderDetailService orderDetailService;
+
   @GetMapping("/login")
   public String login(Model model) {
     model.addAttribute("user", new UserForm());
@@ -50,6 +61,11 @@ public class AuthController {
       for (Order order : orderService.findByUser(user)) {
         if (order.getCheckoutDate() == null) {
           session.setAttribute("CART_ID", order.getId());
+          session.setAttribute("CART", new ArrayList<Product>());
+
+          Iterable<OrderDetail> list = orderDetailService.findAllByOrder(order);
+          List<OrderDetail> items = StreamSupport.stream(list.spliterator(), false).collect(Collectors.toList());
+          session.setAttribute("items", items.size());
         }
       }
 
@@ -76,14 +92,19 @@ public class AuthController {
       User data = new User();
 
       data.setEmail(form.getEmail());
-      data.setPassword(form.getPassword()); // FIXME: Add hash
+      data.setPassword(form.getPassword());
       data.setFullname(form.getFullname());
       data.setPhoto("no photo");
       data.setRole("user");
 
       userService.save(data);
 
-      // TODO: Insert user cart
+      int orderId = (int) Math.random() * 999999;
+      Order order = new Order();
+      order.setId(orderId);
+      order.setUser(data);
+      order.setStatus("Shopping");
+      orderService.save(order);
 
       return "redirect:/login";
 

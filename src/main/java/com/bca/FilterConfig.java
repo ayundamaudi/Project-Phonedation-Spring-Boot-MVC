@@ -18,6 +18,8 @@ public class FilterConfig {
     registrationBean.setFilter(new SessionFilter());
     registrationBean.addUrlPatterns("/admin/dashboard");
     registrationBean.addUrlPatterns("/profile/*");
+    registrationBean.addUrlPatterns("/checkout");
+    registrationBean.addUrlPatterns("/payment");
 
     return registrationBean;
   }
@@ -28,8 +30,6 @@ public class FilterConfig {
 
     registrationBean.setFilter(new CustomerFilter());
     registrationBean.addUrlPatterns("/profile/*");
-    registrationBean.addUrlPatterns("/product/*/addtocart"); // FIXME: Seems doesn't work
-    registrationBean.addUrlPatterns("/product/*/addtowishlist");
     registrationBean.addUrlPatterns("/checkout");
     registrationBean.addUrlPatterns("/payment");
 

@@ -1,7 +1,6 @@
 package com.bca.controllers;
 
-import javax.servlet.http.HttpSession;
-
+import com.bca.dto.SearchForm;
 import com.bca.services.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(path = "/")
 public class HomeController {
-
-  @Autowired
-  private HttpSession session;
-
   @Autowired
   private ProductService productService;
 
@@ -25,7 +20,16 @@ public class HomeController {
     model.addAttribute("products", productService.findAll());
     model.addAttribute("latest", productService.findLatestProducts());
     model.addAttribute("bestseller", productService.findBestsellerProducts());
+    model.addAttribute("form", new SearchForm());
     return "home";
+  }
 
+  @GetMapping("/search")
+  public String home(SearchForm form, Model model) {
+    model.addAttribute("products", productService.searchByModel(form.getKeyword()));
+    model.addAttribute("latest", productService.findLatestProducts());
+    model.addAttribute("bestseller", productService.findBestsellerProducts());
+    model.addAttribute("form", form);
+    return "home";
   }
 }

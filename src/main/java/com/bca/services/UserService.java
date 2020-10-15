@@ -37,6 +37,7 @@ public class UserService {
   }
 
   public User save(User data) {
+    // data.setPassword(MD5Generator.encode(data.getPassword()));
     return userRepo.save(data);
   }
 }

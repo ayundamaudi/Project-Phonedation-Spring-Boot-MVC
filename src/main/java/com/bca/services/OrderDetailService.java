@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.bca.entities.Order;
 import com.bca.entities.OrderDetail;
+import com.bca.entities.Product;
 import com.bca.repositories.OrderDetailRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class OrderDetailService {
   public Iterable<OrderDetail> findAll(int page, int size) {
     Pageable pageable = PageRequest.of(page, size);
     return orderDetailRepo.findAll(pageable).getContent();
+  }
+
+  public OrderDetail findByOrderAndProduct(Order order, Product product) {
+    return orderDetailRepo.findByOrderAndProduct(order, product);
   }
 
   public Iterable<OrderDetail> findAllByOrder(Order order) {

@@ -13,10 +13,8 @@ import com.bca.entities.OrderDetail;
 import com.bca.entities.Product;
 import com.bca.entities.User;
 import com.bca.entities.Wishlist;
-import com.bca.services.AddressService;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
-import com.bca.services.ProductService;
 import com.bca.services.UserService;
 import com.bca.services.WishlistService;
 
@@ -45,13 +43,7 @@ public class ProfileController {
   private UserService userService;
 
   @Autowired
-  private ProductService productService;
-
-  @Autowired
   private WishlistService wishlistService;
-
-  @Autowired
-  private AddressService addressService;
 
   @Autowired
   private OrderService orderService; // FIXME: should this be deleted?

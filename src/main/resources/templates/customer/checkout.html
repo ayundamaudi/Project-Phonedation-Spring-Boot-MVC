@@ -11,7 +11,7 @@
   <body>
     <div th:replace="customer/share/header"></div>
     <!--================Checkout Area =================-->
-    <section class="checkout_area padding_top" th:object="${session.USER}">
+    <section class="checkout_area padding_top">
       <div class="container">
         <div class="billing_details">
           <div class="row">
@@ -19,34 +19,28 @@
               <h3>Alamat Tujuan:</h3>
               <form class="row contact_form">
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add1" name="add1" th:value="*{address.address}" />
+                  <input type="text" class="form-control" id="add1" name="add1" />
                 </div>
                 <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="number" name="number" value="No Telp"
-                    th:value="*{address.phoneNumber}" />
+                  <input type="text" class="form-control" id="number" name="number" value="No Telp" />
                 </div>
                 <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="email" name="nama penerima" value="Nama Penerima"
-                    th:value="*{address.receiverName}" />
+                  <input type="text" class="form-control" id="email" name="nama penerima" value="Nama Penerima" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add2" name="kodePos"
-                    th:value="*{address.postalCode.postalCode}" />
+                  <input type="text" class="form-control" id="add2" name="kodePos" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="kecamatan" name="Kecamatan"
-                    th:value="*{address.postalCode.district}" />
+                  <input type="text" class="form-control" id="kecamatan" name="Kecamatan" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="Kelurahan"
-                    th:value="*{address.postalCode.urban}" />
+                  <input type="text" class="form-control" id="" name="Kelurahan" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="Provinsi"
-                    th:value="*{address.postalCode.province}" />
+                  <input type="text" class="form-control" id="" name="Provinsi" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="city" name="city" th:value="*{address.postalCode.city}" />
+                  <input type="text" class="form-control" id="city" name="city" />
                 </div>
                 <br>
                 <h3>Pengiriman:</h3>

@@ -3,21 +3,12 @@ package com.bca;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
-
-import com.bca.models.MidtransRequest;
-import com.bca.models.MidtransResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 public class MidtransAPI {
@@ -43,9 +34,6 @@ public class MidtransAPI {
 
     params.put("transaction_details", transactionDetails);
 
-    // MidtransRequest body = new MidtransRequest(124999);
-    // String body = "{ 'transaction_details': {'order_id': '" + orderId + "',
-    // 'gross_amount': " + amount + " }}";
     httpEntity = new HttpEntity<>(params, headers);
     return restTemplate.exchange(API_URL, HttpMethod.POST, httpEntity, String.class);
   }

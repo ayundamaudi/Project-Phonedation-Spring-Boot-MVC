@@ -31,22 +31,16 @@
                   <tr>
                     <th>ID Order</th>
                     <th>Tanggal Order</th>
-                    <th>Tanggal Pembayaran</th>
                     <th>Total Harga</th>
                     <th>Status</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr th:each="order: ${orders}">
                     <td class="cart-pic first-row" th:text="${order.id}">1</td>
                     <td class="cart-pic first-row" th:text="${order.createdOrder}">2020-09-09 06:45:44</td>
-                    <td class="cart-pic first-row" th:text="${order.createdPayment}">2020-09-09 06:45:44</td>
                     <td class="p-price first-row" th:text="${order.totalPrice}">$60.00</td>
                     <td class="cart-pic first-row" th:text="${order.status}">Proses</td>
-                    <td class="close-td first-row">
-                      <a th:href="@{/profile/detail/{id}(id=${order.id})}" class="btn_3">Order Detail</a>
-                    </td>
                   </tr>
                 </tbody>
               </table>

@@ -8,28 +8,20 @@ public class CheckoutForm {
 
 	private int userId;
 
-	@NotEmpty(message = "Alamat is required")
 	private String address;
 
-	@NotEmpty(message = "x is required")
 	private String receiver;
 
-	@NotEmpty(message = "x is required")
 	private String phone;
 
-	@NotEmpty(message = "x is required")
 	private String postalcode;
 
-	@NotEmpty(message = "x is required")
 	private String district;
 
-	@NotEmpty(message = "x is required")
 	private String urban;
 
-	@NotEmpty(message = "x is required")
 	private String province;
 
-	@NotEmpty(message = "x is required")
 	private String city;
 
 	private String courier;

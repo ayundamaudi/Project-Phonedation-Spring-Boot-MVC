@@ -1,11 +1,14 @@
 package com.bca.controllers;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import com.bca.MidtransAPI;
 import com.bca.RajaOngkirAPI;
 import com.bca.dto.CheckoutForm;
 import com.bca.entities.Order;
+import com.bca.entities.User;
 import com.bca.models.MidtransResponse;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
@@ -93,6 +96,25 @@ public class CheckoutController {
     model.addAttribute("order", order);
     model.addAttribute("orderdetails", orderDetailService.findAllByOrder(order));
     return "customer/payment";
+  }
+
+  @GetMapping("/paymentsuccess")
+  public String paymentSuccess(Model model) {
+    Order currentOrder = orderService.findById((int) session.getAttribute("CART_ID")).get();
+    currentOrder.setCheckoutDate(new Date());
+    currentOrder.setStatus("payment success");
+    orderService.save(currentOrder);
+
+    int orderId = (int) Math.random() * 999999;
+    Order order = new Order();
+    order.setId(orderId);
+    order.setUser((User) session.getAttribute("USER"));
+    order.setStatus("Shopping");
+    orderService.save(order);
+
+    session.setAttribute("CART_ID", order.getId());
+
+    return "redirect:/";
   }
 
 }

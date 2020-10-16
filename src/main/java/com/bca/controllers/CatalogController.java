@@ -52,7 +52,7 @@ public class CatalogController {
   @GetMapping("/product/{id}")
   public String detail(@PathVariable("id") int id, Model model) {
     model.addAttribute("product", productService.findById(id).get());
-    return "/customer/product/detail";
+    return "customer/product/detail";
   }
 
   @PostMapping("product/{id}/addtocart")

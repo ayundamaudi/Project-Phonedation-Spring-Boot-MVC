@@ -91,7 +91,17 @@
 												<div class="single_product_item">
 													<img th:src="@{${'/img/' + product.image}}" alt="image product">
 													<div class="single_product_text">
-														<div th:replace="/customer/share/left_side_produk::detail"></div>
+														<!-- <div th:replace="/customer/share/left_side_produk::detail"></div> -->
+														<h4>
+		<span th:text="${product.model}"></span>
+		<span th:text="${product.color}"></span>
+	</h4>
+	<h3>
+		<span>Rp </span>
+		<span th:text="${product.price}"></span>
+	</h3>
+	<a th:href="@{/product/{id}/(id=${product.id})}" class="add_cart">Lihat
+		Detail</a>
 													</div>
 												</div>
 											</div>

@@ -75,6 +75,10 @@ public class Product {
 		this.dateCreated = new Date();
 	}
 
+	public Product() {
+
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -185,6 +189,23 @@ public class Product {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Product(Brand brand, String model, String internalMemory, String ram, String color, String description,
+			int stock, int sold, double price, double weight, String image, Date dateCreated, Date dateModified) {
+		this.brand = brand;
+		this.model = model;
+		this.internalMemory = internalMemory;
+		this.ram = ram;
+		this.color = color;
+		this.description = description;
+		this.stock = stock;
+		this.sold = sold;
+		this.price = price;
+		this.weight = weight;
+		this.image = image;
+		this.dateCreated = dateCreated;
+		this.dateModified = dateModified;
 	}
 
 }

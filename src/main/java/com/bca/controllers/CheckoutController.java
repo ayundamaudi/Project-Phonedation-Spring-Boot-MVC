@@ -99,7 +99,7 @@ public class CheckoutController {
   }
 
   @PostMapping("/paymentsuccess")
-  public String paymentSuccess(Model model) {
+  public String paymentSuccess() {
     Order currentOrder = orderService.findById((int) session.getAttribute("CART_ID")).get();
     currentOrder.setCheckoutDate(new Date());
     currentOrder.setStatus("payment success");

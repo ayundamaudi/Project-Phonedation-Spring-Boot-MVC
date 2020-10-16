@@ -30,25 +30,17 @@
                   <thead>
                     <tr>
                       <th>ID Alamat</th>
-                      <th>Kode Pos</th>
-                      <th>Provinsi</th>
-                      <th>Kota</th>
-                      <th>Alamat Lengkap</th>
-                      <th>Nomor Telepon</th>
-                      <th>Action</th>
+                      <th>Receiver Number</th>
+                      <th>Address</th>
+                      <th>Telephone Number</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="p-price first-row">1</td>
-                      <td class="p-price first-row">13740</td>
-                      <td class="p-price first-row">DKI Jakarta</td>
-                      <td class="p-price first-row">Jakarta Timur</td>
-                      <td class="p-price first-row">Jalan RT RW gang No rumah</td>
-                      <td class="p-price first-row">0812345678910</td>
-                      <td class="p-price first-row">
-                        <a th:href="@{/profile/address/edit}" class="btn_1">Edit</a>
-                      </td>
+                    <tr th:each="address: ${form}">
+                      <td class="p-price first-row" th:text="${address.id}">1</td>
+                      <td class="p-price first-row" th:text="${address.receiverName}">13740</td>
+                      <td class="p-price first-row" th:text="${address.address}">Jalan RT RW gang No rumah</td>
+                      <td class="p-price first-row" th:text="${address.phoneNumber}">0812345678910</td>
                     </tr>
                   </tbody>
                 </table>

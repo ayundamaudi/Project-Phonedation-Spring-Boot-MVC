@@ -6,15 +6,21 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.bca.dto.AddressForm;
 import com.bca.dto.ErrorMessage;
+import com.bca.dto.ProductForm;
 import com.bca.dto.UserForm;
+import com.bca.entities.Address;
 import com.bca.entities.Order;
 import com.bca.entities.OrderDetail;
 import com.bca.entities.Product;
 import com.bca.entities.User;
 import com.bca.entities.Wishlist;
+import com.bca.repositories.AddressRepo;
+import com.bca.services.AddressService;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
+import com.bca.services.PostalCodeService;
 import com.bca.services.UserService;
 import com.bca.services.WishlistService;
 
@@ -41,6 +47,15 @@ public class ProfileController {
 
   @Autowired
   private UserService userService;
+
+  @Autowired
+  private AddressService addressService;
+  
+  @Autowired
+  private AddressRepo addressRepo;
+
+  @Autowired
+  private PostalCodeService postalCodeService;
 
   @Autowired
   private WishlistService wishlistService;
@@ -129,14 +144,30 @@ public class ProfileController {
   }
 
   @GetMapping("/address")
-  public String address() {
+  public String address(Model model) {
+	  Iterable<Address> address = addressRepo.findAll();
+	    model.addAttribute("address", address);
     return "customer/profile/address/index";
   }
 
   @GetMapping("/address/create")
-  public String createAddress() {
+	  public String create(Model model) {
+		    model.addAttribute("form", new ProductForm());
     return "customer/profile/address/create";
   }
+  
+  @PostMapping("/insert")
+  public String insert(@Valid AddressForm form, Model model, BindingResult bindingResult) {
+      Address data = new Address();
+
+      data.setAddress(form.getAddress());
+      data.setPhoneNumber(form.getPhoneNumber());
+      data.setReceiverName(form.getReceiverName());
+
+      addressService.save(data);
+      return "redirect:/address";
+  }
+
 
   @GetMapping("/address/edit")
   public String editAddress() {

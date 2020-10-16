@@ -98,7 +98,7 @@ public class CheckoutController {
     return "customer/payment";
   }
 
-  @GetMapping("/paymentsuccess")
+  @PostMapping("/paymentsuccess")
   public String paymentSuccess(Model model) {
     Order currentOrder = orderService.findById((int) session.getAttribute("CART_ID")).get();
     currentOrder.setCheckoutDate(new Date());

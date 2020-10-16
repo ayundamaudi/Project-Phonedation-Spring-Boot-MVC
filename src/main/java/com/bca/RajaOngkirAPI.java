@@ -1,5 +1,8 @@
 package com.bca;
 
+import com.bca.models.RajaOngkirCityResponse;
+import com.bca.models.RajaOngkirProvinceResponse;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,15 +22,14 @@ public class RajaOngkirAPI {
     httpEntity = new HttpEntity<>("body", headers);
   }
 
-  public static ResponseEntity<com.bca.models.province.Rajaongkir> findAllProvince() {
+  public static ResponseEntity<RajaOngkirProvinceResponse> findAllProvince() {
     init();
     return restTemplate.exchange(API_URL.concat("/province"), HttpMethod.GET, httpEntity,
-        com.bca.models.province.Rajaongkir.class);
+        RajaOngkirProvinceResponse.class);
   }
 
-  public static ResponseEntity<com.bca.models.city.Rajaongkir> findAllCity() {
+  public static ResponseEntity<RajaOngkirCityResponse> findAllCity() {
     init();
-    return restTemplate.exchange(API_URL.concat("/city"), HttpMethod.GET, httpEntity,
-        com.bca.models.city.Rajaongkir.class);
+    return restTemplate.exchange(API_URL.concat("/city"), HttpMethod.GET, httpEntity, RajaOngkirCityResponse.class);
   }
 }

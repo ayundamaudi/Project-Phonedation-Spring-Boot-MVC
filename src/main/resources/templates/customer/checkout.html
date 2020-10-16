@@ -7,51 +7,52 @@
 </head>
 
 <body>
-
-  <body>
-    <div th:replace="customer/share/header"></div>
-    <!--================Checkout Area =================-->
-    <section class="checkout_area padding_top">
-      <div class="container">
-        <div class="billing_details">
-          <div class="row">
-            <div class="col-lg-8">
-              <h3>Destination Address:</h3>
-              <form class="row contact_form" th:object="${form}" method="get" th:action="@{/payment}">
-                <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add1" name="add1" placeholder="Address"
-                    th:field="*{address}" />
-                </div>
-                <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="number" name="number" placeholder="Telephone Number"
-                    th:field="*{phone}" />
-                </div>
-                <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="email" name="nama penerima" placeholder="Receiver's Name"
-                    th:field="*{receiver}" />
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add2" name="kodePos" placeholder="Postal Code"
-                    th:field="*{postalcode}" />
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="kecamatan" name="Kecamatan" placeholder="District"
-                    th:field="*{district}" />
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="Kelurahan" placeholder="Urban"
-                    th:field="*{urban}" />
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="Provinsi" placeholder="Province"
-                    th:field="*{province}" />
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="city" name="city" placeholder="City" th:field="*{city}" />
-                </div>
-
-                <br>
-                <!-- <h3>Pengiriman:</h3>
+  <div th:replace="customer/share/header"></div>
+  <!--================Checkout Area =================-->
+  <section class="checkout_area padding_top">
+    <div class="container">
+      <div class="billing_details">
+        <div class="row">
+          <div class="col-lg-8">
+            <h3>Destination Address:</h3>
+            <form class="row contact_form" th:object="${form}" method="get" th:action="@{/payment}">
+              <div class="col-md-6 form-group p_star">
+                <label for="receiver">Receiver's Name</label>
+                <input type="text" class="form-control" id="receiver" name="nama penerima"
+                  placeholder="Example: Ephraim Strosin" th:field="*{receiver}" />
+              </div>
+              <div class="col-md-6 form-group p_star">
+                <label for="number">Phone Number</label>
+                <input type="text" class="form-control" id="number" name="number" placeholder="Example: 0838 1827 4932"
+                  th:field="*{phone}" />
+              </div>
+              <div class="col-md-12 form-group">
+                <label for="province">Province</label>
+                <select class="form-control" name="province" id="province">
+                  <option th:each="province : ${provinces}" th:value="${province.provinceId}"
+                    th:text="${province.province}">
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-12 form-group">
+                <label for="city">City</label>
+                <select class="form-control" name="city" id="city">
+                  <option th:each="city : ${cities}" th:value="${city.cityId}" th:text="${city.cityName}">
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <label for="postalcode">Postal Code</label>
+                <input type="text" class="form-control" id="postalcode" name="postalcode" placeholder="Example: 12345"
+                  th:field="*{postalcode}" />
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <label for="details">Address Details</label>
+                <input type="text" class="form-control" id="details" name="details"
+                  placeholder="Example: Auer Ford Street No.2" th:field="*{address}" />
+              </div>
+              <br>
+              <!-- <h3>Pengiriman:</h3>
 
                 <div class="col-md-12 form-group p_star">
                   <select class="country_select">
@@ -66,28 +67,37 @@
                 <div class="col-md-12 form-group p_star">
                   <input type="text" class="form-control" id="" name="" placeholder="ongkir" />
                 </div> -->
-                <button type="submit" class="btn_3">NEXT</button>
-              </form>
-            </div>
+              <button type="submit" class="btn_3">NEXT</button>
+            </form>
           </div>
         </div>
-
-
-
-
       </div>
-      </div>
-    </section>
-    <!--================End Checkout Area =================-->
-
-    <div th:replace="customer/share/footer"></div>
-    <div th:fragment="script"></div>
-    <div th:replace="customer/share/script"></div>
-  </body>
+    </div>
+    </div>
+  </section>
+  <!--================End Checkout Area =================-->
 
   <div th:replace="customer/share/footer"></div>
   <div th:fragment="script"></div>
   <div th:replace="customer/share/script"></div>
+  <script type="text/javascript" src="user/js/rajaongkir.js">
+    // window.onload = fetch("https://jsonplaceholder.typicode.com/posts", {
+    //   headers: new Headers({
+    //     'key': 'e65bf306954919dbd12be40b8a6e7669'
+    //   }),
+    //   mode: "no-cors"
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     let opt = document.createElement("option");
+    //     console.log(data);
+    //     opt.value = data.rajaongkir.results;
+    //   })
+    //   .catch(function () {
+    //     // This is where you run code if the server returns any errors
+    //     console.error("Failed to get RajaOngkir API");
+    //   });
+  </script>
 </body>
 
 </html>

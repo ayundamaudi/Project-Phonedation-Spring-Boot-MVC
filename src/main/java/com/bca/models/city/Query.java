@@ -7,6 +7,7 @@ package com.bca.models.city;
 public class Query {
 
     private String province;
+    private String id;
 
     public String getProvince() {
         return province;
@@ -14,6 +15,14 @@ public class Query {
 
     public void setProvince(String province) {
         this.province = province;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }

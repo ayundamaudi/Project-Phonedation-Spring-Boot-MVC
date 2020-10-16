@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface OrderRepo extends PagingAndSortingRepository<Order, Integer> {
   public List<Order> findByUser(User user);
 
-  public List<Order> findAllByStatusNotNull();
+  public List<Order> findAllByUserAndCheckoutDateIsNotNull(User user);
 }

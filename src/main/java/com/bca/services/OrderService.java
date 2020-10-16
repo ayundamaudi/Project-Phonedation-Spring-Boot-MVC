@@ -23,6 +23,10 @@ public class OrderService {
     return orderRepo.findAll();
   }
 
+  public Iterable<Order> findCheckoutOrderByUser(User user) {
+    return orderRepo.findAllByUserAndCheckoutDateIsNotNull(user);
+  }
+
   public Iterable<Order> findAll(int page, int size) {
     Pageable pageable = PageRequest.of(page, size);
     return orderRepo.findAll(pageable).getContent();

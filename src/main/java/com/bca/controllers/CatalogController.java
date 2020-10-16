@@ -83,11 +83,16 @@ public class CatalogController {
 
   @PostMapping("product/{id}/addtowishlist")
   public String addToWishlist(@PathVariable("id") int id) {
-    Wishlist data = new Wishlist();
+    User user = (User) session.getAttribute("USER");
+    Product product = productService.findById(id).get();
+    Wishlist data = wishlistService.findByUserAndProduct(user, product);
 
-    data.setUser(((User) session.getAttribute("USER")));
-    data.setProduct(productService.findById(id).get());
-    wishlistService.save(data);
+    if (data == null) {
+      data = new Wishlist();
+      data.setUser(user);
+      data.setProduct(product);
+      wishlistService.save(data);
+    }
 
     return "redirect:/product/" + id;
   }

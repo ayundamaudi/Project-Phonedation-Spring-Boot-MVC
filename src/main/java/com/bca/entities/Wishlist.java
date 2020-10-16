@@ -10,14 +10,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_wishlist")
 public class Wishlist {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@ManyToOne
-	private Product Product;
-	
+	private Product product;
+
 	@ManyToOne
 	private User user;
 
@@ -29,14 +29,6 @@ public class Wishlist {
 		this.id = id;
 	}
 
-	public Product getProduct() {
-		return Product;
-	}
-
-	public void setProduct(Product product) {
-		Product = product;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -45,5 +37,12 @@ public class Wishlist {
 		this.user = user;
 	}
 
-	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 }

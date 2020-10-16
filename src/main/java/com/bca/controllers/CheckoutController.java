@@ -1,6 +1,7 @@
 package com.bca.controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,9 @@ import com.bca.dto.CheckoutForm;
 import com.bca.entities.Order;
 import com.bca.entities.User;
 import com.bca.models.MidtransResponse;
+import com.bca.models.RajaOngkirCityResponse;
+import com.bca.models.RajaOngkirProvinceResponse;
+import com.bca.models.city.Result;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -41,8 +45,14 @@ public class CheckoutController {
 
   @GetMapping("/checkout")
   public String index(Model model) {
-    model.addAttribute("cities", RajaOngkirAPI.findAllCity().getBody().getResults());
-    model.addAttribute("provinces", RajaOngkirAPI.findAllProvince().getBody().getResults());
+    RajaOngkirProvinceResponse provinces = RajaOngkirAPI.findAllProvince().getBody();
+    RajaOngkirCityResponse cities = RajaOngkirAPI.findAllCity().getBody();
+
+    for (Result c : cities.getRajaongkir().getResults()) {
+      log.info(c.toString());
+    }
+    model.addAttribute("provinces", provinces.getRajaongkir().getResults());
+    model.addAttribute("cities", cities.getRajaongkir().getResults());
 
     model.addAttribute("form", new CheckoutForm());
     return "customer/checkout";

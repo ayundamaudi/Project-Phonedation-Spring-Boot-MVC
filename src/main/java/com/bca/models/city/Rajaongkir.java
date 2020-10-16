@@ -8,19 +8,11 @@ import java.util.List;
 
 public class Rajaongkir {
 
-    private Query query;
+    private List<Object> query = null;
 
     private Status status;
 
     private List<Result> results = null;
-
-    public Query getQuery() {
-        return query;
-    }
-
-    public void setQuery(Query query) {
-        this.query = query;
-    }
 
     public Status getStatus() {
         return status;
@@ -36,6 +28,14 @@ public class Rajaongkir {
 
     public void setResults(List<Result> results) {
         this.results = results;
+    }
+
+    public List<Object> getQuery() {
+        return query;
+    }
+
+    public void setQuery(List<Object> query) {
+        this.query = query;
     }
 
 }

@@ -50,7 +50,7 @@ public class ProfileController {
 
   @Autowired
   private AddressService addressService;
-  
+
   @Autowired
   private AddressRepo addressRepo;
 
@@ -127,7 +127,7 @@ public class ProfileController {
   @GetMapping("/order")
   public String order(Model model) {
     User user = (User) session.getAttribute("USER");
-    Iterable<Order> orders = orderService.findByUser(user);
+    Iterable<Order> orders = orderService.findCheckoutOrderByUser(user);
     model.addAttribute("orders", orders);
     return "customer/profile/order/index";
   }
@@ -145,29 +145,28 @@ public class ProfileController {
 
   @GetMapping("/address")
   public String address(Model model) {
-	  Iterable<Address> address = addressRepo.findAll();
-	    model.addAttribute("address", address);
+    Iterable<Address> address = addressRepo.findAll();
+    model.addAttribute("address", address);
     return "customer/profile/address/index";
   }
 
   @GetMapping("/address/create")
-	  public String create(Model model) {
-		    model.addAttribute("form", new ProductForm());
+  public String create(Model model) {
+    model.addAttribute("form", new ProductForm());
     return "customer/profile/address/create";
   }
-  
+
   @PostMapping("/insert")
   public String insert(@Valid AddressForm form, Model model, BindingResult bindingResult) {
-      Address data = new Address();
+    Address data = new Address();
 
-      data.setAddress(form.getAddress());
-      data.setPhoneNumber(form.getPhoneNumber());
-      data.setReceiverName(form.getReceiverName());
+    data.setAddress(form.getAddress());
+    data.setPhoneNumber(form.getPhoneNumber());
+    data.setReceiverName(form.getReceiverName());
 
-      addressService.save(data);
-      return "redirect:/address";
+    addressService.save(data);
+    return "redirect:/address";
   }
-
 
   @GetMapping("/address/edit")
   public String editAddress() {

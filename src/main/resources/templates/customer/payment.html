@@ -34,14 +34,14 @@
                   <th th:text="${detail.quantity}">x02</th>
                   <th> <span th:text="${detail.product.price}">$720.00</span></th>
                 </tr>
-                <th colspan="3">shipping fee</th>
-                <th><span th:text="${order.shippingFee}">flat rate: $50.00</span></th>
+                <th colspan="3">shipping fee (flat rate)</th>
+                <th><span >Rp 20.0</span></th>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th scope="col" colspan="3">Total Harga</th>
-                  <th scope="col" th:text="${order.totalPrice}">Sub Total</th>
+                  <th scope="col" th:text="${order.totalPrice+20}">Sub Total</th>
                 </tr>
               </tfoot>
             </table>

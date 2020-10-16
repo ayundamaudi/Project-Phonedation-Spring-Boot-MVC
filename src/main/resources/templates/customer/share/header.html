@@ -22,7 +22,7 @@
 					<div class="hearer_icon d-flex">
 						<span th:if="${session.USER!=null}">
 							<a th:href="@{/profile/wishlist}"><i class="ti-heart"></i></a>
-							<a th:classappend="${session.CART_ID!=null} ? cart : ''" th:href="@{/profile/cart}"><i
+							<a th:classappend="${session.items>0} ? cart : ''" th:href="@{/profile/cart}"><i
 									class="fas fa-cart-plus"></i></a>
 							<a th:href="@{/profile}"> <i class="fas fa-user-alt"></i></a>
 							&nbsp; Welcome, &nbsp; <span th:text="${session.USER.fullname}"></span>

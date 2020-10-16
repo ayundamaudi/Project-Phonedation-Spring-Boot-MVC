@@ -32,15 +32,12 @@ public class CheckoutForm {
 	@NotEmpty(message = "x is required")
 	private String city;
 
-	@NotEmpty(message = "x is required")
 	private String courier;
 
-	@NotEmpty(message = "x is required")
 	private String service;
 
 	private String fee;
 
-	@NotEmpty(message = "x is required")
 	private String paymentMethod;
 
 	// price * qty

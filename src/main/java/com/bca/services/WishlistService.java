@@ -2,6 +2,7 @@ package com.bca.services;
 
 import java.util.Optional;
 
+import com.bca.entities.Product;
 import com.bca.entities.User;
 import com.bca.entities.Wishlist;
 import com.bca.repositories.WishlistRepo;
@@ -21,6 +22,10 @@ public class WishlistService {
 
   public Iterable<Wishlist> findAll() {
     return wishlistRepo.findAll();
+  }
+
+  public Wishlist findByUserAndProduct(User user, Product product) {
+    return wishlistRepo.findByUserAndProduct(user, product);
   }
 
   public Iterable<Wishlist> findAll(int page, int size) {

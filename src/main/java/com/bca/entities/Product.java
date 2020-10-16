@@ -75,6 +75,10 @@ public class Product {
 		this.dateCreated = new Date();
 	}
 
+	public Product() {
+
+	}
+
 	public int getId() {
 		return id;
 	}

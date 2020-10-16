@@ -19,50 +19,54 @@
               <h3>Destination Address:</h3>
               <form class="row contact_form" th:object="${form}" method="post" th:action="@{/payment}">
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add1" name="add1" placeholder="Address" th:field="*{address}" />
+                  <input type="text" class="form-control" id="add1" name="add1" placeholder="Address"
+                    th:field="*{address}" />
                 </div>
                 <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="number" name="number" placeholder="Telephone Number" th:field="*{phone}"/>
+                  <input type="text" class="form-control" id="number" name="number" placeholder="Telephone Number"
+                    th:field="*{phone}" />
                 </div>
                 <div class="col-md-6 form-group p_star">
-                  <input type="text" class="form-control" id="email" name="nama penerima"
-                    placeholder="Receiver's Name" th:field="*{receiver}"/>
+                  <input type="text" class="form-control" id="email" name="nama penerima" placeholder="Receiver's Name"
+                    th:field="*{receiver}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="add2" name="kodePos" placeholder="Postal Code" th:field="*{postalcode}"/>
+                  <input type="text" class="form-control" id="add2" name="kodePos" placeholder="Postal Code"
+                    th:field="*{postalcode}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="kecamatan" name="Kecamatan" placeholder="District" th:field="*{district}"/>
+                  <input type="text" class="form-control" id="kecamatan" name="Kecamatan" placeholder="District"
+                    th:field="*{district}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="Kelurahan" placeholder="Kelurahan" th:field="*{urban}"/>
+                  <input type="text" class="form-control" id="" name="Kelurahan" placeholder="Kelurahan"
+                    th:field="*{urban}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="Provinsi" placeholder="Province" th:field="*{province}"/>
+                  <input type="text" class="form-control" id="" name="Provinsi" placeholder="Province"
+                    th:field="*{province}" />
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="city" name="city" placeholder="City" th:field="*{city}"/>
+                  <input type="text" class="form-control" id="city" name="city" placeholder="City" th:field="*{city}" />
                 </div>
-            </div>
 
-            <div>
-              <br>
-              <h3>Pengiriman:</h3>
+                <br>
+                <h3>Pengiriman:</h3>
 
-              <div class="col-md-12 form-group p_star">
-                <select class="country_select">
-                  <option value="1">JNE</option>
-                </select>
-              </div>
-              <div class="col-md-12 form-group p_star">
-                <select class="country_select">
-                  <option value="1">REG</option>
-                </select>
-              </div>
-              <div class="col-md-12 form-group p_star">
-                <input type="text" class="form-control" id="" name="" placeholder="ongkir"/>
-              </div>
-                      <button type="submit" class="btn_3">NEXT</button>
+                <div class="col-md-12 form-group p_star">
+                  <select class="country_select">
+                    <option value="1">JNE</option>
+                  </select>
+                </div>
+                <div class="col-md-12 form-group p_star">
+                  <select class="country_select">
+                    <option value="1">REG</option>
+                  </select>
+                </div>
+                <div class="col-md-12 form-group p_star">
+                  <input type="text" class="form-control" id="" name="" placeholder="ongkir" />
+                </div>
+                <button type="submit" class="btn_3">NEXT</button>
               </form>
             </div>
           </div>
@@ -81,9 +85,9 @@
     <div th:replace="customer/share/script"></div>
   </body>
 
-<div th:replace="customer/share/footer"></div>
-<div th:fragment="script"></div>
-<div th:replace="customer/share/script"></div>
+  <div th:replace="customer/share/footer"></div>
+  <div th:fragment="script"></div>
+  <div th:replace="customer/share/script"></div>
 </body>
 
 </html>

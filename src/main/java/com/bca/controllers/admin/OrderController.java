@@ -6,8 +6,6 @@ import com.bca.dto.CheckoutForm;
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.OrderForm;
 import com.bca.entities.Order;
-import com.bca.entities.OrderDetail;
-import com.bca.repositories.OrderDetailRepo;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 
@@ -38,6 +36,11 @@ public class OrderController {
     return BASE_PATH.concat("/index");
   }
 
+  @GetMapping("/index1")
+  public String index1(Model model) {
+    return BASE_PATH.concat("/detail");
+  }
+  
   @GetMapping("/create")
   public String create(Model model) {
     model.addAttribute("form", new CheckoutForm());

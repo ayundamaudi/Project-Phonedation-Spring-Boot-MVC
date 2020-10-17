@@ -50,14 +50,16 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="detail: ${details}">
-									<td th:text="${detail.order.id}"></td>
+								<tr th:each="order: ${orders}">
+									<td th:text="${order.id}"></td>
 									<td>a</td>
 									<td>a</td>
-									<td th:text="${detail.order.createdOrder}">a</td>
-									<td th:text="${detail.order.status}">a</td>
-									<td th:text="${detail.order.totalPrice}">a</td>
-									<td><a class="btn btn-info" href=""><i class="fas fa-search-plus"></i></a></td>
+									<td th:text="${order.createdOrder}">a</td>
+									<td th:text="${order.status}">a</td>
+									<td th:text="${order.totalPrice}">a</td>
+									<td><a class="btn btn-info" th:href="@{/admin/order/edit/{id}/(id=${order.id})}">
+										<i class="fas fa-search-plus"></i></a>
+									</td>
 								</tr>
 							</tbody>
 

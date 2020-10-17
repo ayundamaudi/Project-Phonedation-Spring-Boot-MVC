@@ -20,7 +20,6 @@ import com.bca.repositories.AddressRepo;
 import com.bca.services.AddressService;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
-import com.bca.services.PostalCodeService;
 import com.bca.services.UserService;
 import com.bca.services.WishlistService;
 
@@ -55,13 +54,10 @@ public class ProfileController {
   private AddressRepo addressRepo;
 
   @Autowired
-  private PostalCodeService postalCodeService;
-
-  @Autowired
   private WishlistService wishlistService;
 
   @Autowired
-  private OrderService orderService; // FIXME: should this be deleted?
+  private OrderService orderService;
 
   @Autowired
   private OrderDetailService orderDetailService;
@@ -113,13 +109,8 @@ public class ProfileController {
 
   @GetMapping("/cart")
   public String cart(Model model) {
-    Order order = orderService.findById((int) session.getAttribute("CART_ID")).get();
+    Order order = orderService.findById((String) session.getAttribute("CART_ID")).get();
     Iterable<OrderDetail> carts = orderDetailService.findAllByOrder(order);
-    // List<Product> products = new ArrayList<Product>();
-    // for (OrderDetail item : carts) {
-    // log.info(item.getProduct().getModel());
-    // products.add(item.getProduct());
-    // }
     model.addAttribute("carts", carts);
     return "customer/profile/cart";
   }
@@ -133,7 +124,7 @@ public class ProfileController {
   }
 
   @GetMapping("/detail/{id}")
-  public String orderDetail(@PathVariable("id") int id, Model model) {
+  public String orderDetail(@PathVariable("id") String id, Model model) {
     Order order = orderService.findById(id).get();
     log.info(order.toString());
     model.addAttribute("order", order);

@@ -2,8 +2,6 @@ package com.bca.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,30 +9,21 @@ import javax.persistence.Table;
 @Table(name = "tb_postalcodes")
 public class PostalCode {
 
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int postalCode;
-	
-	@Column(length = 50, nullable = false)
-    private String province;
-	
-	@Column(length = 50, nullable = false)
-    private String city;
-	
-	@Column(length = 50, nullable = false)
-    private String district;
-	
-	@Column(length = 50, nullable = false)
-    private String urban;
+	@Column
+	private String postalCode;
 
-	public int getPostalCode() {
-		return postalCode;
-	}
+	@Column(length = 50, nullable = false)
+	private String province;
 
-	public void setPostalCode(int postalCode) {
-		this.postalCode = postalCode;
-	}
+	@Column(length = 50, nullable = false)
+	private String city;
+
+	@Column(length = 50, nullable = false)
+	private String district;
+
+	@Column(length = 50, nullable = false)
+	private String urban;
 
 	public String getProvince() {
 		return province;
@@ -66,6 +55,14 @@ public class PostalCode {
 
 	public void setUrban(String urban) {
 		this.urban = urban;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
 	}
 
 }

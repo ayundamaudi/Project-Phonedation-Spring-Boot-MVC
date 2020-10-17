@@ -14,6 +14,7 @@ public class AuthService {
   private UserRepo repo;
 
   public void signup(User user) throws Exception {
+    // user.setPassword(MD5Generator.encode(user.getPassword()));
     repo.save(user);
   }
 

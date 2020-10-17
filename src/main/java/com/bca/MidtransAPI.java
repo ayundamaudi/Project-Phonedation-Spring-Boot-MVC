@@ -24,7 +24,7 @@ public class MidtransAPI {
     headers.set("Authorization", "Basic " + AUTH_STRING);
   }
 
-  public static ResponseEntity<String> snap(int orderId, int amount) {
+  public static ResponseEntity<String> snap(String orderId, int amount) {
     init();
     Map<String, Object> params = new HashMap<>();
 

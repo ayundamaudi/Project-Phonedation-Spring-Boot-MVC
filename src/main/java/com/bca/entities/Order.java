@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
@@ -18,14 +16,11 @@ import javax.persistence.TemporalType;
 public class Order {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column
+	private String id;
 
 	@ManyToOne
 	private User user;
-
-	// @OneToMany
-	// private List<OrderDetail> orderDetails;
 
 	@ManyToOne
 	private Address address;
@@ -71,14 +66,6 @@ public class Order {
 	@PrePersist
 	public void setDateJoined() {
 		this.createdOrder = new Date();
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Address getAddress() {
@@ -191,6 +178,14 @@ public class Order {
 				+ createdOrder + ", createdPayment=" + createdPayment + ", id=" + id + ", paymentMethod=" + paymentMethod
 				+ ", receiptNumber=" + receiptNumber + ", service=" + service + ", shippingFee=" + shippingFee + ", status="
 				+ status + ", subTotal=" + subTotal + ", totalPrice=" + totalPrice + ", user=" + user + "]";
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 }

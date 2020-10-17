@@ -27,11 +27,11 @@ public class PostalCodeService {
     return postalCodeRepo.findAll(pageable).getContent();
   }
 
-  public Optional<PostalCode> findById(int id) {
+  public Optional<PostalCode> findById(String id) {
     return postalCodeRepo.findById(id);
   }
 
-  public boolean deleteById(int id) {
+  public boolean deleteById(String id) {
     postalCodeRepo.deleteById(id);
     return true;
   }

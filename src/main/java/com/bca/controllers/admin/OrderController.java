@@ -48,11 +48,6 @@ public class OrderController {
     if (!bindingResult.hasErrors()) {
       Order data = new Order();
 
-      // data.setAddress(addressService.findById(form.getAddress()) address);
-      // data.setCourier(form.getShipments()); //FIXME: Rename to getCourier()
-      // data.setPaymentMethod(paymentMethod);
-      // data.setReceiptNumber(form.g);
-
       orderService.save(data);
       return "redirect:".concat(BASE_PATH);
 
@@ -68,19 +63,21 @@ public class OrderController {
   }
 
   @GetMapping("/edit/{id}")
-  public String edit(@PathVariable("id") long id, Model model) {
+  public String edit(@PathVariable("id") String id, Model model) {
     // TODO: add get by service
+    Order order = orderService.findById(id).get();
+    model.addAttribute("form", order);
     return BASE_PATH.concat("/edit");
   }
 
   @PostMapping("/update")
-  public String update(@PathVariable("id") int id, CheckoutForm form, BindingResult bindingResult, Model model) {
+  public String update(@PathVariable("id") String id, CheckoutForm form, BindingResult bindingResult, Model model) {
     // TODO: add update service
     return "redirect:".concat(BASE_PATH);
   }
 
   @PostMapping("/remove/{id}")
-  public String delete(@PathVariable("id") int id) {
+  public String delete(@PathVariable("id") String id) {
     orderService.deleteById(id);
     return "redirect:".concat(BASE_PATH);
   }

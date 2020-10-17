@@ -2,6 +2,7 @@ package com.bca.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -99,9 +100,9 @@ public class AuthController {
 
       userService.save(data);
 
-      int orderId = (int) Math.random() * 999999;
+      UUID orderId = UUID.randomUUID();
       Order order = new Order();
-      order.setId(orderId);
+      order.setId(orderId.toString());
       order.setUser(data);
       order.setStatus("Shopping");
       orderService.save(order);
@@ -119,7 +120,7 @@ public class AuthController {
     }
   }
 
-  @GetMapping("/signout") // TODO: is it better to use GET or POST?
+  @GetMapping("/signout")
   public String signout() {
     session.removeAttribute("USER");
     return "redirect:/login";

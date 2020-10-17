@@ -1,7 +1,5 @@
 package com.bca.dto;
 
-import javax.validation.constraints.NotEmpty;
-
 public class CheckoutForm {
 
 	private int id;

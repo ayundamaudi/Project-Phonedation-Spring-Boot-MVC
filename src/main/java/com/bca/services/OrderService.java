@@ -36,11 +36,11 @@ public class OrderService {
     return orderRepo.findByUser(user);
   }
 
-  public Optional<Order> findById(int id) {
+  public Optional<Order> findById(String id) {
     return orderRepo.findById(id);
   }
 
-  public boolean deleteById(int id) {
+  public boolean deleteById(String id) {
     orderRepo.deleteById(id);
     return true;
   }

@@ -57,7 +57,7 @@ public class CatalogController {
 
   @PostMapping("product/{id}/addtocart")
   public String addToCart(@PathVariable("id") int id) {
-    Order order = orderService.findById((int) session.getAttribute("CART_ID")).get();
+    Order order = orderService.findById((String) session.getAttribute("CART_ID")).get();
     Product product = productService.findById(id).get();
 
     OrderDetail cart = orderDetailService.findByOrderAndProduct(order, product);
@@ -67,7 +67,7 @@ public class CatalogController {
       cart.setOrder(order);
       cart.setProduct(product);
       cart.setQuantity(1);
-      cart.setPrice(product.getPrice()); // FIXME: insert DB trigger get price
+      cart.setPrice(product.getPrice());
     } else {
       cart.setQuantity(cart.getQuantity() + 1);
     }

@@ -42,7 +42,7 @@ public class UserController {
 
   @PostMapping("/insert")
   public String insert(@Valid UserForm form, Model model, BindingResult bindingResult,
-		  RedirectAttributes redirectAttribute) {
+      RedirectAttributes redirectAttribute) {
     if (!bindingResult.hasErrors()) {
       User data = new User();
 
@@ -69,7 +69,7 @@ public class UserController {
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable("id") int id, Model model) {
     UserForm form = new UserForm();
-    User data = userService.findById(id).get(); // FIXME: Use Optional Class
+    User data = userService.findById(id).get();
 
     form.setId(data.getId());
     form.setEmail(data.getEmail());

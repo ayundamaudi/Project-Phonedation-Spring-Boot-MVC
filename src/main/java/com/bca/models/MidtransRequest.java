@@ -2,9 +2,14 @@ package com.bca.models;
 
 public class MidtransRequest {
 
-  private class TransactionDetails {
+  public class TransactionDetails {
     private String orderId;
     private int grossAmount;
+
+    public TransactionDetails(int grossAmount) {
+      this.orderId = String.valueOf((int) Math.random() * 99999999);
+      this.grossAmount = grossAmount;
+    }
 
     public String getOrderId() {
       return orderId;
@@ -19,11 +24,6 @@ public class MidtransRequest {
     }
 
     public void setGrossAmount(int grossAmount) {
-      this.grossAmount = grossAmount;
-    }
-
-    public TransactionDetails(int grossAmount) {
-      this.orderId = String.valueOf((int) Math.random() * 99999999);
       this.grossAmount = grossAmount;
     }
   }

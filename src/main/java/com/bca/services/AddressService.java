@@ -3,7 +3,9 @@ package com.bca.services;
 import java.util.Optional;
 
 import com.bca.entities.Address;
+import com.bca.entities.PostalCode;
 import com.bca.repositories.AddressRepo;
+import com.bca.repositories.PostalCodeRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +19,9 @@ public class AddressService {
 
   @Autowired
   private AddressRepo addressRepo;
+
+  @Autowired
+  private PostalCodeRepo postalCodeRepo;
 
   public Iterable<Address> findAll() {
     return addressRepo.findAll();
@@ -38,5 +43,9 @@ public class AddressService {
 
   public Address save(Address data) {
     return addressRepo.save(data);
+  }
+
+  public PostalCode findPostalCodeById(String id) {
+    return postalCodeRepo.findById(id).get();
   }
 }

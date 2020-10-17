@@ -6,6 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostalCodeRepo extends PagingAndSortingRepository<PostalCode, Integer> {
+public interface PostalCodeRepo extends PagingAndSortingRepository<PostalCode, String> {
 
 }

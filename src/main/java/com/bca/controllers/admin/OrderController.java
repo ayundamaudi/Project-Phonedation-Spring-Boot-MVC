@@ -8,6 +8,7 @@ import com.bca.dto.OrderForm;
 import com.bca.entities.Order;
 import com.bca.entities.OrderDetail;
 import com.bca.repositories.OrderDetailRepo;
+import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,11 @@ public class OrderController {
   private OrderService orderService;
 
   @Autowired
-  private OrderDetailRepo orderDetailRepo;
+  private OrderDetailService orderDetailService;
 
   @GetMapping
   public String index(Model model) {
-    Iterable<OrderDetail> details = orderDetailRepo.findAll();
-    model.addAttribute("details", details);
+    model.addAttribute("orders", orderService.findAll());
     return BASE_PATH.concat("/index");
   }
 
@@ -84,6 +84,7 @@ public class OrderController {
     form.setStatus(form.getStatus());
 
     model.addAttribute("form", form);
+    model.addAttribute("details", orderDetailService.findAllByOrder(order));
     return BASE_PATH.concat("/edit");
   }
 

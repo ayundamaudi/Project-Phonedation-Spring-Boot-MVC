@@ -13,4 +13,6 @@ public interface OrderRepo extends PagingAndSortingRepository<Order, String> {
   public List<Order> findByUser(User user);
 
   public List<Order> findAllByUserAndCheckoutDateIsNotNull(User user);
+
+  public List<Order> findAllByCheckoutDateIsNotNullOrderByCheckoutDateDesc();
 }

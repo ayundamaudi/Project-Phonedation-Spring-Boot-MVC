@@ -16,32 +16,32 @@
 			<br>
 			<!--================ confirmation part start =================-->
 			<section class="confirmation_part">
-				<div class="container">
+				<div class="container" th:each="detail: ${details}">
 					<div class="row">
 						<div class="col-lg-6 col-lx-4">
 							<div class="single_confirmation_details">
 								<h4>order info</h4>
 								<ul>
 									<li>
-										<p>ID order</p> <span>: 60235</span>
+										<p>ID order</p> <span th:text="${' : ' + detail.order.id}">: 60235</span>
 									</li>
 									<li>
-										<p>E-mail User</p> <span>: Check payments</span>
+										<p>E-mail User</p> <span >: E-mail not yet</span>
 									</li>
 									<li>
-										<p>Name User</p> <span>: Check payments</span>
+										<p>Name User</p> <span>: User Not yet</span>
 									</li>
 									<li>
-										<p>Order Date</p> <span>: Oct 03, 2017</span>
+										<p>Order Date</p> <span th:text="${' : ' + detail.order.createdOrder}">: Oct 03, 2017</span>
 									</li>
 									<li>
-										<p>Courier</p> <span>: USD 2210</span>
+										<p>Courier</p> <span th:text="${' : ' + detail.order.courier}">: USD 2210</span>
 									</li>
 									<li>
-										<p>Service</p> <span>: Check payments</span>
+										<p>Service</p> <span th:text="${' : ' + detail.order.service}">: Check payments</span>
 									</li>
 									<li>
-										<p>Status</p> <span>: Check payments</span>
+										<p>Status</p> <span th:text="${' : ' + detail.order.status}">: Check payments</span>
 									</li>
 
 								</ul>
@@ -52,10 +52,10 @@
 								<h4>Billing Address</h4>
 								<ul>
 									<li>
-										<p>Receiver's Name</p> <span>: 56/8</span>
+										<p>Receiver's Name</p> <span >: 56/8</span>
 									</li>
 									<li>
-										<p>Phone Number</p> <span>: Los Angeles</span>
+										<p>Phone Number</p> <span >: Los Angeles</span>
 									</li>
 									<li>
 										<p>Province</p> <span>: United States</span>
@@ -86,32 +86,25 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-											<th>x02</th>
-											<th><span>$720.00</span></th>
-										</tr>
-										<tr>
-											<th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-											<th>x02</th>
-											<th><span>$720.00</span></th>
-										</tr>
-										<tr>
-											<th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-											<th>x02</th>
-											<th><span>$720.00</span></th>
-										</tr>
-										<tr>
-											<th colspan="3">shipping Fee</th>
-											<th><span>flat rate: $50.00</span></th>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<th scope="col" colspan="3">Total Price</th>
-											<th scope="col">Total</th>
-										</tr>
-									</tfoot>
+                <tr>
+                  <th colspan="2"><span th:text="${detail.product.model}">Pixelstore fresh Blackberry</span>
+                    <span th:text="${detail.product.color}"></span>
+                  </th>
+                  <th th:text="${detail.quantity}">x02</th>
+                  <th> <span th:text="${detail.product.price}">$720.00</span></th>
+                </tr>
+              </tbody>
+              <tr>
+                <th colspan="3">shipping fee</th>
+                <th><span th:text="${detail.order.shippingFee}">flat rate: $50.00</span></th>
+              </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="col" colspan="3">Total Harga</th>
+                  <th scope="col" th:text="${detail.order.totalPrice}">Sub Total</th>
+                </tr>
+              </tfoot>
 								</table>
 								<label for="exampleInputPassword1">Status</label> <select
 									class="form-control select2" style="width: 100%;"

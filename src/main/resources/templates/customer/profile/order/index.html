@@ -43,7 +43,7 @@
                     <td class="p-price first-row" th:text="${order.totalPrice}">$60.00</td>
                     <td class="cart-pic first-row" th:text="${order.status}">Proses</td>
                     <td class="close-td first-row">
-                      <a th:href="@{/profile/detail/{id}(id=${order.id})}" class="btn_3">Order Detail</a>
+                      <a th:href="@{/profile/detail/{id}(id=${order.id})}" class="btn_3"><i class="fas fa-search-plus"></i></a>
                     </td>
                   </tr>
                 </tbody>

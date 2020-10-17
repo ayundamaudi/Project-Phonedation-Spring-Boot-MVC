@@ -6,9 +6,12 @@ import com.bca.dto.CheckoutForm;
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.OrderForm;
 import com.bca.entities.Order;
+import com.bca.entities.OrderDetail;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,11 +37,6 @@ public class OrderController {
   public String index(Model model) {
     model.addAttribute("orders", orderService.findAll());
     return BASE_PATH.concat("/index");
-  }
-
-  @GetMapping("/index1")
-  public String index1(Model model) {
-    return BASE_PATH.concat("/detail");
   }
   
   @GetMapping("/create")
@@ -66,31 +64,42 @@ public class OrderController {
     }
   }
 
-  @GetMapping("/edit/{id}")
+	/*
+	 * @GetMapping("/edit/{id}") public String edit(@PathVariable("id") String id,
+	 * Model model) { OrderForm form = new OrderForm(); Order order =
+	 * orderService.findById(id).get();
+	 * 
+	 * form.setId(order.getId()); form.setCheckoutDate(order.getCheckoutDate());
+	 * form.setCreatedOrder(order.getCreatedOrder());
+	 * form.setCreatedPayment(order.getCreatedPayment());
+	 * form.setReceiptNumber(order.getReceiptNumber());
+	 * form.setService(order.getService());
+	 * form.setShippingFee(order.getShippingFee());
+	 * form.setSubTotal(order.getSubTotal());
+	 * form.setTotalPrice(order.getTotalPrice());
+	 * form.setAddressId(order.getAddress().getId());
+	 * form.setPaymentMethodId(order.getPaymentMethod().getId());
+	 * form.setUserId(order.getUser().getId());
+	 * 
+	 * form.setStatus(form.getStatus());
+	 * 
+	 * model.addAttribute("form", form); model.addAttribute("details",
+	 * orderDetailService.findAllByOrder(order)); return BASE_PATH.concat("/edit");
+	 * }
+	 */
+
+  Logger log = LoggerFactory.getLogger(this.getClass());
+  @GetMapping("/edit/{id}") 
   public String edit(@PathVariable("id") String id, Model model) {
-    OrderForm form = new OrderForm();
-    Order order = orderService.findById(id).get();
-
-    form.setId(order.getId());
-    form.setCheckoutDate(order.getCheckoutDate());
-    form.setCreatedOrder(order.getCreatedOrder());
-    form.setCreatedPayment(order.getCreatedPayment());
-    form.setReceiptNumber(order.getReceiptNumber());
-    form.setService(order.getService());
-    form.setShippingFee(order.getShippingFee());
-    form.setSubTotal(order.getSubTotal());
-    form.setTotalPrice(order.getTotalPrice());
-    form.setAddressId(order.getAddress().getId());
-    form.setPaymentMethodId(order.getPaymentMethod().getId());
-    form.setUserId(order.getUser().getId());
-
-    form.setStatus(form.getStatus());
-
-    model.addAttribute("form", form);
-    model.addAttribute("details", orderDetailService.findAllByOrder(order));
-    return BASE_PATH.concat("/edit");
+	  Order order = orderService.findById(id).get();
+	    log.info(order.toString());
+	    model.addAttribute("order", order);
+	    Iterable<OrderDetail> orderDetails = orderDetailService.findAllByOrder(order);
+	    log.info(orderDetails.toString());
+	    model.addAttribute("details", orderDetails);
+	    return BASE_PATH.concat("/detail");
   }
-
+  
   @PostMapping("/update")
   public String update(OrderForm form, BindingResult bindingResult, Model model) {
     if (!bindingResult.hasErrors()) {

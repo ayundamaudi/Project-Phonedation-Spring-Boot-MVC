@@ -2,20 +2,19 @@
 <html>
 
 <head>
-	<title>Phonedation | Home</title>
-	<style th:replace="customer/share/style"></style>
+<title>Phonedation | Home</title>
+<style th:replace="customer/share/style"></style>
 </head>
 
 <body>
-
-	<body>
-		<div th:replace="customer/share/header"></div>
-		<div th:replace="customer/share/banner"></div>
-		<!-- product_list start-->
-		<section class="product_list section_padding">
-			<div class="container">
-				<div class="row">
-					<!-- <div class="col-lg-3">
+<body>
+	<div th:replace="customer/share/header"></div>
+	<div th:replace="customer/share/banner"></div>
+	<!-- product_list start-->
+	<section class="product_list section_padding">
+		<div class="container">
+			<div class="row">
+				<!-- <div class="col-lg-3">
 						<div class="left_sidebar_area">
 							<div th:replace="/customer/share/left_side_produk::search"></div>
 							<aside class="left_widgets p_filter_widgets">
@@ -71,125 +70,132 @@
 
 						</div>
 					</div> -->
-					<!--					<div class="col-lg-12">
+				<!--					<div class="col-lg-12">
 						<div class="row"> -->
-					<div th:replace="customer/share/left_side_produk::search"></div><br><br>
-					<div class="col-lg-12">
-						<div class="section_tittle text-center">
-							<h2>
-								Phonedation <span>shop</span>
-							</h2>
-						</div>
-						<div class="row">
-							<div class="col-lg-12">
+				<div th:replace="customer/share/left_side_produk::search"></div>
+				<br> <br>
+				<div class="col-lg-12">
+					<div class="section_tittle text-center">
+						<h2>
+							Phonedation <span>shop</span>
+						</h2>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
 
-								<div class="product_list_slider owl-carousel">
-									<div class="single_product_list_slider">
+							<div class="product_list_slider owl-carousel">
+								<div class="single_product_list_slider">
 
-										<div class="row align-items-center justify-content-between">
-											<div class="col-lg-3 col-sm-6" th:each="product: ${products}">
-												<div class="single_product_item">
-													<img th:src="@{${'/img/' + product.image}}" alt="image product">
-													<div class="single_product_text">
-														<!-- <div th:replace="/customer/share/left_side_produk::detail"></div> -->
-														<h4>
-		<span th:text="${product.model}"></span>
-		<span th:text="${product.color}"></span>
-	</h4>
-	<h3>
-		<span>Rp </span>
-		<span th:text="${product.price}"></span>
-	</h3>
-	<a th:href="@{/product/{id}/(id=${product.id})}" class="add_cart">Lihat
-		Detail</a>
-													</div>
+									<div class="row align-items-center justify-content-between">
+										<div class="col-lg-3 col-sm-6" th:each="product: ${products}">
+											<div class="single_product_item">
+												<img th:src="@{${'/img/' + product.image}}"
+													alt="image product">
+												<div class="single_product_text">
+													<!-- <div th:replace="/customer/share/left_side_produk::detail"></div> -->
+													<h4>
+														<span th:text="${product.model}"></span> <span
+															th:text="${product.color}"></span>
+													</h4>
+													<h3>
+														<span>Rp </span> <span th:text="${product.price}"></span>
+													</h3>
+													<a th:href="@{/product/{id}/(id=${product.id})}"
+														class="add_cart">Lihat Detail</a>
 												</div>
 											</div>
 										</div>
-
 									</div>
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div>
-			</div>
-		</section>
+		</div>
+		</div>
+		</div>
+	</section>
 
-		<section class="product_list best_seller section_padding">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-12">
-						<div class="section_tittle text-center">
-							<h2>Best Sellers </h2>
-						</div>
+	<section class="product_list best_seller section_padding">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-12">
+					<div class="section_tittle text-center">
+						<h2>Best Sellers</h2>
 					</div>
 				</div>
-				<div class="row align-items-center justify-content-between">
-					<div class="col-lg-12">
-						<div class="best_product_slider_down owl-carousel">
+			</div>
+			<div class="row align-items-center justify-content-between">
+				<div class="col-lg-12">
+					<div class="best_product_slider_down owl-carousel">
 
-							<div class="single_product_item" th:each="product: ${bestseller}">
-								<img th:src="@{${'/img/' + product.image}}" alt="image product">
-								<div class="single_product_text">
-									<!-- <div th:replace="/customer/share/left_side_produk::detail"></div> -->
-									<h4>
-		<span th:text="${product.model}"></span>
-		<span th:text="${product.color}"></span>
-	</h4>
-	<h3>
-		<span>Rp </span>
-		<span th:text="${product.price}"></span>
-	</h3>
-	<a th:href="@{/product/{id}/(id=${product.id})}" class="add_cart">Lihat
-		Detail</a>
+						<div class="single_product_item" th:each="product: ${bestseller}">
+							<div
+								class="product_top_bar d-flex justify-content-between align-items-center">
+								<div class="single_product_menu">
+									<p>
+										<span th:text="${'Sold : ' + product.sold + ' pcs'}"></span>
+									</p>
 								</div>
+							</div>
+							<img th:src="@{${'/img/' + product.image}}" alt="image product">
+							<div class="single_product_text">
+								<!-- <div th:replace="/customer/share/left_side_produk::detail"></div> -->
+								<h4>
+									<span th:text="${product.model}"></span> <span
+										th:text="${product.color}"></span>
+								</h4>
+								<h3>
+									<span>Rp </span> <span th:text="${product.price}"></span>
+								</h3>
+								<a th:href="@{/product/{id}/(id=${product.id})}"
+									class="add_cart">Lihat Detail</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<section class="product_list best_seller section_padding">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-12">
-						<div class="section_tittle text-center">
-							<h2>New Arrival</h2>
-						</div>
+	<section class="product_list best_seller section_padding">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-12">
+					<div class="section_tittle text-center">
+						<h2>New Arrival</h2>
 					</div>
 				</div>
-				<div class="row align-items-center justify-content-between">
-					<div class="col-lg-12">
-						<div class="best_product_slider_down owl-carousel">
+			</div>
+			<div class="row align-items-center justify-content-between">
+				<div class="col-lg-12">
+					<div class="best_product_slider_down owl-carousel">
 
-							<div class="single_product_item" th:each="product: ${latest}">
-								<img th:src="@{${'/img/' + product.image}}" alt="image product">
-								<div class="single_product_text">
-									<!-- <div th:replace="/customer/share/left_side_produk::detail"></div> -->
-									<h4>
-		<span th:text="${product.model}"></span>
-		<span th:text="${product.color}"></span>
-	</h4>
-	<h3>
-		<span>Rp </span>
-		<span th:text="${product.price}"></span>
-	</h3>
-	<a th:href="@{/product/{id}/(id=${product.id})}" class="add_cart">Lihat
-		Detail</a>
-								</div>
+						<div class="single_product_item" th:each="product: ${latest}">
+							<img th:src="@{${'/img/' + product.image}}" alt="image product">
+							<div class="single_product_text">
+								<!-- <div th:replace="/customer/share/left_side_produk::detail"></div> -->
+								<h4>
+									<span th:text="${product.model}"></span> <span
+										th:text="${product.color}"></span>
+								</h4>
+								<h3>
+									<span>Rp </span> <span th:text="${product.price}"></span>
+								</h3>
+								<a th:href="@{/product/{id}/(id=${product.id})}"
+									class="add_cart">Lihat Detail</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<div th:replace="customer/share/footer"></div>
-		<div th:fragment="script"></div>
-		<div th:replace="customer/share/script"></div>
-	</body>
+		</div>
+	</section>
+	<div th:replace="customer/share/footer"></div>
+	<div th:fragment="script"></div>
+	<div th:replace="customer/share/script"></div>
+</body>
 
 </html>

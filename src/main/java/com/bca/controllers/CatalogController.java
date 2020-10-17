@@ -81,6 +81,17 @@ public class CatalogController {
     return "redirect:/product/" + id;
   }
 
+  @PostMapping("product/{id}/deletecart")
+  public String deleteFromCart(@PathVariable("id") int id) {
+    Order order = orderService.findById((String) session.getAttribute("CART_ID")).get();
+    Product product = productService.findById(id).get();
+    OrderDetail item = orderDetailService.findByOrderAndProduct(order, product);
+    if (item != null) {
+      orderDetailService.deleteById(item.getId());
+    }
+    return "redirect:/profile/cart";
+  }
+
   @PostMapping("product/{id}/addtowishlist")
   public String addToWishlist(@PathVariable("id") int id) {
     User user = (User) session.getAttribute("USER");
@@ -95,5 +106,18 @@ public class CatalogController {
     }
 
     return "redirect:/product/" + id;
+  }
+
+  @PostMapping("product/{id}/deletewishlist")
+  public String removeFromWishlist(@PathVariable("id") int id) {
+    User user = (User) session.getAttribute("USER");
+    Product product = productService.findById(id).get();
+    Wishlist data = wishlistService.findByUserAndProduct(user, product);
+
+    if (data != null) {
+      wishlistService.deleteById(data.getId());
+    }
+
+    return "redirect:/profile/wishlist";
   }
 }

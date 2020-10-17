@@ -80,6 +80,27 @@
 						</div>
 						<!-- ./col -->
 						</div>
+						
+						<table id="example1" class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Id Order</th>
+									<th>User</th>
+									<th>Courier</th>
+									<th>Service</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="orders: ${orders}">
+									<td th:text="${orders.id}">a</td>
+									<td th:text="${orders.user.fullname}">a</td>
+									<td th:text="${orders.courier}">a</td>
+									<td th:text="${orders.service}">a</td>
+									<td th:text="${orders.status}">a</td>
+								</tr>
+								</tbody>
+								</table>
 						<!-- ./col -->
 					</div>
 					<!-- /.row -->

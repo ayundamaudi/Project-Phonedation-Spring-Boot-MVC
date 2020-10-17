@@ -40,62 +40,24 @@
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
-									<th>Id</th>
-									<th>ID User</th>
+									<th>ID Order</th>
 									<th>Email User</th>
-									<th>Checkout Date</th>
+									<th>Name User</th>
 									<th>Order Date</th>
-									<th>Payment Date</th>
-									<th>Receipt Number</th>
-									
-									<th>Shipping Fee</th>
 									<th>Status</th>
-									<th>Action</th>
-									<!-- status cust belum bayar : Booked -->
-									<!-- status cust sudah bayar : Paid -->
-									<!-- status admin packing barang : Packing -->
-									<!-- status barang sudah ke kurir : Shipping-->
-									<!-- status barang sudah di cust : Done-->
-									<th>Produk</th>
-									<th>Quantity</th>
-									<th>Sub Total</th>
 									<th>Total Price</th>
-									<!--      <th>Address</th> -->
-									<!--  <th>Payment Method</th> -->
-									<th>Kurir</th>
-									<th>Servis</th>
-									<th>Address</th>
-									<th>Payment Method</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="detail: ${details}">
 									<td th:text="${detail.order.id}"></td>
-									<!-- ini blm -->
 									<td>a</td>
 									<td>a</td>
 									<td th:text="${detail.order.createdOrder}">a</td>
-									<td th:text="${detail.order.createdOrder}">a</td>
-									<td th:text="${detail.order.createdPayment}">a</td>
-									<td
-										th:text="${detail.product.model +' '+ detail.product.color}">a</td>
-									<td th:text="${detail.quantity}">a</td>
-									<td><select>
-											<option>Booked</option>
-											<option>Packing</option>
-											<option>Shipping</option>
-											<option>Done</option>
-									</select></td>
-									<td><a class="btn btn-warning" href="">Save</a></td>
-									<td th:text="${detail.order.receiptNumber}">a</td>
-									<td th:text="${detail.order.shippingFee}">a</td>
-									
-									<td th:text="${detail.order.subTotal}">a</td>
+									<td th:text="${detail.order.status}">a</td>
 									<td th:text="${detail.order.totalPrice}">a</td>
-									<td th:text="${detail.order.courier}">a</td>
-									<td th:text="${detail.order.courier}">a</td>
-									<td th:text="${detail.order.service}">a</td>
-									<td>a</td>
+									<td><a class="btn btn-info" href=""><i class="fas fa-search-plus"></i></a></td>
 								</tr>
 							</tbody>
 

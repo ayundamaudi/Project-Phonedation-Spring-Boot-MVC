@@ -51,21 +51,23 @@
                 <input type="text" class="form-control" id="details" name="details"
                   placeholder="Example: Auer Ford Street No.2" th:field="*{address}" />
               </div>
-              <br>
+              <br><br>
               <h3>Pengiriman:</h3>
-
                 <div class="col-md-12 form-group p_star">
+                <label for="postalcode">Courier</label>
                   <select class="country_select">
                     <option value="1">JNE</option>
                   </select>
                 </div>
                 <div class="col-md-12 form-group p_star">
+                <label for="postalcode">Service</label>
                   <select class="country_select">
                     <option value="1">REG</option>
                   </select>
                 </div>
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="" name="" placeholder="ongkir" />
+                <label for="postalcode">Shipping Fee</label>
+                  <input type="text" class="form-control" id="" name="" placeholder="Shipping Fee" />
                 </div>
               <button type="submit" class="btn_3">NEXT</button>
             </form>

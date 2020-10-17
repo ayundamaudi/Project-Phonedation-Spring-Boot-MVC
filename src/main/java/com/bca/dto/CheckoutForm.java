@@ -1,25 +1,33 @@
 package com.bca.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class CheckoutForm {
 
 	private int id;
 
 	private int userId;
 
+	@NotEmpty(message = "Address details is required")
 	private String address;
 
+	@NotEmpty(message = "Receiver's Name is required")
 	private String receiver;
 
+	@NotEmpty(message = "Phone number is required")
 	private String phone;
 
+	@NotEmpty(message = "Postal code is required")
 	private String postalcode;
 
 	private String district;
 
 	private String urban;
 
+	@NotEmpty(message = "Province is required")
 	private String province;
 
+	@NotEmpty(message = "City is required")
 	private String city;
 
 	private String courier;

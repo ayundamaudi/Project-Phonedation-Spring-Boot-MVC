@@ -15,7 +15,7 @@
         <div class="row">
           <div class="col-lg-8">
             <h3>Destination Address:</h3>
-            <form class="row contact_form" th:object="${form}" method="get" th:action="@{/payment}">
+            <form class="row contact_form" th:object="${form}" method="post" th:action="@{/checkout}">
               <div class="col-md-6 form-group p_star">
                 <label for="receiver">Receiver's Name</label>
                 <input type="text" class="form-control" id="receiver" name="nama penerima"

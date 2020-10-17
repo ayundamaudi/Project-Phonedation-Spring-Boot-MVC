@@ -11,11 +11,13 @@ import javax.validation.Valid;
 
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.UserForm;
+import com.bca.entities.Ewallet;
 import com.bca.entities.Order;
 import com.bca.entities.OrderDetail;
 import com.bca.entities.Product;
 import com.bca.entities.User;
 import com.bca.services.AuthService;
+import com.bca.services.EwalletService;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 import com.bca.services.UserService;
@@ -41,6 +43,9 @@ public class AuthController {
 
   @Autowired
   private UserService userService;
+
+  @Autowired
+  private EwalletService ewalletService;
 
   @Autowired
   private OrderService orderService;
@@ -106,6 +111,12 @@ public class AuthController {
       order.setUser(data);
       order.setStatus("Shopping");
       orderService.save(order);
+
+      Ewallet ewallet = new Ewallet();
+      ewallet.setBalance(0);
+      ewallet.setPin(123456); // FIXME: Change static value
+      ewallet.setUser(data);
+      ewalletService.save(ewallet);
 
       return "redirect:/login";
 

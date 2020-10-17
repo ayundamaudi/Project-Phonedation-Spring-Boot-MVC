@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import com.bca.MidtransAPI;
 import com.bca.RajaOngkirAPI;
 import com.bca.dto.CheckoutForm;
+import com.bca.dto.ErrorMessage;
 import com.bca.entities.Address;
 import com.bca.entities.Order;
 import com.bca.entities.User;
@@ -27,6 +29,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,16 +68,26 @@ public class CheckoutController {
   }
 
   @PostMapping("/checkout")
-  public String checkout(CheckoutForm form) {
-    Address address = new Address();
-    address.setAddress(form.getAddress());
-    address.setReceiverName(form.getReceiver());
-    address.setPhoneNumber(form.getPhone());
-    address.setPostalCode(addressService.findPostalCodeById(form.getPostalcode()));
-    address.setUser((User) session.getAttribute("USER"));
+  public String checkout(@Valid CheckoutForm form, BindingResult bindingResult, Model model) {
+    if (!bindingResult.hasErrors()) {
+      Address address = new Address();
+      address.setAddress(form.getAddress());
+      address.setReceiverName(form.getReceiver());
+      address.setPhoneNumber(form.getPhone());
+      address.setPostalCode(addressService.findPostalCodeById(form.getPostalcode()));
+      address.setUser((User) session.getAttribute("USER"));
 
-    session.setAttribute("ADDRESS", address);
-    return "redirect:/payment";
+      session.setAttribute("ADDRESS", address);
+      return "redirect:/payment";
+    } else {
+      ErrorMessage errorMessage = new ErrorMessage();
+      for (ObjectError err : bindingResult.getAllErrors()) {
+        errorMessage.getMessages().add(err.getDefaultMessage());
+      }
+      model.addAttribute("form", form);
+      model.addAttribute("errors", errorMessage);
+      return "customer/checkout";
+    }
   }
 
   // semangat herdhiiii

@@ -80,7 +80,6 @@
 									<td
 										th:text="${detail.product.model +' '+ detail.product.color}">a</td>
 									<td th:text="${detail.quantity}">a</td>
-									<td th:text="${detail.order.receiptNumber}">a</td>
 									<td><select>
 											<option>Booked</option>
 											<option>Packing</option>
@@ -88,6 +87,7 @@
 											<option>Done</option>
 									</select></td>
 									<td><a class="btn btn-warning" href="">Save</a></td>
+									<td th:text="${detail.order.receiptNumber}">a</td>
 									<td th:text="${detail.order.shippingFee}">a</td>
 									
 									<td th:text="${detail.order.subTotal}">a</td>

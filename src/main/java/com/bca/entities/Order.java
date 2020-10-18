@@ -28,10 +28,10 @@ public class Order {
 	@ManyToOne
 	private PaymentMethod paymentMethod;
 
-	@Column(length = 15)
+	@Column
 	private String courier;
 
-	@Column(length = 15)
+	@Column
 	private String service;
 
 	// price * qty
@@ -45,10 +45,10 @@ public class Order {
 	@Column
 	private double totalPrice;
 
-	@Column(length = 20, nullable = false)
+	@Column
 	private String status;
 
-	@Column(length = 100)
+	@Column
 	private String receiptNumber;
 
 	@Column

@@ -16,7 +16,6 @@ import com.bca.entities.User;
 import com.bca.models.MidtransResponse;
 import com.bca.models.RajaOngkirCityResponse;
 import com.bca.models.RajaOngkirProvinceResponse;
-import com.bca.models.city.Result;
 import com.bca.models.cost.ItemCost;
 import com.bca.services.AddressService;
 import com.bca.services.OrderDetailService;

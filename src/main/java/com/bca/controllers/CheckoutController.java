@@ -118,6 +118,11 @@ public class CheckoutController {
   @PostMapping("/pay")
   public String wkwk() {
     Order order = orderService.findById((String) session.getAttribute("CART_ID")).get();
+    order.setAddress((Address) session.getAttribute("ADDRESS"));
+    order.setCheckoutDate(new Date());
+    order.setStatus("Waiting for Payment");
+    orderService.save(order);
+
     ResponseEntity<String> response = MidtransAPI.snap(order.getId(), (int) order.getTotalPrice());
     log.info(order.toString());
     String redirectUrl = null;
@@ -134,9 +139,11 @@ public class CheckoutController {
 
   @GetMapping("/payment")
   public String payment(Model model) {
-    if (((Address) session.getAttribute("ADDRESS")) == null) {
+    Address address = (Address) session.getAttribute("ADDRESS");
+    if (address == null) {
       return "redirect:/checkout";
     }
+    addressService.save(address);
     Order order = orderService.findById((String) session.getAttribute("CART_ID")).get();
     model.addAttribute("order", order);
     model.addAttribute("orderdetails", orderDetailService.findAllByOrder(order));

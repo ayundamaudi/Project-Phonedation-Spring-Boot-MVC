@@ -127,9 +127,9 @@ public class ProfileController {
   public String orderDetail(@PathVariable("id") String id, Model model) {
     Order order = orderService.findById(id).get();
     log.info(order.toString());
-    model.addAttribute("order", order);
     Iterable<OrderDetail> orderDetails = orderDetailService.findAllByOrder(order);
     log.info(orderDetails.toString());
+    model.addAttribute("order", order);
     model.addAttribute("details", orderDetails);
     return "customer/profile/order/detail";
   }

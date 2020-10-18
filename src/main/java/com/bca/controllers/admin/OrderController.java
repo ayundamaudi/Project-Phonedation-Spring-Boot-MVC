@@ -38,7 +38,7 @@ public class OrderController {
     model.addAttribute("orders", orderService.findAll());
     return BASE_PATH.concat("/index");
   }
-  
+
   @GetMapping("/create")
   public String create(Model model) {
     model.addAttribute("form", new CheckoutForm());
@@ -64,42 +64,45 @@ public class OrderController {
     }
   }
 
-	/*
-	 * @GetMapping("/edit/{id}") public String edit(@PathVariable("id") String id,
-	 * Model model) { OrderForm form = new OrderForm(); Order order =
-	 * orderService.findById(id).get();
-	 * 
-	 * form.setId(order.getId()); form.setCheckoutDate(order.getCheckoutDate());
-	 * form.setCreatedOrder(order.getCreatedOrder());
-	 * form.setCreatedPayment(order.getCreatedPayment());
-	 * form.setReceiptNumber(order.getReceiptNumber());
-	 * form.setService(order.getService());
-	 * form.setShippingFee(order.getShippingFee());
-	 * form.setSubTotal(order.getSubTotal());
-	 * form.setTotalPrice(order.getTotalPrice());
-	 * form.setAddressId(order.getAddress().getId());
-	 * form.setPaymentMethodId(order.getPaymentMethod().getId());
-	 * form.setUserId(order.getUser().getId());
-	 * 
-	 * form.setStatus(form.getStatus());
-	 * 
-	 * model.addAttribute("form", form); model.addAttribute("details",
-	 * orderDetailService.findAllByOrder(order)); return BASE_PATH.concat("/edit");
-	 * }
-	 */
-
-  Logger log = LoggerFactory.getLogger(this.getClass());
-  @GetMapping("/edit/{id}") 
+  @GetMapping("/edit/{id}")
   public String edit(@PathVariable("id") String id, Model model) {
-	  Order order = orderService.findById(id).get();
-	    log.info(order.toString());
-	    model.addAttribute("order", order);
-	    Iterable<OrderDetail> orderDetails = orderDetailService.findAllByOrder(order);
-	    log.info(orderDetails.toString());
-	    model.addAttribute("details", orderDetails);
-	    return BASE_PATH.concat("/detail");
+    OrderForm form = new OrderForm();
+    Order order = orderService.findById(id).get();
+
+    form.setId(order.getId());
+    // form.setCheckoutDate(order.getCheckoutDate());
+    // form.setCreatedOrder(order.getCreatedOrder());
+    // form.setCreatedPayment(order.getCreatedPayment());
+    // form.setReceiptNumber(order.getReceiptNumber());
+    // form.setService(order.getService());
+    // form.setShippingFee(order.getShippingFee());
+    // form.setSubTotal(order.getSubTotal());
+    // form.setTotalPrice(order.getTotalPrice());
+    // form.setAddressId(order.getAddress().getId());
+    // form.setPaymentMethodId(order.getPaymentMethod().getId());
+    // form.setUserId(order.getUser().getId());
+
+    form.setStatus(form.getStatus());
+
+    model.addAttribute("form", form);
+    model.addAttribute("order", order);
+    model.addAttribute("details", orderDetailService.findAllByOrder(order));
+    return BASE_PATH.concat("/detail");
   }
-  
+
+  // Logger log = LoggerFactory.getLogger(this.getClass());
+  // @GetMapping("/edit/{id}")
+  // public String edit(@PathVariable("id") String id, Model model) {
+  // Order order = orderService.findById(id).get();
+  // log.info(order.toString());
+  // model.addAttribute("order", order);
+  // Iterable<OrderDetail> orderDetails =
+  // orderDetailService.findAllByOrder(order);
+  // log.info(orderDetails.toString());
+  // model.addAttribute("details", orderDetails);
+  // return BASE_PATH.concat("/detail");
+  // }
+
   @PostMapping("/update")
   public String update(OrderForm form, BindingResult bindingResult, Model model) {
     if (!bindingResult.hasErrors()) {

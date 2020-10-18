@@ -2,6 +2,8 @@ package com.bca.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -11,22 +13,23 @@ import javax.persistence.Table;
 public class Ewallet {
 
 	@Id
-	private String id;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
 	@Column
-    private double balance;
-	
+	private double balance;
+
 	@Column(nullable = false)
-    private int pin;
-	
+	private int pin;
+
 	@OneToOne
 	private User user;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -53,6 +56,5 @@ public class Ewallet {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
 }

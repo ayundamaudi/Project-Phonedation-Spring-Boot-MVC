@@ -2,8 +2,8 @@
 <html>
 
 <head>
-<title>Admin | Data Order</title>
-<style th:replace="/admin/share/style"></style>
+	<title>Admin | Data Order</title>
+	<style th:replace="/admin/share/style"></style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -52,13 +52,13 @@
 							<tbody>
 								<tr th:each="order: ${orders}">
 									<td th:text="${order.id}"></td>
-									<td>a</td>
-									<td>a</td>
+									<td th:text="${order.user.email}"></td>
+									<td th:text="${order.user.fullname}"></td>
 									<td th:text="${order.createdOrder}">a</td>
 									<td th:text="${order.status}">a</td>
 									<td th:text="${order.totalPrice}">a</td>
 									<td><a class="btn btn-info" th:href="@{/admin/order/edit/{id}/(id=${order.id})}">
-										<i class="fas fa-search-plus"></i></a>
+											<i class="fas fa-search-plus"></i></a>
 									</td>
 								</tr>
 							</tbody>

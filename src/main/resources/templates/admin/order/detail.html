@@ -2,9 +2,9 @@
 <html>
 
 <head>
-<title>Phonedation | Detail Order</title>
-<style th:replace="/admin/share/style"></style>
-<style th:replace="/customer/share/style"></style>
+	<title>Phonedation | Detail Order</title>
+	<style th:replace="/admin/share/style"></style>
+	<style th:replace="/customer/share/style"></style>
 
 </head>
 
@@ -16,32 +16,32 @@
 			<br>
 			<!--================ confirmation part start =================-->
 			<section class="confirmation_part">
-				<div class="container" th:each="detail: ${details}">
+				<div class="container">
 					<div class="row">
 						<div class="col-lg-6 col-lx-4">
 							<div class="single_confirmation_details">
 								<h4>order info</h4>
 								<ul>
 									<li>
-										<p>ID order</p> <span th:text="${' : ' + detail.order.id}">: 60235</span>
+										<p>ID order</p> <span th:text="${' : ' + order.id}">: 60235</span>
 									</li>
 									<li>
-										<p>E-mail User</p> <span >: E-mail not yet</span>
+										<p>E-mail User</p> <span th:text="${' : ' + order.user.email}">: E-mail not yet</span>
 									</li>
 									<li>
-										<p>Name User</p> <span>: User Not yet</span>
+										<p>Name User</p> <span th:text="${' : ' + order.user.fullname}">: User Not yet</span>
 									</li>
 									<li>
-										<p>Order Date</p> <span th:text="${' : ' + detail.order.createdOrder}">: Oct 03, 2017</span>
+										<p>Order Date</p> <span th:text="${' : ' + order.createdOrder}">: Oct 03, 2017</span>
 									</li>
 									<li>
-										<p>Courier</p> <span th:text="${' : ' + detail.order.courier}">: USD 2210</span>
+										<p>Courier</p> <span th:text="${' : ' + order.courier}">: USD 2210</span>
 									</li>
 									<li>
-										<p>Service</p> <span th:text="${' : ' + detail.order.service}">: Check payments</span>
+										<p>Service</p> <span th:text="${' : ' + order.service}">: Check payments</span>
 									</li>
 									<li>
-										<p>Status</p> <span th:text="${' : ' + detail.order.status}">: Check payments</span>
+										<p>Status</p> <span th:text="${' : ' + order.status}">: Check payments</span>
 									</li>
 
 								</ul>
@@ -52,22 +52,22 @@
 								<h4>Billing Address</h4>
 								<ul>
 									<li>
-										<p>Receiver's Name</p> <span >: 56/8</span>
+										<p>Receiver's Name</p> <span th:text="${' : ' + order.address.receiverName}">: 56/8</span>
 									</li>
 									<li>
-										<p>Phone Number</p> <span >: Los Angeles</span>
+										<p>Phone Number</p> <span th:text="${' : ' + order.address.phoneNumber}">: Los Angeles</span>
 									</li>
 									<li>
-										<p>Province</p> <span>: United States</span>
+										<p>Province</p> <span th:text="${' : ' + order.address.postalCode.province}">: United States</span>
 									</li>
 									<li>
-										<p>City</p> <span>: 36952</span>
+										<p>City</p> <span th:text="${' : ' + order.address.postalCode.city}">: 36952</span>
 									</li>
 									<li>
-										<p>Postal Code</p> <span>: 36952</span>
+										<p>Postal Code</p> <span th:text="${' : ' + order.address.postalCode.postalCode}">: 36952</span>
 									</li>
 									<li>
-										<p>Address</p> <span>: 36952</span>
+										<p>Address</p> <span th:text="${' : ' + order.address.address}">: 36952</span>
 									</li>
 								</ul>
 							</div>
@@ -86,41 +86,39 @@
 										</tr>
 									</thead>
 									<tbody>
-                <tr>
-                  <th colspan="2"><span th:text="${detail.product.model}">Pixelstore fresh Blackberry</span>
-                    <span th:text="${detail.product.color}"></span>
-                  </th>
-                  <th th:text="${detail.quantity}">x02</th>
-                  <th> <span th:text="${detail.product.price}">$720.00</span></th>
-                </tr>
-              </tbody>
-              <tr>
-                <th colspan="3">shipping fee</th>
-                <th><span th:text="${detail.order.shippingFee}">flat rate: $50.00</span></th>
-              </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th scope="col" colspan="3">Total Harga</th>
-                  <th scope="col" th:text="${detail.order.totalPrice}">Sub Total</th>
-                </tr>
-              </tfoot>
+										<tr th:each="detail: ${details}">
+											<th colspan="2"><span th:text="${detail.product.model}">Pixelstore fresh Blackberry</span>
+												<span th:text="${detail.product.color}"></span>
+											</th>
+											<th th:text="${detail.quantity}">x02</th>
+											<th> <span th:text="${detail.product.price}">$720.00</span></th>
+										</tr>
+									</tbody>
+									<tr>
+										<th colspan="3">shipping fee</th>
+										<th><span th:text="${order.shippingFee}">flat rate: $50.00</span></th>
+									</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<th scope="col" colspan="3">Total Harga</th>
+											<th scope="col" th:text="${order.totalPrice}">Sub Total</th>
+										</tr>
+									</tfoot>
 								</table>
-								<label for="exampleInputPassword1">Status</label> <select
-									class="form-control select2" style="width: 100%;"
-									name="txtBrand">
-									<option>Booked</option>
-									<option>Process</option>
-									<option>Shipping</option>
-									<option>Done</option>
-								</select>
-								<!-- <input type="hidden" th:field="*{id}"> -->
-								<div>
-									<br>
-									<br>
-									<button type="submit" class="btn btn-primary">Update
-										Status</button>
-								</div>
+
+								<form method="POST" th:action="@{/admin/order/update}" th:object="${form}">
+									<label for="exampleInputPassword1">Status</label>
+									<select class="form-control select2" style="width: 100%;" name="txtBrand" th:field="*{status}">
+										<option th:value="Booked">Booked</option>
+										<option th:value="Process">Process</option>
+										<option th:value="Shipping">Shipping</option>
+										<option th:value="Done">Done</option>
+									</select>
+									<br><br>
+									<input type="hidden" th:field="*{id}">
+									<button type="submit" class="btn btn-primary">Update Status</button>
+								</form>
 							</div>
 						</div>
 					</div>

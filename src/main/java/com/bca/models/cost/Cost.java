@@ -38,4 +38,9 @@ public class Cost {
         this.cost = cost;
     }
 
+    @Override
+    public String toString() {
+        return "Cost [cost=" + cost + ", description=" + description + ", service=" + service + "]";
+    }
+
 }

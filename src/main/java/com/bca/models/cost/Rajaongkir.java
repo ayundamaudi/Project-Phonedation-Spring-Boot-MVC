@@ -6,17 +6,27 @@ package com.bca.models.cost;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Rajaongkir {
 
     private Query query;
 
     private Status status;
 
+    @JsonProperty("origin_details")
     private OriginDetails originDetails;
 
+    @JsonProperty("destination_details")
     private DestinationDetails destinationDetails;
 
     private List<Result> results = null;
+
+    @Override
+    public String toString() {
+        return "Rajaongkir [destinationDetails=" + destinationDetails + ", originDetails=" + originDetails + ", query="
+                + query + ", results=" + results + ", status=" + status + "]";
+    }
 
     public Query getQuery() {
         return query;

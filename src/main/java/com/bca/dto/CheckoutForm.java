@@ -30,6 +30,8 @@ public class CheckoutForm {
 	@NotEmpty(message = "City is required")
 	private String city;
 
+	private double weight;
+
 	private String courier;
 
 	private String service;
@@ -180,5 +182,13 @@ public class CheckoutForm {
 
 	public void setFee(String fee) {
 		this.fee = fee;
+	}
+
+	public double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 }

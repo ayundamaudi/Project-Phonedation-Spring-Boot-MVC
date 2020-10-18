@@ -17,6 +17,7 @@ import com.bca.models.MidtransResponse;
 import com.bca.models.RajaOngkirCityResponse;
 import com.bca.models.RajaOngkirProvinceResponse;
 import com.bca.models.city.Result;
+import com.bca.models.cost.ItemCost;
 import com.bca.services.AddressService;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
@@ -57,27 +58,45 @@ public class CheckoutController {
     RajaOngkirProvinceResponse provinces = RajaOngkirAPI.findAllProvince().getBody();
     RajaOngkirCityResponse cities = RajaOngkirAPI.findAllCity().getBody();
 
-    for (Result c : cities.getRajaongkir().getResults()) {
-      log.info(c.toString());
-    }
     model.addAttribute("provinces", provinces.getRajaongkir().getResults());
     model.addAttribute("cities", cities.getRajaongkir().getResults());
-
     model.addAttribute("form", new CheckoutForm());
+
     return "customer/checkout";
   }
 
   @PostMapping("/checkout")
   public String checkout(@Valid CheckoutForm form, BindingResult bindingResult, Model model) {
     if (!bindingResult.hasErrors()) {
+      Order order = orderService.findById((String) session.getAttribute("CART_ID")).get();
+
       Address address = new Address();
       address.setAddress(form.getAddress());
       address.setReceiverName(form.getReceiver());
       address.setPhoneNumber(form.getPhone());
       address.setPostalCode(addressService.findPostalCodeById(form.getPostalcode()));
       address.setUser((User) session.getAttribute("USER"));
+      addressService.save(address);
+
+      String JAKARTA_ID = "151";
+      ResponseEntity<String> response = RajaOngkirAPI.cost(JAKARTA_ID, form.getCity(), 1700.0, form.getCourier());
+      ItemCost body = null;
+      try {
+        body = new ObjectMapper().readValue(response.getBody(), ItemCost.class);
+        log.info(body.toString());
+      } catch (JsonProcessingException e) {
+        e.printStackTrace();
+      }
+
+      order.setAddress(address);
+      order.setCourier(form.getCourier());
+      order.setService(body.getRajaongkir().getResults().get(0).getCosts().get(0).getService());
+      order.setShippingFee(body.getRajaongkir().getResults().get(0).getCosts().get(0).getCost().get(0).getValue());
+      order.setTotalPrice(order.getTotalPrice() + order.getShippingFee());
+      orderService.save(order);
 
       session.setAttribute("ADDRESS", address);
+      session.setAttribute("SHIPMENT", body);
       return "redirect:/payment";
     } else {
       ErrorMessage errorMessage = new ErrorMessage();
@@ -117,56 +136,55 @@ public class CheckoutController {
 
   @PostMapping("/pay")
   public String wkwk() {
-    Order order = orderService.findById((String) session.getAttribute("CART_ID")).get();
-    order.setAddress((Address) session.getAttribute("ADDRESS"));
-    order.setCheckoutDate(new Date());
-    order.setStatus("Waiting for Payment");
-    orderService.save(order);
+    Order currentOrder = orderService.findById((String) session.getAttribute("CART_ID")).get();
+    currentOrder.setAddress((Address) session.getAttribute("ADDRESS"));
+    currentOrder.setCheckoutDate(new Date());
+    currentOrder.setStatus("Waiting for Payment");
+    orderService.save(currentOrder);
 
-    ResponseEntity<String> response = MidtransAPI.snap(order.getId(), (int) order.getTotalPrice());
-    log.info(order.toString());
+    ResponseEntity<String> response = MidtransAPI.snap(currentOrder.getId(), (int) currentOrder.getTotalPrice());
+    log.info(currentOrder.toString());
     String redirectUrl = null;
     try {
       MidtransResponse body = new ObjectMapper().readValue(response.getBody(), MidtransResponse.class);
       redirectUrl = body.getRedirectUrl();
-      log.info(body.toString());
+
+      UUID orderId = UUID.randomUUID();
+      Order order = new Order();
+      order.setId(orderId.toString());
+      order.setUser((User) session.getAttribute("USER"));
+      order.setStatus("Shopping");
+      orderService.save(order);
+
+      session.setAttribute("CART_ID", order.getId());
+      session.removeAttribute("ADDRESS");
+
+      return "redirect:" + redirectUrl;
     } catch (JsonProcessingException e) {
       e.printStackTrace();
+      return "redirect:/payment";
     }
-    log.info(response.getBody());
-    return "redirect:" + redirectUrl;
   }
 
   @GetMapping("/payment")
   public String payment(Model model) {
-    Address address = (Address) session.getAttribute("ADDRESS");
-    if (address == null) {
-      return "redirect:/checkout";
-    }
-    addressService.save(address);
+    // Address address = (Address) session.getAttribute("ADDRESS");
+    // if (address == null) {
+    // return "redirect:/checkout";
+    // }
     Order order = orderService.findById((String) session.getAttribute("CART_ID")).get();
     model.addAttribute("order", order);
     model.addAttribute("orderdetails", orderDetailService.findAllByOrder(order));
     return "customer/payment";
   }
 
-  @PostMapping("/payment/success")
+  @GetMapping("/payment/success")
   public String paymentSuccess() {
-    Order currentOrder = orderService.findById((String) session.getAttribute("CART_ID")).get();
-    currentOrder.setCheckoutDate(new Date());
-    currentOrder.setAddress((Address) session.getAttribute("ADDRESS"));
-    currentOrder.setStatus("payment success");
-    orderService.save(currentOrder);
-
-    UUID orderId = UUID.randomUUID();
-    Order order = new Order();
-    order.setId(orderId.toString());
-    order.setUser((User) session.getAttribute("USER"));
-    order.setStatus("Shopping");
-    orderService.save(order);
-
-    session.setAttribute("CART_ID", order.getId());
-    session.removeAttribute("ADDRESS");
+    // Order currentOrder = orderService.findById((String)
+    // session.getAttribute("")).get();
+    // currentOrder.setCreatedPayment(new Date());
+    // currentOrder.setStatus("payment success");
+    // orderService.save(currentOrder);
 
     return "redirect:/";
   }

@@ -6,12 +6,9 @@ import com.bca.dto.CheckoutForm;
 import com.bca.dto.ErrorMessage;
 import com.bca.dto.OrderForm;
 import com.bca.entities.Order;
-import com.bca.entities.OrderDetail;
 import com.bca.services.OrderDetailService;
 import com.bca.services.OrderService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

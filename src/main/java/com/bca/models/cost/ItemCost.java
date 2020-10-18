@@ -16,4 +16,9 @@ public class ItemCost {
         this.rajaongkir = rajaongkir;
     }
 
+    @Override
+    public String toString() {
+        return "ItemCost [rajaongkir=" + rajaongkir + "]";
+    }
+
 }

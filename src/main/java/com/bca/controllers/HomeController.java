@@ -3,6 +3,8 @@ package com.bca.controllers;
 import com.bca.dto.SearchForm;
 import com.bca.services.ProductService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +17,15 @@ public class HomeController {
   @Autowired
   private ProductService productService;
 
+  Logger log = LoggerFactory.getLogger(this.getClass());
+
   @GetMapping
   public String home(Model model) {
     model.addAttribute("products", productService.findAll());
     model.addAttribute("latest", productService.findLatestProducts());
     model.addAttribute("bestseller", productService.findBestsellerProducts());
     model.addAttribute("form", new SearchForm());
+
     return "home";
   }
 

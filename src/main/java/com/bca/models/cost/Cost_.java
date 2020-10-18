@@ -36,4 +36,9 @@ public class Cost_ {
         this.note = note;
     }
 
+    @Override
+    public String toString() {
+        return "Cost_ [etd=" + etd + ", note=" + note + ", value=" + value + "]";
+    }
+
 }

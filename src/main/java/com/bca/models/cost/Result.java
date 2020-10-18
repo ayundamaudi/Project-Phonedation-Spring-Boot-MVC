@@ -14,6 +14,10 @@ public class Result {
 
     private List<Cost> costs = null;
 
+    public Result() {
+
+    }
+
     public Result(String code, String name, List<Cost> costs) {
         this.code = code;
         this.name = name;
@@ -42,6 +46,11 @@ public class Result {
 
     public void setCosts(List<Cost> costs) {
         this.costs = costs;
+    }
+
+    @Override
+    public String toString() {
+        return "Result [code=" + code + ", costs=" + costs + ", name=" + name + "]";
     }
 
 }

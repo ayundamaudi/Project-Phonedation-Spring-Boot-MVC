@@ -1,21 +1,27 @@
 package com.bca.models.cost;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by Robby Dianputra on 2/14/2018.
  */
 
 public class OriginDetails {
 
+    @JsonProperty("city_id")
     private String cityId;
 
+    @JsonProperty("province_id")
     private String provinceId;
 
     private String province;
 
     private String type;
 
+    @JsonProperty("city_name")
     private String cityName;
 
+    @JsonProperty("postal_code")
     private String postalCode;
 
     public String getCityId() {

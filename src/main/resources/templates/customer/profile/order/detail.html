@@ -38,12 +38,6 @@
               <li>
                 <p>Date Order</p><span th:text="' : ' + ${order.createdOrder}">: Oct 03, 2017</span>
               </li>
-              <li>
-                <p>Date Payment</p><span th:text="' : ' + ${order.createdPayment}">: Oct 03, 2017</span>
-              </li>
-              <li>
-                <p>total </p><span th:text="' : ' + ${order.totalPrice}">: USD 2210</span>
-              </li>
               <!--               <li>
                 <p>mayment methord</p><span th:text="${' : ' + detail.order.paymentMethod.method}">: Check
                   payments</span>
@@ -55,9 +49,6 @@
               <li>
                 <p>Status </p><span th:text="' : ' + ${order.status}">: USD 2210</span>
               </li>
-              <li>
-                <p>Status </p><span th:text="' : ' + ${order.receiptNumber}">: USD 2210</span>
-              </li>
             </ul>
           </div>
         </div>
@@ -66,31 +57,31 @@
             <h4>shipping Address</h4>
             <ul>
               <li>
-                <p>Nama Penerima</p><span th:text="' : ' + ${order.address.receiverName}">: 56/8</span>
+                <p>Receiver's Name</p><span th:text="' : ' + ${order.address.receiverName}">: 56/8</span>
               </li>
               <li>
-                <p>Alamat</p><span th:text="' : ' + ${order.address.address}">: 56/8</span>
+                <p>Address</p><span th:text="' : ' + ${order.address.address}">: 56/8</span>
               </li>
               <li>
-                <p>No Tlp</p><span th:text="' : ' + ${order.address.phoneNumber}">: Los Angeles</span>
+                <p>Phone number</p><span th:text="' : ' + ${order.address.phoneNumber}">: Los Angeles</span>
               </li>
               <li>
-                <p>Kode Pos</p><span th:text="' : ' + ${order.address.postalCode.postalCode}">: Los Angeles</span>
+                <p>Postal Code</p><span th:text="' : ' + ${order.address.postalCode.postalCode}">: Los Angeles</span>
               </li>
               <li>
-                <p>Kecamatan</p><span th:text="' : ' + ${order.address.postalCode.district}">: Los
+                <p>Urban</p><span th:text="' : ' + ${order.address.postalCode.district}">: Los
                   Angeles</span>
               </li>
               <li>
-                <p>Kelurahan</p><span th:text="' : ' + ${order.address.postalCode.urban}">: United
+                <p>district</p><span th:text="' : ' + ${order.address.postalCode.urban}">: United
                   States</span>
               </li>
               <li>
-                <p>Provinsi</p><span th:text="' : ' + ${order.address.postalCode.province}">: United
+                <p>Province</p><span th:text="' : ' + ${order.address.postalCode.province}">: United
                   States</span>
               </li>
               <li>
-                <p>Kota</p><span th:text="' : ' + ${order.address.postalCode.city}">: United States</span>
+                <p>City</p><span th:text="' : ' + ${order.address.postalCode.city}">: United States</span>
               </li>
             </ul>
           </div>
@@ -124,7 +115,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th scope="col" colspan="3">Total Harga</th>
+                  <th scope="col" colspan="3">Total price</th>
                   <th scope="col" th:text="${order.totalPrice}">Sub Total</th>
                 </tr>
               </tfoot>

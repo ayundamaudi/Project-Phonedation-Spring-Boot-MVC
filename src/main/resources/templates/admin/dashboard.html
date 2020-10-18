@@ -31,8 +31,8 @@
 				<div class="container-fluid">
 					<!-- Small boxes (Stat box) -->
 					<div class="row">
-						<div class="col-lg-4 col-6">
-							<!-- small box -->
+						<!-- <div class="col-lg-4 col-6">
+							small box
 							<div class="small-box bg-info">
 								<div class="inner">
 									<h3>150</h3>
@@ -46,9 +46,9 @@
 									class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
-						<!-- ./col -->
+						./col
 						<div class="col-lg-4 col-6">
-							<!-- small box -->
+							small box
 							<div class="small-box bg-success">
 								<div class="inner">
 									<h3>53</h3>
@@ -62,9 +62,9 @@
 									class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
-						<!-- ./col -->
+						./col
 						<div class="col-lg-4 col-6">
-							<!-- small box -->
+							small box
 							<div class="small-box bg-warning">
 								<div class="inner">
 									<h3>44</h3>
@@ -77,27 +77,28 @@
 								<a th:href="@{/user/list}"  class="small-box-footer">More info <i
 									class="fas fa-arrow-circle-right"></i></a>
 							</div>
-						</div>
+						</div> -->
 						<!-- ./col -->
 						</div>
-						
+						<hr>
+						<h3>New Order</h3>
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
 									<th>Id Order</th>
-									<th>User</th>
+									<th>Name</th>
+									<th>Email</th>
 									<th>Courier</th>
-									<th>Service</th>
-									<th>Status</th>
+									<th>Date</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="orders: ${orders}">
 									<td th:text="${orders.id}">a</td>
 									<td th:text="${orders.user.fullname}">a</td>
-									<td th:text="${orders.courier}">a</td>
-									<td th:text="${orders.service}">a</td>
-									<td th:text="${orders.status}">a</td>
+									<td th:text="${orders.user.email}">a</td>
+									<td th:text="${orders.courier + ' - ' + orders.service}">a</td>
+									<td th:text="${orders.createdOrder}">a</td>
 								</tr>
 								</tbody>
 								</table>

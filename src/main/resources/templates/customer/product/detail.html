@@ -45,17 +45,16 @@
               </h2>
               <span th:if="${session.USER!=null}">
                 <div class="card_area d-flex justify-content-between align-items-center">
-                  <div class="product_count">
+<!--                   <div class="product_count">
                     <span class="inumber-decrement"> <i class="ti-minus"></i></span>
                     <input class="input-number" type="text" value="1" min="0" max="10">
                     <span class="number-increment"> <i class="ti-plus"></i></span>
-                  </div>
+                  </div> -->
                   <form method="post" th:action="@{/product/{id}/addtocart/(id=${product.id})}">
                     <button type="submit" class="btn_3" th:onClick="showCart()">Add to cart</button>
                   </form>
-                  <form method="post" th:action="@{/product/{id}/addtowishlist/(id=${product.id})}"
-                    style="display: flex; justify-content: center">
-                    <button type="submit" class="like_us"><i class="ti-heart"></i></button>
+                  <form method="post" th:action="@{/product/{id}/addtowishlist/(id=${product.id})}">
+                    <button type="submit" class="like_us" th:onClick="showWish()"><i class="ti-heart"></i></button>
                   </form>
                 </div>
               </span>
@@ -185,6 +184,9 @@
       function showCart() {
         alert("Product Added to Cart !");
       }
+      function showWish() {
+          alert("Product Added to Wishlist!");
+        }
     </script>
   </body>
 

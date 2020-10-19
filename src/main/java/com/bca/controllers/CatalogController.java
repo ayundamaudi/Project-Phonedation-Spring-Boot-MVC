@@ -46,7 +46,7 @@ public class CatalogController {
   @GetMapping("/product")
   public String index(Model model) {
     model.addAttribute("products", productService.findAll());
-    return "/customer/product/catalog";
+    return "customer/product/catalog";
   }
 
   @GetMapping("/product/{id}")

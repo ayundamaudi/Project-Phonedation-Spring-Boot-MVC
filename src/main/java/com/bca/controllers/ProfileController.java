@@ -65,7 +65,7 @@ public class ProfileController {
   @GetMapping
   public String index(Model model) {
     model.addAttribute("form", (User) session.getAttribute("USER"));
-    return "/customer/profile/index";
+    return "customer/profile/index";
   }
 
   @PostMapping("/update")

@@ -1,140 +1,143 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Admin | Laporan Penjualan</title>
-<style th:replace="/admin/share/style"></style>
-<!-- DataTables -->
-  <link rel="stylesheet" href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <style th:replace="admin/share/style"></style>
+  <!-- DataTables -->
+  <link rel="stylesheet" href="admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-		<div th:replace="admin/share/header"></div>
-		<div th:replace="admin/share/left-side"></div>
+  <div class="wrapper">
+    <div th:replace="admin/share/header"></div>
+    <div th:replace="admin/share/left-side"></div>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1><i class="fas fa-folder-open"></i> Laporan Penjualan Harian</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
-								<li class="breadcrumb-item active">Laporan Penjualan Harian</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-	
-	<section class="content">
-		<div class="card">
-              <div class="card-body">
-              <div class="row">
-                    <div class="col-sm-3">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Tanggal</label>
-                        <select class="form-control">
-                          <option>Tanggal 1</option>
-                          <option>Tanggal 2</option>
-                          <option>Tanggal 3</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Bulan</label>
-                        <select class="form-control">
-                          <option>Bulan 1</option>
-                          <option>Bulan 2</option>
-                          <option>Bulan 3</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Tahun</label>
-                        <select class="form-control">
-                          <option>Tahun 1</option>
-                          <option>Tahun 2</option>
-                          <option>Tahun 3</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label><br></label>
-                        <div>
-                        <a th:href="@{/admin/#}" class="btn btn-success">Submit</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-12" align="right">
-                    <a href="#" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                    </div>
-                  </div>
-                  <br>
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Tanggal Order</th>
-                    <th>Nama Customer</th>
-                    <th>Alamat</th>
-                    <th>Produk</th>
-                    <th>Kuantitas</th>
-                    <th>Harga Satuan</th>
-                    <th>Pembayaran</th>
-                    <th>Tanggal Pembayaran</th>
-                    <th>Ongkos Kirim</th>
-                    <th>Total</th>
-                    
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-					<td>1</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-					<td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                  </tr>
-                  <tr>
-                    <td colspan="10">Pendapatan</td>
-                    <td>a</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1><i class="fas fa-folder-open"></i> Laporan Penjualan Harian</h1>
             </div>
-            </section>
-  </div>
-  <!-- /.content-wrapper -->
-<div th:replace="admin/share/footer"></div>
-</div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li class="breadcrumb-item active">Laporan Penjualan Harian</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
 
-<div th:fragment="script"></div> 
-<div th:replace="admin/share/script"></div>
-<!-- DataTables -->
-<script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/admin/plugins/datatables-bs4//user/js/dataTables.bootstrap4.min.js"></script>
-<script src="/admin/plugins/datatables-responsive//user/js/dataTables.responsive.min.js"></script>
-<script src="/admin/plugins/datatables-responsive//user/js/responsive.bootstrap4.min.js"></script>
-<!-- page script -->
+      <section class="content">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <!-- select -->
+                <div class="form-group">
+                  <label>Tanggal</label>
+                  <select class="form-control">
+                    <option>Tanggal 1</option>
+                    <option>Tanggal 2</option>
+                    <option>Tanggal 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <!-- select -->
+                <div class="form-group">
+                  <label>Bulan</label>
+                  <select class="form-control">
+                    <option>Bulan 1</option>
+                    <option>Bulan 2</option>
+                    <option>Bulan 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <!-- select -->
+                <div class="form-group">
+                  <label>Tahun</label>
+                  <select class="form-control">
+                    <option>Tahun 1</option>
+                    <option>Tahun 2</option>
+                    <option>Tahun 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <!-- select -->
+                <div class="form-group">
+                  <label><br></label>
+                  <div>
+                    <a th:href="@{/admin/#}" class="btn btn-success">Submit</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12" align="right">
+                <a href="#" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+              </div>
+            </div>
+            <br>
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Tanggal Order</th>
+                  <th>Nama Customer</th>
+                  <th>Alamat</th>
+                  <th>Produk</th>
+                  <th>Kuantitas</th>
+                  <th>Harga Satuan</th>
+                  <th>Pembayaran</th>
+                  <th>Tanggal Pembayaran</th>
+                  <th>Ongkos Kirim</th>
+                  <th>Total</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>a</td>
+                  <td>a</td>
+                  <td>a</td>
+                  <td>1</td>
+                  <td>a</td>
+                  <td>a</td>
+                  <td>a</td>
+                  <td>a</td>
+                  <td>a</td>
+                  <td>a</td>
+                </tr>
+                <tr>
+                  <td colspan="10">Pendapatan</td>
+                  <td>a</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </section>
+    </div>
+    <!-- /.content-wrapper -->
+    <div th:replace="admin/share/footer"></div>
+  </div>
+
+  <div th:fragment="script"></div>
+  <div th:replace="admin/share/script"></div>
+  <!-- DataTables -->
+  <script src="admin/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="admin/plugins/datatables-bs4/user/js/dataTables.bootstrap4.min.js"></script>
+  <script src="admin/plugins/datatables-responsive/user/js/dataTables.responsive.min.js"></script>
+  <script src="admin/plugins/datatables-responsive/user/js/responsive.bootstrap4.min.js"></script>
+  <!-- page script -->
 </body>
+
 </html>

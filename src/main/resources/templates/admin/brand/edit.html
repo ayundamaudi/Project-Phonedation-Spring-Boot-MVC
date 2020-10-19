@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Admin | Produk Brand</title>
-<style th:replace="/admin/share/style"></style>
-<!-- DataTables -->
-<link rel="stylesheet"
-	href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+	<title>Admin | Produk Brand</title>
+	<style th:replace="admin/share/style"></style>
+	<!-- DataTables -->
+	<link rel="stylesheet" href="admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 		<div th:replace="admin/share/header"></div>
@@ -54,23 +54,20 @@
 										</ul>
 									</div>
 								</span>
-								<form role="form" th:object="${form}" method="post"
-									th:action="@{/admin/brand/update}">
+								<form role="form" th:object="${form}" method="post" th:action="@{/admin/brand/update}">
 									<div class="card-body">
 										<div class="form-group">
-											<label for="exampleInputPassword1">Brand's Id</label> <input
-												class="form-control select2" style="width: 100%;"
-												 th:field="*{id}">
+											<label for="exampleInputPassword1">Brand's Id</label> <input class="form-control select2"
+												style="width: 100%;" th:field="*{id}">
 											</input>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">Brand's Name</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												th:field="*{brand}">
+											<label for="exampleInputFile">Brand's Name</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" th:field="*{brand}">
 										</div>
-										
+
 										<div class="card-footer">
-										<input type="hidden" th:field="*{id}">
+											<input type="hidden" th:field="*{id}">
 											<button type="submit" class="btn btn-primary">Update</button>
 										</div>
 								</form>
@@ -91,4 +88,5 @@
 	<div th:fragment="script"></div>
 	<div th:replace="admin/share/script"></div>
 </body>
+
 </html>

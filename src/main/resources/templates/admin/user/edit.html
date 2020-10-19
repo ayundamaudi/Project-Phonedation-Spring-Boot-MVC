@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>AdminLTE 3 | Dashboard</title>
-<style th:replace="/admin/share/style"></style>
+	<title>AdminLTE 3 | Dashboard</title>
+	<style th:replace="admin/share/style"></style>
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 		<div th:replace="admin/share/header"></div>
@@ -40,24 +42,19 @@
 							<!-- general form elements -->
 							<div class="card card-primary">
 								<!-- form start -->
-								<form role="form" th:object="${form}" method="post"
-									th:action="@{/admin/user/update}">
+								<form role="form" th:object="${form}" method="post" th:action="@{/admin/user/update}">
 									<div class="card-body">
 										<div class="form-group">
-											<label for="exampleInputFile">Email</label> <input
-												type="email" class="form-control"
-												id="exampleInputPassword1"
-												th:field="*{email}">
+											<label for="exampleInputFile">Email</label> <input type="email" class="form-control"
+												id="exampleInputPassword1" th:field="*{email}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Fullname</label> <input
-												type="text" class="form-control" id="exampleInputEmail1"
-												th:field="*{fullname}">
+											<label for="exampleInputEmail1">Fullname</label> <input type="text" class="form-control"
+												id="exampleInputEmail1" th:field="*{fullname}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputEmail1">Password</label> <input
-												type="text" class="form-control" id="exampleInputEmail1"
-												th:field="*{password}">
+											<label for="exampleInputEmail1">Password</label> <input type="text" class="form-control"
+												id="exampleInputEmail1" th:field="*{password}">
 										</div>
 										<div class="form-group">
 											<div class="form-group">
@@ -65,8 +62,8 @@
 												<div class="form-group">
 													<div class="custom-file">
 														<label class="custom-file-label" for="customFile">Choose
-															file</label> <input type="file" class="custom-file-input"
-															id="customFile" th:field="*{photo}">
+															file</label> <input type="file" class="custom-file-input" id="customFile"
+															th:field="*{photo}">
 													</div>
 												</div>
 											</div>
@@ -75,8 +72,8 @@
 									<!-- /.card-body -->
 
 									<div class="card-footer">
-									<input type="hidden" th:field="*{id}">
-									<button type="submit" class="btn btn-primary">Update</button>
+										<input type="hidden" th:field="*{id}">
+										<button type="submit" class="btn btn-primary">Update</button>
 									</div>
 								</form>
 							</div>
@@ -96,4 +93,5 @@
 	<div th:fragment="script"></div>
 	<div th:replace="admin/share/script"></div>
 </body>
+
 </html>

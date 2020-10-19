@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Admin | Produk</title>
-<style th:replace="/admin/share/style"></style>
-<!-- DataTables -->
-<link rel="stylesheet"
-	href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+	<title>Admin | Produk</title>
+	<style th:replace="admin/share/style"></style>
+	<!-- DataTables -->
+	<link rel="stylesheet" href="admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 		<div th:replace="admin/share/header"></div>
@@ -54,62 +54,50 @@
 										</ul>
 									</div>
 								</span>
-								<form role="form" th:object="${form}" method="post"
-									th:action="@{/admin/product/update}">
+								<form role="form" th:object="${form}" method="post" th:action="@{/admin/product/update}">
 									<div class="card-body">
 										<div class="form-group">
-											<label for="exampleInputPassword1">Brand's Name</label> <select
-												class="form-control select2" style="width: 100%;"
-												name="txtBrand" th:field="*{brandId}">
-												<option th:each="brand: ${brands}" th:value="${brand.id}"
-													th:text="${brand.brand}"></option>
+											<label for="exampleInputPassword1">Brand's Name</label> <select class="form-control select2"
+												style="width: 100%;" name="txtBrand" th:field="*{brandId}">
+												<option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.brand}"></option>
 											</select>
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">Model</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtModel" th:field="*{model}">
+											<label for="exampleInputFile">Model</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" name="txtModel" th:field="*{model}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">Color</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtColor" th:field="*{color}">
+											<label for="exampleInputFile">Color</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" name="txtColor" th:field="*{color}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">Internal Memory</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtInternalMemory" th:field="*{internalMemory}">
+											<label for="exampleInputFile">Internal Memory</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" name="txtInternalMemory" th:field="*{internalMemory}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">RAM</label> <input type="text"
-												class="form-control" id="exampleInputPassword1"
-												name="txtRam" th:field="*{ram}">
+											<label for="exampleInputFile">RAM</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" name="txtRam" th:field="*{ram}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">Price</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtPrice" th:field="*{price}">
+											<label for="exampleInputFile">Price</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" name="txtPrice" th:field="*{price}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">Weight</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtWeight" th:field="*{weight}">
+											<label for="exampleInputFile">Weight</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" name="txtWeight" th:field="*{weight}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">Stock</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												name="txtStock" th:field="*{stock}">
+											<label for="exampleInputFile">Stock</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" name="txtStock" th:field="*{stock}">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputFile">Sold</label> <input type="text"
-												class="form-control" id="exampleInputPassword1"
-												name="txtSold" th:field="*{sold}">
+											<label for="exampleInputFile">Sold</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" name="txtSold" th:field="*{sold}">
 										</div>
 										<!-- textarea -->
 										<div class="form-group">
 											<label for="exampleInputFile">Description</label>
-											<textarea class="form-control" name="txtDescription"
-												th:field="*{description}">
+											<textarea class="form-control" name="txtDescription" th:field="*{description}">
 													</textarea>
 											<div class="form-group">
 												<div class="form-group">
@@ -117,15 +105,15 @@
 													<div class="form-group">
 														<div class="custom-file">
 															<label class="custom-file-label" for="customFile">Choose
-																file</label> <input type="file" class="custom-file-input"
-																id="customFile" name="txtImage" th:field="*{image}">
+																file</label> <input type="file" class="custom-file-input" id="customFile"
+																name="txtImage" th:field="*{image}">
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="card-footer">
-										<input type="hidden" th:field="*{id}">
+											<input type="hidden" th:field="*{id}">
 											<button type="submit" class="btn btn-primary">Save</button>
 										</div>
 								</form>
@@ -146,4 +134,5 @@
 	<div th:fragment="script"></div>
 	<div th:replace="admin/share/script"></div>
 </body>
+
 </html>

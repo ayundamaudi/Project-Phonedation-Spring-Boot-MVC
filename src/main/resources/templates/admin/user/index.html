@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Admin | Data Customer</title>
-<style th:replace="/admin/share/style"></style>
+	<title>Admin | Data Customer</title>
+	<style th:replace="admin/share/style"></style>
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 		<div th:replace="admin/share/header"></div>
@@ -34,7 +36,7 @@
 			<section class="content">
 				<div class="card">
 					<div class="card-body">
-	 <a th:href="@{/admin/user/create}" class="btn btn-success">Tambah Data User</a><br><br>
+						<a th:href="@{/admin/user/create}" class="btn btn-success">Tambah Data User</a><br><br>
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
@@ -51,16 +53,18 @@
 							<tbody>
 								<tr th:each="user: ${users}">
 									<td th:text="${user.id}">a</td>
-				                    <td th:text="${user.dateJoined}">a</td>
-				                    <td th:text="${user.email}">a</td>
-				                    <td th:text="${user.fullname}">a</td>
-				                    <td th:text="${user.password}">a</td>
-				                    <td th:text="${user.photo}">a</td>
-				                    <td th:text="${user.role}">a</td>
-				                    <td>
-					                    <a class="btn btn-warning" th:href="@{/admin/user/edit/{id}/(id=${user.id})}"><i class="fas fa-edit"></i></a><br>
-					                    <a class="btn btn-danger" th:href="@{/admin/user/remove/{id}/(id=${user.id})}"><i class="fas fa-trash-alt"></i></a>
-				                    </td>
+									<td th:text="${user.dateJoined}">a</td>
+									<td th:text="${user.email}">a</td>
+									<td th:text="${user.fullname}">a</td>
+									<td th:text="${user.password}">a</td>
+									<td th:text="${user.photo}">a</td>
+									<td th:text="${user.role}">a</td>
+									<td>
+										<a class="btn btn-warning" th:href="@{/admin/user/edit/{id}/(id=${user.id})}"><i
+												class="fas fa-edit"></i></a><br>
+										<a class="btn btn-danger" th:href="@{/admin/user/remove/{id}/(id=${user.id})}"><i
+												class="fas fa-trash-alt"></i></a>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -76,4 +80,5 @@
 	<div th:fragment="script"></div>
 	<div th:replace="admin/share/script"></div>
 </body>
+
 </html>

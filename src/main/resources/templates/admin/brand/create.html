@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Admin | Produk Brand</title>
-<style th:replace="/admin/share/style"></style>
-<!-- DataTables -->
-<link rel="stylesheet"
-	href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet"
-	href="/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+	<title>Admin | Produk Brand</title>
+	<style th:replace="admin/share/style"></style>
+	<!-- DataTables -->
+	<link rel="stylesheet" href="admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 		<div th:replace="admin/share/header"></div>
@@ -54,14 +54,12 @@
 										</ul>
 									</div>
 								</span>
-								<form role="form" th:object="${form}" method="post"
-									th:action="@{/admin/brand/insert}">
+								<form role="form" th:object="${form}" method="post" th:action="@{/admin/brand/insert}">
 									<div class="card-body">
 										<div class="form-group">
-											<label for="exampleInputFile">Brand's Name</label> <input
-												type="text" class="form-control" id="exampleInputPassword1"
-												th:field="*{brand}">
-										</div>										
+											<label for="exampleInputFile">Brand's Name</label> <input type="text" class="form-control"
+												id="exampleInputPassword1" th:field="*{brand}">
+										</div>
 										<div class="card-footer">
 											<button type="submit" class="btn btn-primary">Save</button>
 										</div>
@@ -83,4 +81,5 @@
 	<div th:fragment="script"></div>
 	<div th:replace="admin/share/script"></div>
 </body>
+
 </html>

@@ -26,19 +26,16 @@
 										<p>ID order</p> <span th:text="${' : ' + order.id}">: 60235</span>
 									</li>
 									<li>
-										<p>E-mail User</p> <span th:text="${' : ' + order.user.email}">: E-mail not yet</span>
+										<p>E-mail</p> <span th:text="${' : ' + order.user.email}">: E-mail not yet</span>
 									</li>
 									<li>
-										<p>Name User</p> <span th:text="${' : ' + order.user.fullname}">: User Not yet</span>
+										<p>Name</p> <span th:text="${' : ' + order.user.fullname}">: User Not yet</span>
 									</li>
 									<li>
 										<p>Order Date</p> <span th:text="${' : ' + order.createdOrder}">: Oct 03, 2017</span>
 									</li>
 									<li>
-										<p>Courier</p> <span th:text="${' : ' + order.courier}">: USD 2210</span>
-									</li>
-									<li>
-										<p>Service</p> <span th:text="${' : ' + order.service}">: Check payments</span>
+										<p>Courier</p> <span th:text="${' : ' + order.courier + ' - ' + order.service}">: USD 2210</span>
 									</li>
 									<li>
 										<p>Status</p> <span th:text="${' : ' + order.status}">: Check payments</span>
@@ -56,6 +53,12 @@
 									</li>
 									<li>
 										<p>Phone Number</p> <span th:text="${' : ' + order.address.phoneNumber}">: Los Angeles</span>
+									</li>
+									<li>
+										<p>Urban</p> <span th:text="${' : ' + order.address.postalCode.urban}">: United States</span>
+									</li>
+									<li>
+										<p>District</p> <span th:text="${' : ' + order.address.postalCode.district}">: United States</span>
 									</li>
 									<li>
 										<p>Province</p> <span th:text="${' : ' + order.address.postalCode.province}">: United States</span>
@@ -116,8 +119,9 @@
 										<option th:value="Done">Done</option>
 									</select>
 									<br><br>
-									<input type="hidden" th:field="*{id}">
+									<input type="hidden" th:field="*{id}"><br>
 									<button type="submit" class="btn btn-primary">Update Status</button>
+									<button type="reset" class="btn btn-danger" onclick="window.history.back();">Back</button>
 								</form>
 							</div>
 						</div>

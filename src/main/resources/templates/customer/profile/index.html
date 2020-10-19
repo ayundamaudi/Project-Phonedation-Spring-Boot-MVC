@@ -27,16 +27,16 @@
 							<div class="billing_details">
 								<div class="row">
 									<div class="col-lg-8">
-										<h3>Profile Anda</h3>
+										<h3>Your's Profile</h3>
 										<form class="row contact_form" role="form" th:object="${form}" method="post"
 											th:action="@{/profile/update}">
 											<div class="col-md-12 form-group">
-												Bergabung Sejak
+												Join Date
 												<input class="form-control" id="datejoined" type="text" th:field="*{dateJoined}" disabled>
 											</div>
 											<div class="col-md-12 form-group">
-												Nama Lengkap
-												<input class="form-control" id="fullname" type="text" th:field="*{fullname}">
+												Full Name
+												<input class="form-control" id="fullname" type="text" th:field="*{fullname}" disabled>
 											</div>
 											<div class="col-md-12 form-group">
 												E-mail

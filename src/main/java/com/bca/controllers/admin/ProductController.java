@@ -24,7 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/admin/product")
 public class ProductController {
-  private String BASE_PATH = "/admin/product";
+  private String BASE_PATH = "admin/product";
 
   @Autowired
   private ProductService productService;

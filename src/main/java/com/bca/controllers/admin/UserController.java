@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/admin/user")
 public class UserController {
-  private String BASE_PATH = "/admin/user";
+  private String BASE_PATH = "admin/user";
 
   @Autowired
   private UserService userService;

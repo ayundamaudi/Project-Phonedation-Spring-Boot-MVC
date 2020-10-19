@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin/order")
 public class OrderController {
-  private String BASE_PATH = "/admin/order";
+  private String BASE_PATH = "admin/order";
 
   @Autowired
   private OrderService orderService;

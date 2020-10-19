@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Admin | Dashboard</title>
-<style th:replace="/admin/share/style"></style>
+	<title>Admin | Dashboard</title>
+	<style th:replace="admin/share/style"></style>
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 		<div th:replace="admin/share/header"></div>
@@ -79,41 +81,41 @@
 							</div>
 						</div> -->
 						<!-- ./col -->
-						</div>
-						<hr>
-						<h3>New Order</h3>
-						<table id="example1" class="table table-bordered table-striped">
-							<thead>
-								<tr>
-									<th>Id Order</th>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Courier</th>
-									<th>Date</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="orders: ${orders}">
-									<td th:text="${orders.id}">a</td>
-									<td th:text="${orders.user.fullname}">a</td>
-									<td th:text="${orders.user.email}">a</td>
-									<td th:text="${orders.courier + ' - ' + orders.service}">a</td>
-									<td th:text="${orders.createdOrder}">a</td>
-								</tr>
-								</tbody>
-								</table>
-						<!-- ./col -->
 					</div>
-					<!-- /.row -->
+					<hr>
+					<h3>New Order</h3>
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Id Order</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Courier</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="orders: ${orders}">
+								<td th:text="${orders.id}">a</td>
+								<td th:text="${orders.user.fullname}">a</td>
+								<td th:text="${orders.user.email}">a</td>
+								<td th:text="${orders.courier + ' - ' + orders.service}">a</td>
+								<td th:text="${orders.createdOrder}">a</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- ./col -->
 				</div>
-				<!-- /.row (main row) -->
-				<!-- /.container-fluid -->
-			</section>
-
-			<!-- /.content -->
+				<!-- /.row -->
 		</div>
-		<!-- /.content-wrapper -->
-		<div th:replace="admin/share/footer"></div>
+		<!-- /.row (main row) -->
+		<!-- /.container-fluid -->
+		</section>
+
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+	<div th:replace="admin/share/footer"></div>
 	</div>
 
 
@@ -121,4 +123,5 @@
 	<div th:replace="admin/share/script"></div>
 
 </body>
+
 </html>

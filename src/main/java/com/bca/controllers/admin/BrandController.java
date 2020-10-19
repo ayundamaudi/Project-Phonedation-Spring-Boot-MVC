@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/admin/brand")
 public class BrandController {
-  private String BASE_PATH = "/admin/brand";
+  private String BASE_PATH = "admin/brand";
 
   @Autowired
   private BrandService mainService;

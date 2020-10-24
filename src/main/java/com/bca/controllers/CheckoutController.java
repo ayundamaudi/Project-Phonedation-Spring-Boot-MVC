@@ -148,15 +148,15 @@ public class CheckoutController {
       MidtransResponse body = new ObjectMapper().readValue(response.getBody(), MidtransResponse.class);
       redirectUrl = body.getRedirectUrl();
 
-      UUID orderId = UUID.randomUUID();
-      Order order = new Order();
-      order.setId(orderId.toString());
-      order.setUser((User) session.getAttribute("USER"));
-      order.setStatus("Shopping");
-      orderService.save(order);
+      // UUID orderId = UUID.randomUUID();
+      // Order order = new Order();
+      // order.setId(orderId.toString());
+      // order.setUser((User) session.getAttribute("USER"));
+      // order.setStatus("Waiting for Payment");
+      // orderService.save(order);
 
-      session.setAttribute("CART_ID", order.getId());
-      session.removeAttribute("ADDRESS");
+      // session.setAttribute("CART_ID", order.getId());
+      // session.removeAttribute("ADDRESS");
 
       return "redirect:" + redirectUrl;
     } catch (JsonProcessingException e) {
@@ -179,11 +179,19 @@ public class CheckoutController {
 
   @GetMapping("/payment/success")
   public String paymentSuccess() {
-    // Order currentOrder = orderService.findById((String)
-    // session.getAttribute("")).get();
-    // currentOrder.setCreatedPayment(new Date());
-    // currentOrder.setStatus("payment success");
-    // orderService.save(currentOrder);
+    Order currentOrder = orderService.findById((String) session.getAttribute("CART_ID")).get();
+    currentOrder.setStatus("Process");
+    orderService.save(currentOrder);
+
+    UUID orderId = UUID.randomUUID();
+    Order order = new Order();
+    order.setId(orderId.toString());
+    order.setUser((User) session.getAttribute("USER"));
+    order.setStatus("Shopping");
+    orderService.save(order);
+
+    session.setAttribute("CART_ID", order.getId());
+    session.removeAttribute("ADDRESS");
 
     return "redirect:/";
   }
